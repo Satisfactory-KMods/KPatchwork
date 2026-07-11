@@ -1,7 +1,7 @@
 # Contributing
 
 1. Create a branch from `main`.
-2. Put pack files under any depth below `KDataForge/`.
+2. Put pack files under any depth below `DataForge/`.
 3. Add `pack.yml` with `contributer: <your-github-login>` or a list of co-maintainers.
 4. Run the local lint command:
 

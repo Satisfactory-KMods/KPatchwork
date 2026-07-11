@@ -13,8 +13,8 @@ from typing import Any
 import yaml
 
 
-def run_git(*args: str) -> list[str]:
-    result = subprocess.run(["git", *args], check=True, text=True, capture_output=True)
+def run_git(repo: Path, *args: str) -> list[str]:
+    result = subprocess.run(["git", "-C", str(repo), *args], check=True, text=True, capture_output=True)
     return [line for line in result.stdout.splitlines() if line]
 
 
@@ -25,10 +25,10 @@ def write_output(key: str, value: str) -> None:
             handle.write(f"{key}={value}\n")
 
 
-def load_contributors(revision: str, filename: str) -> list[str] | None:
+def load_contributors(repo: Path, revision: str, filename: str) -> list[str] | None:
     try:
         result = subprocess.run(
-            ["git", "show", f"{revision}:{filename}"],
+            ["git", "-C", str(repo), "show", f"{revision}:{filename}"],
             check=True,
             text=True,
             capture_output=True,
@@ -64,19 +64,21 @@ def main() -> int:
     parser.add_argument("--head", required=True)
     parser.add_argument("--author", required=True)
     parser.add_argument("--root", type=Path, default=Path("."))
+    parser.add_argument("--repo", type=Path, default=Path("."))
     args = parser.parse_args()
 
-    root = args.root / "KDataForge"
-    changed = run_git("diff", "--name-only", f"{args.base}...{args.head}")
+    repo = args.repo.resolve()
+    root = args.root / "DataForge"
+    changed = run_git(repo, "diff", "--name-only", f"{args.base}...{args.head}")
     owned = True
     reasons: list[str] = []
     manifests: set[Path] = set()
 
     for filename in changed:
         path = Path(filename)
-        if not filename.startswith("KDataForge/"):
+        if not filename.startswith("DataForge/"):
             owned = False
-            reasons.append(f"outside KDataForge: {filename}")
+            reasons.append(f"outside DataForge: {filename}")
             continue
         absolute = args.root / path
         manifest = manifest_for(absolute, root)
@@ -88,8 +90,8 @@ def main() -> int:
 
     for manifest in manifests:
         manifest_filename = manifest.relative_to(args.root).as_posix()
-        base_contributors = load_contributors(args.base, manifest_filename)
-        head_contributors = load_contributors(args.head, manifest_filename)
+        base_contributors = load_contributors(repo, args.base, manifest_filename)
+        head_contributors = load_contributors(repo, args.head, manifest_filename)
         if base_contributors != head_contributors:
             owned = False
             reasons.append(f"{manifest}: contributer field changed")

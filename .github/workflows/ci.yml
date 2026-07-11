@@ -56,8 +56,8 @@ jobs:
         run: uv sync --locked --project ci-repo
         shell: bash
 
-      - name: Lint all KDataForge packs
-        run: uv run --project ci-repo --locked ci-repo/Lint/lint_packs.py --root "$SOURCE/KDataForge"
+      - name: Lint all DataForge packs
+        run: uv run --project ci-repo --locked ci-repo/Lint/lint_packs.py --root "$SOURCE/DataForge"
         shell: bash
 
       - name: Check contributor ownership
@@ -68,7 +68,8 @@ jobs:
             --base "${{ github.event.pull_request.base.sha }}" \
             --head "${{ github.event.pull_request.head.sha }}" \
             --author "${{ github.event.pull_request.user.login }}" \
-            --root "$SOURCE"
+            --root "$SOURCE" \
+            --repo "$SOURCE"
         shell: bash
 
       - name: Create KPatchwork ZIP

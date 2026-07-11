@@ -269,6 +269,24 @@ class Linter:
                     self.error(path, f"{label}.{key} must be an integer")
             if op.casefold() in {"copy", "move"} and isinstance(operation.get("from"), str) and not PROPERTY_PATH.fullmatch(operation["from"]):
                 self.error(path, f"{label}.from is not a valid property path")
+            if "value" in operation:
+                self.validate_inline_instances(operation["value"], path, f"{label}.value")
+
+    def validate_inline_instances(self, value: Any, path: Path, context: str) -> None:
+        if isinstance(value, list):
+            for index, entry in enumerate(value):
+                self.validate_inline_instances(entry, path, f"{context}[{index}]")
+            return
+        if not isinstance(value, dict):
+            return
+        if "properties" in value:
+            class_path = value.get("class")
+            if not isinstance(class_path, str) or not class_path.strip():
+                self.error(path, f"{context}.class must be a non-empty string when properties is present")
+            self.validate_property_ops(value["properties"], path, f"{context}.properties")
+            return
+        for key, child in value.items():
+            self.validate_inline_instances(child, path, f"{context}.{key}")
 
     def validate_target(self, patch: dict[str, Any], path: Path, context: str) -> None:
         selectors = [key for key in ("target", "allAssetsOfClass", "matchTag") if key in patch]
@@ -374,7 +392,7 @@ class Linter:
                     continue
                 target = (path.parent / include).resolve()
                 if self.root not in target.parents and target != self.root:
-                    self.error(path, f"include escapes KDataForge root: {include}")
+                    self.error(path, f"include escapes DataForge root: {include}")
                 elif not target.is_file():
                     self.error(path, f"include does not exist: {include}")
         pack_data = self.manifests.get(pack_root)
@@ -455,14 +473,17 @@ class Linter:
 
     def run(self) -> int:
         if not self.root.is_dir():
-            self.error(self.root, "KDataForge root does not exist")
+            self.error(self.root, "DataForge root does not exist")
             return 1
+        for path in self.root.rglob("*"):
+            if path.is_symlink():
+                self.error(path, "symlinks are not allowed in DataForge packs")
         manifests = sorted(self.root.rglob("pack.yml"))
         if not manifests:
             self.error(self.root, "no pack.yml found")
         for manifest in manifests:
             if len(manifest.relative_to(self.root).parts) < 2:
-                self.error(manifest, "expected KDataForge/**/<pack>/pack.yml layout")
+                self.error(manifest, "expected DataForge/**/<pack>/pack.yml layout")
             self.validate_manifest(manifest)
         for document in sorted(self.root.rglob("*.yml")) + sorted(self.root.rglob("*.yaml")):
             if document.name == "pack.yml":
@@ -493,7 +514,7 @@ class Linter:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--root", type=Path, default=Path("KDataForge"))
+    parser.add_argument("--root", type=Path, default=Path("DataForge"))
     args = parser.parse_args()
     return Linter(args.root).run()
 

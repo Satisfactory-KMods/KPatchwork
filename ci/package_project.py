@@ -16,7 +16,7 @@ def main() -> int:
 
     root = args.root.resolve()
     plugin = root / "KPatchwork.uplugin"
-    dataforge = root / "KDataForge"
+    dataforge = root / "DataForge"
     config = root / "Config"
     if not plugin.is_file():
         raise SystemExit(f"missing plugin descriptor: {plugin}")
@@ -30,6 +30,8 @@ def main() -> int:
         archive.write(plugin, plugin.relative_to(root).as_posix())
         for source_root in (dataforge, config):
             for path in sorted(source_root.rglob("*")):
+                if path.is_symlink():
+                    raise SystemExit(f"symlinks are not allowed in release content: {path}")
                 if path.is_file() and path.name != "Alpakit.ini":
                     archive.write(path, path.relative_to(root).as_posix())
     print(f"created {args.output} ({args.output.stat().st_size} bytes)")

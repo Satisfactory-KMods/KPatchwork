@@ -41,7 +41,7 @@ def diff_stats(root: Path, range_spec: str) -> list[tuple[str, str, str]]:
 
 
 def player_area(paths: list[str]) -> str:
-    if any(path.startswith("KDataForge/") for path in paths):
+    if any(path.startswith("DataForge/") for path in paths):
         return "KDataForge patch content"
     if any(path == "KPatchwork.uplugin" for path in paths):
         return "Mod metadata"
@@ -109,9 +109,9 @@ def main() -> int:
         records.append((sha, date, author, subject, files, kind))
         if kind in {"feat", "fix", "perf", "refactor"}:
             sentence = player_sentence(kind, clean_subject, area)
-            if any(path.startswith("KDataForge/") or path == "KPatchwork.uplugin" for path in files):
+            if any(path.startswith("DataForge/") or path == "KPatchwork.uplugin" for path in files):
                 player_changes.append(sentence)
-            if any(path.startswith("KDataForge/") for path in files):
+            if any(path.startswith("DataForge/") for path in files):
                 pack_author_changes.append(sentence)
 
     lines = [f"# KPatchwork {version(args.root)}", "", "## Changes for players", ""]

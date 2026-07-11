@@ -211,7 +211,9 @@ jobs:
         run: |
           test -n "$FICSIT_TOKEN"
           test -n "$FICSIT_MOD_ID"
-          "$RUNNER_TEMP/ficsit" smr upload --api-key "$FICSIT_TOKEN" --stability release "$FICSIT_MOD_ID" release/KPatchwork.zip release/CHANGELOG.md
+          CHANGELOG="$(<release/CHANGELOG.md)"
+          test -n "$CHANGELOG"
+          "$RUNNER_TEMP/ficsit" smr upload --api-key "$FICSIT_TOKEN" --stability release "$FICSIT_MOD_ID" release/KPatchwork.zip "$CHANGELOG"
 
   auto-merge-owned-packs:
     name: Auto-merge author-owned packs

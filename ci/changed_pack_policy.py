@@ -25,6 +25,25 @@ def write_output(key: str, value: str) -> None:
             handle.write(f"{key}={value}\n")
 
 
+def load_contributors(revision: str, filename: str) -> list[str] | None:
+    try:
+        result = subprocess.run(
+            ["git", "show", f"{revision}:{filename}"],
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        data = yaml.safe_load(result.stdout)
+    except (subprocess.CalledProcessError, yaml.YAMLError):
+        return None
+
+    value = data.get("contributer") if isinstance(data, dict) else None
+    values = [value] if isinstance(value, str) else value
+    if not isinstance(values, list):
+        return None
+    return [item.strip() for item in values if isinstance(item, str)]
+
+
 def manifest_for(path: Path, root: Path) -> Path | None:
     current = path.parent
     while True:
@@ -68,6 +87,13 @@ def main() -> int:
         manifests.add(manifest)
 
     for manifest in manifests:
+        manifest_filename = manifest.relative_to(args.root).as_posix()
+        base_contributors = load_contributors(args.base, manifest_filename)
+        head_contributors = load_contributors(args.head, manifest_filename)
+        if base_contributors != head_contributors:
+            owned = False
+            reasons.append(f"{manifest}: contributer field changed")
+
         try:
             data: dict[str, Any] = yaml.safe_load(manifest.read_text(encoding="utf-8"))
         except (OSError, yaml.YAMLError) as exc:

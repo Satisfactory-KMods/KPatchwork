@@ -161,7 +161,7 @@ jobs:
         shell: bash
         env:
           FICSIT_TOKEN: ${{ secrets.FICSIT_TOKEN }}
-          FICSIT_MOD_ID: ${{ secrets.FICSIT_MOD_ID }}
+          FICSIT_MOD_ID: DTqn9RaUxqSXyT
         run: |
           test -n "$FICSIT_TOKEN"
           test -n "$FICSIT_MOD_ID"

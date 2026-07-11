@@ -1,0 +1,11 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/SignPole/Recipes/Recipe_Pole.Recipe_Pole_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 5
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 5

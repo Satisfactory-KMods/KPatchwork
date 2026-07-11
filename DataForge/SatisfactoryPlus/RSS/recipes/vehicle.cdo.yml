@@ -1,0 +1,48 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/Vehicel/Recipes/Recipe_RSS_FreightWagon_2x1.Recipe_RSS_FreightWagon_2x1_C
+      - /RSS/Buildable/Vehicel/Recipes/Recipe_RSS_FreightWagon_2x2.Recipe_RSS_FreightWagon_2x2_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPipe/Desc_SteelPipe.Desc_SteelPipe_C
+            Amount: 10
+  - target:
+      - /RSS/Buildable/Vehicel/Recipes/Recipe_RSS_Locomotive_2x1.Recipe_RSS_Locomotive_2x1_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 5
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 10
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPipe/Desc_SteelPipe.Desc_SteelPipe_C
+            Amount: 15
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Computer/Desc_Computer.Desc_Computer_C
+            Amount: 5
+  - target:
+      - /RSS/Buildable/Vehicel/Recipes/Recipe_RSS_Tractor_2x05.Recipe_RSS_Tractor_2x05_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrame/Desc_ModularFrame.Desc_ModularFrame_C
+            Amount: 5
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Rotor/Desc_Rotor.Desc_Rotor_C
+            Amount: 10
+  - target:
+      - /RSS/Buildable/Vehicel/Recipes/Recipe_RSS_Truck_2x1.Recipe_RSS_Truck_2x1_C
+      - /RSS/Buildable/Vehicel/Recipes/Recipe_RSS_Truck_3x05.Recipe_RSS_Truck_3x05_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 8
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Computer/Desc_Computer.Desc_Computer_C
+            Amount: 10
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Rubber/Desc_Rubber.Desc_Rubber_C
+            Amount: 50

@@ -1,0 +1,11 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Equipment/Recipe_SignGun.Recipe_SignGun_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4

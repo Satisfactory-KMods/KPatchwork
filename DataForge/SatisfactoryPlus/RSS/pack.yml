@@ -1,0 +1,9 @@
+ref: SatisfactoryPlusRSS
+name: SatisfactoryPlus RSS Patch Pack
+version: 1.0.0
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+  - SatisfactoryPlus
+  - RSS

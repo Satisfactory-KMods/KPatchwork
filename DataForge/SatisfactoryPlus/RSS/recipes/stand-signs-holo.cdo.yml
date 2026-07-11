@@ -1,0 +1,16 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/StandSigns/Recipes/Holo/recipe_RSS_holoscreen_1x1_Stand.recipe_RSS_holoscreen_1x1_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Holo/recipe_RSS_holoscreen_1x2_Stand.recipe_RSS_holoscreen_1x2_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Holo/recipe_RSS_holoscreen_2x1_Stand.recipe_RSS_holoscreen_2x1_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Holo/recipe_RSS_holoscreen_7x1_Stand.recipe_RSS_holoscreen_7x1_Stand_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4

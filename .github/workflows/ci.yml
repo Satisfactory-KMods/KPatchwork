@@ -15,7 +15,7 @@ permissions:
 jobs:
   validate-package:
     name: Lint packs and package project
-    runs-on: arc-runner
+    runs-on: arc-runner-set
     outputs:
       eligible: ${{ steps.policy.outputs.eligible }}
       version: ${{ steps.release-version.outputs.version }}
@@ -116,7 +116,7 @@ jobs:
     name: Create GitHub release
     needs: validate-package
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: arc-runner
+    runs-on: arc-runner-set
     permissions:
       contents: write
     steps:
@@ -140,7 +140,7 @@ jobs:
     name: Release with ficsit-CLI
     needs: validate-package
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: arc-runner
+    runs-on: arc-runner-set
     steps:
       - name: Download release artifact
         uses: actions/download-artifact@v4
@@ -172,7 +172,7 @@ jobs:
     name: Auto-merge author-owned packs
     needs: validate-package
     if: github.event_name == 'pull_request_target' && needs.validate-package.outputs.eligible == 'true'
-    runs-on: arc-runner
+    runs-on: arc-runner-set
     steps:
       - name: Approve author-owned pack changes
         uses: actions/github-script@v7

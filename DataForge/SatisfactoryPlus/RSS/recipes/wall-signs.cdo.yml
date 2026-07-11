@@ -1,0 +1,16 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/WallSigns/Recipes/Recipe_RSS_1x1.Recipe_RSS_1x1_C
+      - /RSS/Buildable/WallSigns/Recipes/Recipe_RSS_1x2.Recipe_RSS_1x2_C
+      - /RSS/Buildable/WallSigns/Recipes/Recipe_RSS_2x1.Recipe_RSS_2x1_C
+      - /RSS/Buildable/WallSigns/Recipes/Recipe_RSS_7x1.Recipe_RSS_7x1_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4

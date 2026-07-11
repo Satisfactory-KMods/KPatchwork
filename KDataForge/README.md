@@ -1,9 +1,9 @@
 # KDataForge packs
 
-Create a pack directory below `KDataForge/` (nested folders are allowed):
+Create a pack directory at any depth below `KDataForge/`:
 
 ```text
-KDataForge/<github-user>/<pack-name>/pack.yml
+KDataForge/**/<pack-name>/pack.yml
 ```
 
 `pack.yml` requires `ref`, `name`, `version`, and `contributer`. The `contributer` value is the

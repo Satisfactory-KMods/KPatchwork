@@ -7,7 +7,7 @@ KPatchwork is a community-maintained collection of KDataForge patch packs for Sa
 ```text
 KPatchwork.uplugin
 KDataForge/
-  <github-user>/
+  **/
     <pack-name>/
       pack.yml
       *.yml

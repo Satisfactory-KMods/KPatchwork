@@ -50,8 +50,8 @@ def lint(root: Path) -> int:
     document_count = 0
     for manifest in manifests:
         relative = manifest.relative_to(root)
-        if len(relative.parts) < 3:
-            fail(f"{manifest}: expected a nested KDataForge/<group>/<pack>/pack.yml layout")
+        if len(relative.parts) < 2:
+            fail(f"{manifest}: expected KDataForge/**/<pack>/pack.yml layout")
         pack_data = yaml.safe_load(manifest.read_text(encoding="utf-8"))
         if not isinstance(pack_data, dict):
             fail(f"{manifest}: manifest must be a YAML mapping")

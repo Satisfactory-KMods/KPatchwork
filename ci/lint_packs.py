@@ -51,16 +51,12 @@ def lint(root: Path) -> int:
     for manifest in manifests:
         relative = manifest.relative_to(root)
         if len(relative.parts) < 3:
-            fail(f"{manifest}: expected KDataForge/<contributer>/<pack>/pack.yml")
-        contributor_dir = relative.parts[0]
+            fail(f"{manifest}: expected a nested KDataForge/<group>/<pack>/pack.yml layout")
         pack_data = yaml.safe_load(manifest.read_text(encoding="utf-8"))
         if not isinstance(pack_data, dict):
             fail(f"{manifest}: manifest must be a YAML mapping")
         for field in REQUIRED_MANIFEST_FIELDS:
             require_string(pack_data, field, manifest)
-        contributor = pack_data["contributer"].strip()
-        if contributor.casefold() != contributor_dir.casefold():
-            fail(f"{manifest}: contributer {contributor!r} does not match directory {contributor_dir!r}")
         ref = pack_data["ref"].strip().casefold()
         if ref in refs:
             fail(f"duplicate pack ref {pack_data['ref']!r}: {refs[ref]} and {manifest}")

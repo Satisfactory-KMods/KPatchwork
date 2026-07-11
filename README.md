@@ -13,8 +13,8 @@ KDataForge/
       *.yml
 ```
 
-Each pack lives below its contributor directory. Its `pack.yml` must contain the contributor's GitHub
-login in the intentionally stable field `contributer`:
+Each pack lives below `KDataForge/`. Its `pack.yml` must contain the contributor's GitHub login in
+the intentionally stable field `contributer`:
 
 ```yaml
 ref: MyPack

@@ -1,10 +1,10 @@
 # KDataForge packs
 
-Create one contributor directory per GitHub user, then one directory per pack:
+Create a pack directory below `KDataForge/` (nested folders are allowed):
 
 ```text
 KDataForge/<github-user>/<pack-name>/pack.yml
 ```
 
-`pack.yml` requires `ref`, `name`, `version`, and `contributer`. The `contributer` value must match
-the contributor directory and the GitHub login of the pull-request author for automatic merging.
+`pack.yml` requires `ref`, `name`, `version`, and `contributer`. The `contributer` value is the
+GitHub login of the pack owner and must match the pull-request author for automatic merging.

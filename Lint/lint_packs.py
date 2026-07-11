@@ -443,6 +443,8 @@ class Linter:
         if not manifests:
             self.error(self.root, "no pack.yml found")
         for manifest in manifests:
+            if len(manifest.relative_to(self.root).parts) < 2:
+                self.error(manifest, "expected KDataForge/**/<pack>/pack.yml layout")
             self.validate_manifest(manifest)
         for document in sorted(self.root.rglob("*.yml")) + sorted(self.root.rglob("*.yaml")):
             if document.name == "pack.yml":

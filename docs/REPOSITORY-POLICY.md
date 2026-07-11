@@ -8,7 +8,7 @@ merge.
 The CI uses an ARC runner labelled `arc-runner`. It lints every `*.yml`/`*.yaml` below `KDataForge`,
 creates `KPatchwork.zip` containing `KPatchwork.uplugin` and `KDataForge/`, and enables squash
 auto-merge only when all changed files belong to packs whose `contributer` matches the pull-request
-author.
+author. It also publishes `CHANGELOG.md`, generated from the commit range.
 
 Author-owned pack PRs receive a CI approval after linting and may auto-merge. Changes outside
 author-owned packs receive no CI approval and remain blocked until a CODEOWNER explicitly approves.

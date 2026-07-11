@@ -11,6 +11,9 @@ KDataForge schema construct below `KDataForge`, creates `KPatchwork.zip` contain
 auto-merge only when all changed files belong to packs whose `contributer` matches the pull-request
 author. Main releases set the plugin version to `<year>.<quarter>.<CI-build-number>`, publish
 `CHANGELOG.md` generated from commits, and upload the ZIP through ficsit-CLI.
+The release job pins ficsit-CLI `v0.7.1`, verifies its published SHA-256 checksum, and runs
+`ficsit smr upload --stability release`. Configure repository secrets `FICSIT_TOKEN` and
+`FICSIT_MOD_ID` before enabling the main-branch release job.
 
 Author-owned pack PRs receive a CI approval after linting and may auto-merge. Changes outside
 author-owned packs receive no CI approval and remain blocked until a CODEOWNER explicitly approves.

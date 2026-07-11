@@ -121,6 +121,8 @@ jobs:
           FICSIT_CLI_VERSION: v0.7.1
         run: |
           curl -fsSL "https://github.com/satisfactorymodding/ficsit-cli/releases/download/${FICSIT_CLI_VERSION}/ficsit_linux_amd64" -o "$RUNNER_TEMP/ficsit"
+          curl -fsSL "https://github.com/satisfactorymodding/ficsit-cli/releases/download/${FICSIT_CLI_VERSION}/checksums.txt" -o "$RUNNER_TEMP/ficsit.checksums"
+          grep ' ficsit_linux_amd64$' "$RUNNER_TEMP/ficsit.checksums" | sed "s#  ficsit_linux_amd64#  $RUNNER_TEMP/ficsit#" | sha256sum -c -
           chmod +x "$RUNNER_TEMP/ficsit"
 
       - name: Upload release to ficsit.app
@@ -131,7 +133,7 @@ jobs:
         run: |
           test -n "$FICSIT_TOKEN"
           test -n "$FICSIT_MOD_ID"
-          "$RUNNER_TEMP/ficsit" smr upload --api-key "$FICSIT_TOKEN" "$FICSIT_MOD_ID" release/KPatchwork.zip release/CHANGELOG.md
+          "$RUNNER_TEMP/ficsit" smr upload --api-key "$FICSIT_TOKEN" --stability release "$FICSIT_MOD_ID" release/KPatchwork.zip release/CHANGELOG.md
 
   auto-merge-owned-packs:
     name: Auto-merge author-owned packs

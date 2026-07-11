@@ -26,11 +26,13 @@ def require_string(data: dict[str, Any], field: str, path: Path) -> str:
 
 def find_pack_root(path: Path, root: Path) -> Path | None:
     current = path.parent
-    while current >= root:
+    while True:
         manifest = current / "pack.yml"
         if manifest.is_file():
             return current
         if current == root:
+            break
+        if root not in current.parents:
             break
         current = current.parent
     return None

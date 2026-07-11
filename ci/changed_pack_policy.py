@@ -27,11 +27,13 @@ def write_output(key: str, value: str) -> None:
 
 def manifest_for(path: Path, root: Path) -> Path | None:
     current = path.parent
-    while current >= root:
+    while True:
         manifest = current / "pack.yml"
         if manifest.is_file():
             return manifest
         if current == root:
+            break
+        if root not in current.parents:
             break
         current = current.parent
     return None

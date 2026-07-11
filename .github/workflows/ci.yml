@@ -1,0 +1,201 @@
+name: KPatchwork CI
+
+on:
+  push:
+    branches: [main]
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  validate-package:
+    name: Lint packs and package project
+    runs-on: arc-runner
+    outputs:
+      eligible: ${{ steps.policy.outputs.eligible }}
+      version: ${{ steps.release-version.outputs.version }}
+    steps:
+      - name: Checkout trusted CI code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          path: ci-repo
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Checkout pull request contents
+        if: github.event_name == 'pull_request_target'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          path: pr-repo
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Select source tree
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request_target" ]; then
+            echo "SOURCE=pr-repo" >> "$GITHUB_ENV"
+          else
+            echo "SOURCE=ci-repo" >> "$GITHUB_ENV"
+          fi
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: latest
+
+      - name: Sync CI dependencies
+        run: uv sync --locked --project ci-repo
+        shell: bash
+
+      - name: Lint all DataForge packs
+        run: uv run --project ci-repo --locked ci-repo/Lint/lint_packs.py --root "$SOURCE/DataForge"
+        shell: bash
+
+      - name: Check contributor ownership
+        id: policy
+        if: github.event_name == 'pull_request_target'
+        run: |
+          uv run --project ci-repo --locked ci-repo/ci/changed_pack_policy.py \
+            --base "${{ github.event.pull_request.base.sha }}" \
+            --head "${{ github.event.pull_request.head.sha }}" \
+            --author "${{ github.event.pull_request.user.login }}" \
+            --root "$SOURCE" \
+            --repo "$SOURCE"
+        shell: bash
+
+      - name: Create KPatchwork ZIP
+        if: github.event_name != 'push' || github.ref != 'refs/heads/main'
+        run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
+        shell: bash
+
+      - name: Set release version
+        id: release-version
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          uv run --project ci-repo --locked ci-repo/ci/version_release.py \
+            --plugin "$SOURCE/KPatchwork.uplugin" \
+            --build-number "$GITHUB_RUN_NUMBER" | tee "$RUNNER_TEMP/version-output"
+          VERSION=$(sed -n 's/^version=//p' "$RUNNER_TEMP/version-output")
+          test -n "$VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      - name: Create release ZIP
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
+        shell: bash
+
+      - name: Generate changelog from commits
+        run: |
+          uv run --project ci-repo --locked ci-repo/ci/generate_changelog.py \
+            --root "$SOURCE" \
+            --base "${{ github.event.pull_request.base.sha || github.event.before }}" \
+            --head "${{ github.event.pull_request.head.sha || github.sha }}" \
+            --output "$GITHUB_WORKSPACE/CHANGELOG.md"
+        shell: bash
+
+      - name: Upload KPatchwork ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: KPatchwork
+          path: |
+            KPatchwork.zip
+            CHANGELOG.md
+          if-no-files-found: error
+
+  release-github:
+    name: Create GitHub release
+    needs: validate-package
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: arc-runner
+    permissions:
+      contents: write
+    steps:
+      - name: Download release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: KPatchwork
+          path: release
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.validate-package.outputs.version }}
+          name: KPatchwork ${{ needs.validate-package.outputs.version }}
+          body_path: release/CHANGELOG.md
+          files: release/KPatchwork.zip
+          fail_on_unmatched_files: true
+          draft: false
+
+  release-ficsit:
+    name: Release with ficsit-CLI
+    needs: validate-package
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: arc-runner
+    steps:
+      - name: Download release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: KPatchwork
+          path: release
+
+      - name: Install ficsit-CLI
+        shell: bash
+        env:
+          FICSIT_CLI_VERSION: v0.7.1
+        run: |
+          curl -fsSL "https://github.com/satisfactorymodding/ficsit-cli/releases/download/${FICSIT_CLI_VERSION}/ficsit_linux_amd64" -o "$RUNNER_TEMP/ficsit"
+          curl -fsSL "https://github.com/satisfactorymodding/ficsit-cli/releases/download/${FICSIT_CLI_VERSION}/checksums.txt" -o "$RUNNER_TEMP/ficsit.checksums"
+          grep ' ficsit_linux_amd64$' "$RUNNER_TEMP/ficsit.checksums" | sed "s#  ficsit_linux_amd64#  $RUNNER_TEMP/ficsit#" | sha256sum -c -
+          chmod +x "$RUNNER_TEMP/ficsit"
+
+      - name: Upload release to ficsit.app
+        shell: bash
+        env:
+          FICSIT_TOKEN: ${{ secrets.FICSIT_TOKEN }}
+          FICSIT_MOD_ID: DTqn9RaUxqSXyT
+        run: |
+          test -n "$FICSIT_TOKEN"
+          test -n "$FICSIT_MOD_ID"
+          "$RUNNER_TEMP/ficsit" smr upload --api-key "$FICSIT_TOKEN" --stability release "$FICSIT_MOD_ID" release/KPatchwork.zip release/CHANGELOG.md
+
+  auto-merge-owned-packs:
+    name: Auto-merge author-owned packs
+    needs: validate-package
+    if: github.event_name == 'pull_request_target' && needs.validate-package.outputs.eligible == 'true'
+    runs-on: arc-runner
+    steps:
+      - name: Approve author-owned pack changes
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              event: 'APPROVE',
+              body: 'CI verified that all changed packs belong to the pull-request author.'
+            });
+
+      - name: Enable squash auto-merge
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            await github.graphql(`
+              mutation EnableAutoMerge($pullRequestId: ID!) {
+                enablePullRequestAutoMerge(
+                  input: { pullRequestId: $pullRequestId, mergeMethod: SQUASH }
+                ) { clientMutationId }
+              }
+            `, { pullRequestId: context.payload.pull_request.node_id });

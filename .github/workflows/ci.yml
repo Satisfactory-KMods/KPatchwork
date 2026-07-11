@@ -90,7 +90,7 @@ jobs:
           uv run --project ci-repo --locked ci-repo/ci/generate_changelog.py \
             --root "$SOURCE" \
             --base "${{ github.event.pull_request.base.sha || github.event.before }}" \
-            --head "${{ github.sha }}" \
+            --head "${{ github.event.pull_request.head.sha || github.sha }}" \
             --output "$GITHUB_WORKSPACE/CHANGELOG.md"
         shell: bash
 

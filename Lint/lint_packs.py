@@ -21,7 +21,6 @@ KNOWN_TYPES = {
     "gametag",
     "item",
     "localization",
-    "mam",
     "recipe",
     "research",
     "resource",

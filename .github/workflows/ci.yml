@@ -18,6 +18,7 @@ jobs:
     runs-on: arc-runner
     outputs:
       eligible: ${{ steps.policy.outputs.eligible }}
+      version: ${{ steps.release-version.outputs.version }}
     steps:
       - name: Checkout trusted CI code
         uses: actions/checkout@v4
@@ -76,8 +77,15 @@ jobs:
         shell: bash
 
       - name: Set release version
+        id: release-version
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: uv run --project ci-repo --locked ci-repo/ci/version_release.py --plugin "$SOURCE/KPatchwork.uplugin" --build-number "$GITHUB_RUN_NUMBER"
+        run: |
+          uv run --project ci-repo --locked ci-repo/ci/version_release.py \
+            --plugin "$SOURCE/KPatchwork.uplugin" \
+            --build-number "$GITHUB_RUN_NUMBER" | tee "$RUNNER_TEMP/version-output"
+          VERSION=$(sed -n 's/^version=//p' "$RUNNER_TEMP/version-output")
+          test -n "$VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
         shell: bash
 
       - name: Create release ZIP
@@ -102,6 +110,30 @@ jobs:
             KPatchwork.zip
             CHANGELOG.md
           if-no-files-found: error
+
+  release-github:
+    name: Create GitHub release
+    needs: validate-package
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: arc-runner
+    permissions:
+      contents: write
+    steps:
+      - name: Download release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: KPatchwork
+          path: release
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.validate-package.outputs.version }}
+          name: KPatchwork ${{ needs.validate-package.outputs.version }}
+          body_path: release/CHANGELOG.md
+          files: release/KPatchwork.zip
+          fail_on_unmatched_files: true
+          draft: false
 
   release-ficsit:
     name: Release with ficsit-CLI

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -29,6 +30,14 @@ def version(root: Path) -> str:
 
 def changed_files(root: Path, sha: str) -> list[str]:
     return git(root, "diff-tree", "--root", "--no-commit-id", "--name-only", "-r", sha)
+
+
+def diff_stats(root: Path, range_spec: str) -> list[tuple[str, str, str]]:
+    stats: list[tuple[str, str, str]] = []
+    for line in git(root, "diff", "--numstat", range_spec):
+        additions, deletions, path = line.split("\t", 2)
+        stats.append((path, additions, deletions))
+    return stats
 
 
 def player_area(paths: list[str]) -> str:
@@ -85,6 +94,7 @@ def main() -> int:
         "--format=%h%x09%ad%x09%an%x09%s",
         range_spec,
     )
+    stats = diff_stats(args.root, range_spec)
 
     records: list[tuple[str, str, str, str, list[str], str]] = []
     player_changes: list[str] = []
@@ -114,6 +124,19 @@ def main() -> int:
         lines.extend(f"- {change}" for change in pack_author_changes)
     else:
         lines.append("- No pack-facing changes in this build.")
+    lines.extend(["", "## Diff summary", ""])
+    lines.append(f"Compared range: `{range_spec}`.")
+    repository = os.environ.get("GITHUB_REPOSITORY")
+    if repository:
+        lines.append(f"Compare changes on GitHub: https://github.com/{repository}/compare/{base}...{args.head}")
+    lines.append("")
+    if stats:
+        lines.append("| File | Added | Removed |")
+        lines.append("| --- | ---: | ---: |")
+        for path, additions, deletions in stats:
+            lines.append(f"| `{path}` | {additions} | {deletions} |")
+    else:
+        lines.append("- No file diff in this range.")
     lines.extend(["", "## Technical commit history", ""])
     if records:
         for sha, date, author, subject, files, _kind in records:

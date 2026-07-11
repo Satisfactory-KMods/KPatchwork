@@ -30,7 +30,8 @@ configuration require an explicit maintainer approval.
 
 CI creates a release ZIP containing `KPatchwork.uplugin`, `KDataForge/`, and `Config/` (excluding
 `Config/Alpakit.ini`) and generates `CHANGELOG.md` from the commit range. Main releases receive
-`<year>.<quarter>.<CI-build-number>` and upload through ficsit-CLI.
+`<year>.<quarter>.<CI-build-number>`, create a GitHub Release with the ZIP and changelog, and upload
+through ficsit-CLI.
 
 ## Contributing
 

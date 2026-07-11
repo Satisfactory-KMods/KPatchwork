@@ -1,0 +1,20 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_1x1_Belt.Recipe_RSS_1x1_Belt_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_1x1_Belt_2.Recipe_RSS_1x1_Belt_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_1x2_Belt.Recipe_RSS_1x2_Belt_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_1x2_Belt_2.Recipe_RSS_1x2_Belt_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_2x1_Belt.Recipe_RSS_2x1_Belt_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_2x1_Belt_2.Recipe_RSS_2x1_Belt_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_7x1_Belt.Recipe_RSS_7x1_Belt_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_7x1_Belt_2.Recipe_RSS_7x1_Belt_2_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4

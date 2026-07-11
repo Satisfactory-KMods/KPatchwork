@@ -9,13 +9,14 @@ on:
 
 permissions:
   contents: read
+  issues: write
   pull-requests: write
   checks: write
 
 jobs:
   validate-package:
     name: Lint packs and package project
-    runs-on: arc-runner
+    runs-on: arc-runner-set
     outputs:
       eligible: ${{ steps.policy.outputs.eligible }}
       version: ${{ steps.release-version.outputs.version }}
@@ -23,7 +24,7 @@ jobs:
       - name: Checkout trusted CI code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.ref || github.event.repository.default_branch }}
           path: ci-repo
           fetch-depth: 0
           persist-credentials: false
@@ -72,6 +73,50 @@ jobs:
             --repo "$SOURCE"
         shell: bash
 
+      - name: Comment on auto-merge ineligibility
+        if: github.event_name == 'pull_request_target' && steps.policy.outputs.eligible == 'false'
+        uses: actions/github-script@v7
+        env:
+          REASON: ${{ steps.policy.outputs.reason }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const marker = '<!-- kpatchwork-auto-merge-status -->';
+            const reason = (process.env.REASON || 'No policy reason was emitted.').replace(/```/g, "'''");
+            const body = `${marker}
+            ## Auto-merge is not enabled
+
+            This pull request requires maintainer review and will not be auto-merged.
+
+            **Reason**
+            \`\`\`text
+            ${reason}
+            \`\`\``;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) =>
+              comment.user.login === 'github-actions[bot]' && comment.body.includes(marker),
+            );
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
       - name: Create KPatchwork ZIP
         if: github.event_name != 'push' || github.ref != 'refs/heads/main'
         run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
@@ -116,7 +161,7 @@ jobs:
     name: Create GitHub release
     needs: validate-package
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: arc-runner
+    runs-on: arc-runner-set
     permissions:
       contents: write
     steps:
@@ -140,7 +185,7 @@ jobs:
     name: Release with ficsit-CLI
     needs: validate-package
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: arc-runner
+    runs-on: arc-runner-set
     steps:
       - name: Download release artifact
         uses: actions/download-artifact@v4
@@ -172,7 +217,7 @@ jobs:
     name: Auto-merge author-owned packs
     needs: validate-package
     if: github.event_name == 'pull_request_target' && needs.validate-package.outputs.eligible == 'true'
-    runs-on: arc-runner
+    runs-on: arc-runner-set
     steps:
       - name: Approve author-owned pack changes
         uses: actions/github-script@v7

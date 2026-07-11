@@ -1,0 +1,11 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/-Shared/Custom/CustomRecipe_RssCeilingMaterials_Flat.CustomRecipe_RssCeilingMaterials_Flat_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 4
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 3

@@ -1,0 +1,16 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/Drohnes/Recipes/Recipe_RSS_1x1_Drohnes.Recipe_RSS_1x1_Drohnes_C
+      - /RSS/Buildable/Drohnes/Recipes/Recipe_RSS_1x2_Drohnes.Recipe_RSS_1x2_Drohnes_C
+      - /RSS/Buildable/Drohnes/Recipes/Recipe_RSS_2x1_Drohnes.Recipe_RSS_2x1_Drohnes_C
+      - /RSS/Buildable/Drohnes/Recipes/Recipe_RSS_7x1_Drohnes.Recipe_RSS_7x1_Drohnes_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4

@@ -1,0 +1,15 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/StackableSign/Recipes/Holo/Recipe_RSS_2x1_Stackable_Holo.Recipe_RSS_2x1_Stackable_Holo_C
+      - /RSS/Buildable/StackableSign/Recipes/Holo/Recipe_RSS_7x1_Stackable.Recipe_RSS_7x1_Stackable_C
+      - /RSS/Buildable/StackableSign/Recipes/Holo/Recipe_RSS_7x1_Stackable_Holo.Recipe_RSS_7x1_Stackable_Holo_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4

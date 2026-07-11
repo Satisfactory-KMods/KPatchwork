@@ -1,0 +1,13 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/RoundedSigns/Recipes/Holo/recipe_RSS_holoscreen_25x2.recipe_RSS_holoscreen_25x2_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4

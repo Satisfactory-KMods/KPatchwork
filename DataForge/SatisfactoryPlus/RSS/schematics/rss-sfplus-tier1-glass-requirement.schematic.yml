@@ -1,0 +1,33 @@
+type: cdo
+patches:
+- target:
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_Belt.Sink_RSS_Flat_Belt_C
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_Ceiling.Sink_RSS_Flat_Ceiling_C
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_Drohnes.Sink_RSS_Flat_Drohnes_C
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_Pipe.Sink_RSS_Flat_Pipe_C
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_Round.Sink_RSS_Flat_Round_C
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_Secretr.Sink_RSS_Flat_Secretr_C
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_Stand.Sink_RSS_Flat_Stand_C
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_Wall.Sink_RSS_Flat_Wall_C
+  - /RSS/Schematics/Flat/Sink_RSS_Flat_WallOutside.Sink_RSS_Flat_WallOutside_C
+  - /RSS/Schematics/Materials/Sink_RSS_Material_Foundations.Sink_RSS_Material_Foundations_C
+  - /RSS/Schematics/Materials/Sink_RSS_Material_Hologram.Sink_RSS_Material_Hologram_C
+  - /RSS/Schematics/Sink_RSS_Support_Poles_1.Sink_RSS_Support_Poles_1_C
+  - /RSS/Schematics/Vanilla/Sink_RSS_Bill.Sink_RSS_Bill_C
+  - /RSS/Schematics/Vanilla/Sink_RSS_Display.Sink_RSS_Display_C
+  - /RSS/Schematics/Vanilla/Sink_RSS_Lable.Sink_RSS_Lable_C
+  - /RSS/Schematics/Vanilla/Sink_RSS_Lable1.Sink_RSS_Lable1_C
+  - /RSS/Schematics/Vehicel/Sink_RSS_Train.Sink_RSS_Train_C
+  - /RSS/Schematics/Vehicel/Sink_RSS_Truck.Sink_RSS_Truck_C
+  properties:
+  - path: mSchematicDependencies
+    value:
+    - class: /Script/FactoryGame.FGSchematicPurchasedDependency
+      properties:
+      - path: mSchematics
+        value:
+        - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T1/Schematic_SF+_T1_0.Schematic_SF+_T1_0_C
+      - path: mRequireAllSchematicsToBePurchased
+        value: true
+  - path: mDependenciesBlocksSchematicAccess
+    value: true

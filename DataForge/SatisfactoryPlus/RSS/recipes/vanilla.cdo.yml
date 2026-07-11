@@ -1,0 +1,24 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_05x05_Vanilla.RecipeRSS_05x05_Vanilla_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_1x1_Vanilla.RecipeRSS_1x1_Vanilla_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_2x05_Vanilla.RecipeRSS_2x05_Vanilla_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_2x2_Vanilla.RecipeRSS_2x2_Vanilla_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_2x3_Vanilla.RecipeRSS_2x3_Vanilla_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_3x05_Vanilla.RecipeRSS_3x05_Vanilla_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_4x05_Vanilla_10.RecipeRSS_4x05_Vanilla_10_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_16x8_Vanilla.RecipeRSS_16x8_Vanilla_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_2x1_Vanilla.RecipeRSS_2x1_Vanilla_C
+      - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_8x4_Vanilla.RecipeRSS_8x4_Vanilla_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/CrystalOscillator/Desc_CrystalOscillator.Desc_CrystalOscillator_C
+            Amount: 3

@@ -8,8 +8,8 @@ merge.
 The CI uses an ARC runner labelled `arc-runner` and `uv` for Python tooling. It lints every supported
 KDataForge schema construct below `KDataForge`, creates `KPatchwork.zip` containing
 `KPatchwork.uplugin`, `KDataForge/`, and `Config/` (excluding `Config/Alpakit.ini`), and enables squash
-auto-merge only when all changed files belong to packs whose `contributer` matches the pull-request
-author. Main releases set the plugin version to `<year>.<quarter>.<CI-build-number>`, publish
+auto-merge only when all changed files belong to packs whose `contributer` string/list includes the
+pull-request author. Main releases set the plugin version to `<year>.<quarter>.<CI-build-number>`, publish
 `CHANGELOG.md` generated from commits, and publish the versioned ZIP as both a GitHub Release and a
 ficsit.app release.
 The GitHub Release uses tag `v<year>.<quarter>.<CI-build-number>` and the changelog as its release body.

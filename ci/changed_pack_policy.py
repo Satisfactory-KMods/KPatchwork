@@ -75,9 +75,15 @@ def main() -> int:
             reasons.append(f"cannot read {manifest}: {exc}")
             continue
         contributor = data.get("contributer") if isinstance(data, dict) else None
-        if not isinstance(contributor, str) or contributor.casefold() != args.author.casefold():
+        contributors = [contributor] if isinstance(contributor, str) else contributor
+        normalized = {
+            item.casefold()
+            for item in contributors or []
+            if isinstance(item, str)
+        }
+        if args.author.casefold() not in normalized:
             owned = False
-            reasons.append(f"{manifest}: contributer does not match {args.author}")
+            reasons.append(f"{manifest}: contributer list does not include {args.author}")
 
     eligible = "true" if owned and bool(manifests) else "false"
     write_output("eligible", eligible)

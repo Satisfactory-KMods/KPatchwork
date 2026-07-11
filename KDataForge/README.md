@@ -6,5 +6,6 @@ Create a pack directory at any depth below `KDataForge/`:
 KDataForge/**/<pack-name>/pack.yml
 ```
 
-`pack.yml` requires `ref`, `name`, `version`, and `contributer`. The `contributer` value is the
-GitHub login of the pack owner and must match the pull-request author for automatic merging.
+`pack.yml` requires `ref`, `name`, `version`, and `contributer`. `contributer` accepts either one
+GitHub login or a non-empty list of co-maintainers. Automatic merging requires the pull-request
+author to appear in that value.

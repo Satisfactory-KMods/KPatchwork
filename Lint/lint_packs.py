@@ -135,6 +135,24 @@ class Linter:
             return None
         return value.strip()
 
+    def require_contributors(self, mapping: dict[str, Any], path: Path) -> None:
+        value = mapping.get("contributer")
+        contributors = [value] if isinstance(value, str) else value
+        if not isinstance(contributors, list) or not contributors:
+            self.error(path, "contributer must be a non-empty GitHub login or sequence of logins")
+            return
+        seen: set[str] = set()
+        for contributor in contributors:
+            if not isinstance(contributor, str) or not contributor.strip():
+                self.error(path, "contributer entries must be non-empty GitHub logins")
+                continue
+            normalized = contributor.strip().casefold()
+            if not TOKEN.fullmatch(contributor.strip()):
+                self.error(path, f"contributer {contributor!r} contains invalid characters")
+            if normalized in seen:
+                self.error(path, f"duplicate contributer {contributor!r}")
+            seen.add(normalized)
+
     def require_sequence(self, mapping: dict[str, Any], key: str, path: Path, context: str) -> list[Any] | None:
         value = mapping.get(key)
         if not isinstance(value, list) or not value:
@@ -160,7 +178,7 @@ class Linter:
         ref = self.require_string(data, "ref", path)
         self.require_string(data, "name", path)
         version = self.require_string(data, "version", path)
-        self.require_string(data, "contributer", path)
+        self.require_contributors(data, path)
         if ref and not TOKEN.fullmatch(ref):
             self.error(path, f"ref {ref!r} contains invalid characters")
         if version and not SEMVER.fullmatch(version):

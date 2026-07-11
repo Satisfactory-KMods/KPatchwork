@@ -13,14 +13,16 @@ KDataForge/
       *.yml
 ```
 
-Each pack lives below `KDataForge/`. Its `pack.yml` must contain the contributor's GitHub login in
-the intentionally stable field `contributer`:
+Each pack lives below `KDataForge/`. Its `pack.yml` must contain one or more contributor GitHub logins
+in the intentionally stable field `contributer`:
 
 ```yaml
 ref: MyPack
 name: My Pack
 version: 1.0.0
-contributer: github-user
+contributer:
+  - github-user
+  - another-user
 enabled: true
 ```
 

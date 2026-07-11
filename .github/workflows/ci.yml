@@ -46,24 +46,24 @@ jobs:
             echo "SOURCE=ci-repo" >> "$GITHUB_ENV"
           fi
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: '3.12'
+          version: latest
 
-      - name: Install CI dependencies
-        run: python -m pip install --disable-pip-version-check -r ci-repo/ci/requirements.txt
+      - name: Sync CI dependencies
+        run: uv sync --locked --project ci-repo
         shell: bash
 
       - name: Lint all KDataForge packs
-        run: python ci-repo/ci/lint_packs.py --root "$SOURCE/KDataForge"
+        run: uv run --project ci-repo --locked ci-repo/Lint/lint_packs.py --root "$SOURCE/KDataForge"
         shell: bash
 
       - name: Check contributor ownership
         id: policy
         if: github.event_name == 'pull_request_target'
         run: |
-          python ci-repo/ci/changed_pack_policy.py \
+          uv run --project ci-repo --locked ci-repo/ci/changed_pack_policy.py \
             --base "${{ github.event.pull_request.base.sha }}" \
             --head "${{ github.event.pull_request.head.sha }}" \
             --author "${{ github.event.pull_request.user.login }}" \
@@ -71,12 +71,23 @@ jobs:
         shell: bash
 
       - name: Create KPatchwork ZIP
-        run: python ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
+        if: github.event_name != 'push' || github.ref != 'refs/heads/main'
+        run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
+        shell: bash
+
+      - name: Set release version
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: uv run --project ci-repo --locked ci-repo/ci/version_release.py --plugin "$SOURCE/KPatchwork.uplugin" --build-number "$GITHUB_RUN_NUMBER"
+        shell: bash
+
+      - name: Create release ZIP
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
         shell: bash
 
       - name: Generate changelog from commits
         run: |
-          python ci-repo/ci/generate_changelog.py \
+          uv run --project ci-repo --locked ci-repo/ci/generate_changelog.py \
             --root "$SOURCE" \
             --base "${{ github.event.pull_request.base.sha || github.event.before }}" \
             --head "${{ github.sha }}" \
@@ -91,6 +102,36 @@ jobs:
             KPatchwork.zip
             CHANGELOG.md
           if-no-files-found: error
+
+  release-ficsit:
+    name: Release with ficsit-CLI
+    needs: validate-package
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: arc-runner
+    steps:
+      - name: Download release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: KPatchwork
+          path: release
+
+      - name: Install ficsit-CLI
+        shell: bash
+        env:
+          FICSIT_CLI_VERSION: v0.7.1
+        run: |
+          curl -fsSL "https://github.com/satisfactorymodding/ficsit-cli/releases/download/${FICSIT_CLI_VERSION}/ficsit_linux_amd64" -o "$RUNNER_TEMP/ficsit"
+          chmod +x "$RUNNER_TEMP/ficsit"
+
+      - name: Upload release to ficsit.app
+        shell: bash
+        env:
+          FICSIT_TOKEN: ${{ secrets.FICSIT_TOKEN }}
+          FICSIT_MOD_ID: ${{ secrets.FICSIT_MOD_ID }}
+        run: |
+          test -n "$FICSIT_TOKEN"
+          test -n "$FICSIT_MOD_ID"
+          "$RUNNER_TEMP/ficsit" smr upload --api-key "$FICSIT_TOKEN" "$FICSIT_MOD_ID" release/KPatchwork.zip release/CHANGELOG.md
 
   auto-merge-owned-packs:
     name: Auto-merge author-owned packs

@@ -17,17 +17,21 @@ def main() -> int:
     root = args.root.resolve()
     plugin = root / "KPatchwork.uplugin"
     dataforge = root / "KDataForge"
+    config = root / "Config"
     if not plugin.is_file():
         raise SystemExit(f"missing plugin descriptor: {plugin}")
     if not dataforge.is_dir():
         raise SystemExit(f"missing DataForge directory: {dataforge}")
+    if not config.is_dir():
+        raise SystemExit(f"missing Config directory: {config}")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with ZipFile(args.output, "w", ZIP_DEFLATED) as archive:
         archive.write(plugin, plugin.relative_to(root).as_posix())
-        for path in sorted(dataforge.rglob("*")):
-            if path.is_file():
-                archive.write(path, path.relative_to(root).as_posix())
+        for source_root in (dataforge, config):
+            for path in sorted(source_root.rglob("*")):
+                if path.is_file() and path.name != "Alpakit.ini":
+                    archive.write(path, path.relative_to(root).as_posix())
     print(f"created {args.output} ({args.output.stat().st_size} bytes)")
     return 0
 

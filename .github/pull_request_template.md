@@ -9,4 +9,4 @@
 
 ## Validation
 
-- [ ] `python ci/lint_packs.py`
+- [ ] `uv run Lint/lint_packs.py`

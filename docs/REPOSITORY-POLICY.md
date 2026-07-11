@@ -5,10 +5,12 @@ branch deletion for everyone, including administrators. Require one approving re
 from `CODEOWNERS`, and require the `KPatchwork CI / Lint packs and package project` check before
 merge.
 
-The CI uses an ARC runner labelled `arc-runner`. It lints every `*.yml`/`*.yaml` below `KDataForge`,
-creates `KPatchwork.zip` containing `KPatchwork.uplugin` and `KDataForge/`, and enables squash
+The CI uses an ARC runner labelled `arc-runner` and `uv` for Python tooling. It lints every supported
+KDataForge schema construct below `KDataForge`, creates `KPatchwork.zip` containing
+`KPatchwork.uplugin`, `KDataForge/`, and `Config/` (excluding `Config/Alpakit.ini`), and enables squash
 auto-merge only when all changed files belong to packs whose `contributer` matches the pull-request
-author. It also publishes `CHANGELOG.md`, generated from the commit range.
+author. Main releases set the plugin version to `<year>.<quarter>.<CI-build-number>`, publish
+`CHANGELOG.md` generated from commits, and upload the ZIP through ficsit-CLI.
 
 Author-owned pack PRs receive a CI approval after linting and may auto-merge. Changes outside
 author-owned packs receive no CI approval and remain blocked until a CODEOWNER explicitly approves.

@@ -210,6 +210,52 @@ class Linter:
             return False
         return True
 
+    def validate_pack_dependencies(self) -> None:
+        packs: dict[str, tuple[Path, list[str]]] = {}
+        for root, manifest in self.manifests.items():
+            ref = manifest.get("ref")
+            dependencies = manifest.get("dependencies", [])
+            if isinstance(ref, str) and isinstance(dependencies, list) and all(isinstance(item, str) for item in dependencies):
+                packs[ref] = (root / "pack.yml", dependencies)
+
+        invalid: set[str] = set()
+        changed = True
+        while changed:
+            changed = False
+            for ref, (path, dependencies) in packs.items():
+                if ref in invalid:
+                    continue
+                bad = next((dep for dep in dependencies if dep == ref or dep not in packs or dep in invalid), None)
+                if bad is not None:
+                    self.error(path, f"dependency {bad!r} is missing, invalid, or self-referential")
+                    invalid.add(ref)
+                    changed = True
+
+        visiting: set[str] = set()
+        visited: set[str] = set()
+
+        def visit(ref: str, stack: list[str]) -> None:
+            if ref in visited or ref in invalid:
+                return
+            if ref in visiting:
+                cycle = stack[stack.index(ref):] + [ref]
+                for cycle_ref in cycle[:-1]:
+                    if cycle_ref not in invalid:
+                        self.error(packs[cycle_ref][0], f"dependency cycle detected: {' -> '.join(cycle)}")
+                        invalid.add(cycle_ref)
+                return
+            visiting.add(ref)
+            stack.append(ref)
+            for dependency in packs[ref][1]:
+                if dependency in packs:
+                    visit(dependency, stack)
+            stack.pop()
+            visiting.remove(ref)
+            visited.add(ref)
+
+        for ref in packs:
+            visit(ref, [])
+
     def infer_type(self, path: Path, document: dict[str, Any], multi_document: bool) -> str | None:
         explicit = document.get("type")
         if explicit is not None:
@@ -485,6 +531,7 @@ class Linter:
             if len(manifest.relative_to(self.root).parts) < 2:
                 self.error(manifest, "expected DataForge/**/<pack>/pack.yml layout")
             self.validate_manifest(manifest)
+        self.validate_pack_dependencies()
         for document in sorted(self.root.rglob("*.yml")) + sorted(self.root.rglob("*.yaml")):
             if document.name == "pack.yml":
                 continue

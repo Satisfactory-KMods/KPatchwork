@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import subprocess
 from pathlib import Path
@@ -30,14 +29,6 @@ def version(root: Path) -> str:
 
 def changed_files(root: Path, sha: str) -> list[str]:
     return git(root, "diff-tree", "--root", "--no-commit-id", "--name-only", "-r", sha)
-
-
-def diff_stats(root: Path, range_spec: str) -> list[tuple[str, str, str]]:
-    stats: list[tuple[str, str, str]] = []
-    for line in git(root, "diff", "--numstat", range_spec):
-        additions, deletions, path = line.split("\t", 2)
-        stats.append((path, additions, deletions))
-    return stats
 
 
 def player_area(paths: list[str]) -> str:
@@ -94,9 +85,6 @@ def main() -> int:
         "--format=%h%x09%ad%x09%an%x09%s",
         range_spec,
     )
-    stats = diff_stats(args.root, range_spec)
-
-    records: list[tuple[str, str, str, str, list[str], str]] = []
     player_changes: list[str] = []
     pack_author_changes: list[str] = []
     for raw in raw_commits:
@@ -106,7 +94,6 @@ def main() -> int:
         kind = match["kind"].casefold() if match else "change"
         clean_subject = PREFIX.sub("", subject, count=1).strip()
         area = player_area(files)
-        records.append((sha, date, author, subject, files, kind))
         if kind in {"feat", "fix", "perf", "refactor"}:
             sentence = player_sentence(kind, clean_subject, area)
             if any(path.startswith("DataForge/") or path == "KPatchwork.uplugin" for path in files):
@@ -114,7 +101,14 @@ def main() -> int:
             if any(path.startswith("DataForge/") for path in files):
                 pack_author_changes.append(sentence)
 
-    lines = [f"# KPatchwork {version(args.root)}", "", "## Changes for players", ""]
+    lines = [
+        "Automatisiertes Update. Siehe changelog für mehr informationen.",
+        "",
+        f"# KPatchwork {version(args.root)}",
+        "",
+        "## Changes for players",
+        "",
+    ]
     if player_changes:
         lines.extend(f"- {change}" for change in player_changes)
     else:
@@ -124,37 +118,11 @@ def main() -> int:
         lines.extend(f"- {change}" for change in pack_author_changes)
     else:
         lines.append("- No pack-facing changes in this build.")
-    lines.extend(["", "## Diff summary", ""])
-    lines.append(f"Compared range: `{range_spec}`.")
-    repository = os.environ.get("GITHUB_REPOSITORY")
-    if repository:
-        lines.append(f"Compare changes on GitHub: https://github.com/{repository}/compare/{base}...{args.head}")
-    lines.append("")
-    if stats:
-        lines.append("| File | Added | Removed |")
-        lines.append("| --- | ---: | ---: |")
-        for path, additions, deletions in stats:
-            lines.append(f"| `{path}` | {additions} | {deletions} |")
-    else:
-        lines.append("- No file diff in this range.")
-    lines.extend(["", "## Technical commit history", ""])
-    if records:
-        for sha, date, author, subject, files, _kind in records:
-            lines.append(f"### `{sha}` {subject}")
-            lines.append(f"Committed by **{author}** on {date}.")
-            if files:
-                lines.append("Changed files:")
-                lines.extend(f"- `{path}`" for path in files)
-            else:
-                lines.append("Changed files: none recorded.")
-            lines.append("")
-    else:
-        lines.append("- No commits in range.")
     lines.extend([f"Generated from `{range_spec}`.", ""])
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text("\n".join(lines), encoding="utf-8")
-    print(f"created {args.output} ({len(records)} commit(s), {len(player_changes)} player change(s))")
+    print(f"created {args.output} ({len(raw_commits)} commit(s), {len(player_changes)} player change(s))")
     return 0
 
 

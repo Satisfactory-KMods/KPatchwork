@@ -19,6 +19,7 @@ jobs:
     runs-on: arc-runner-set
     outputs:
       eligible: ${{ steps.policy.outputs.eligible }}
+      release: ${{ steps.release-gate.outputs.release }}
       version: ${{ steps.release-version.outputs.version }}
     steps:
       - name: Checkout trusted CI code
@@ -118,13 +119,24 @@ jobs:
             }
 
       - name: Create KPatchwork ZIP
-        if: github.event_name != 'push' || github.ref != 'refs/heads/main'
         run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
         shell: bash
 
+      - name: Check whether a mod release is required
+        id: release-gate
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          changed=$(git -C "$SOURCE" diff --name-only "${{ github.event.before }}" "${{ github.sha }}")
+          if printf '%s\n' "$changed" | grep -Eq '^(Config/|DataForge/|.*\.uplugin$)'; then
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set release version
         id: release-version
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.release-gate.outputs.release == 'true'
         run: |
           uv run --project ci-repo --locked ci-repo/ci/version_release.py \
             --plugin "$SOURCE/KPatchwork.uplugin" \
@@ -135,7 +147,7 @@ jobs:
         shell: bash
 
       - name: Create release ZIP
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.release-gate.outputs.release == 'true'
         run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
         shell: bash
 
@@ -160,7 +172,7 @@ jobs:
   release-github:
     name: Create GitHub release
     needs: validate-package
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.validate-package.outputs.release == 'true'
     runs-on: arc-runner-set
     permissions:
       contents: write
@@ -184,7 +196,7 @@ jobs:
   release-ficsit:
     name: Release with ficsit-CLI
     needs: validate-package
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.validate-package.outputs.release == 'true'
     runs-on: arc-runner-set
     steps:
       - name: Download release artifact

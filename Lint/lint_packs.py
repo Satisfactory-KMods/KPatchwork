@@ -350,6 +350,9 @@ class Linter:
                 self.error(path, f"{context}.{key} must be a string")
         if "matchTag" in patch and "ofClass" not in patch:
             self.error(path, f"{context}.matchTag requires ofClass")
+        for key in ("applyToSubclasses", "applyToSpawnedActors", "propagateToInstances", "deferOneGameTick"):
+            if key in patch and not isinstance(patch[key], bool):
+                self.error(path, f"{context}.{key} must be a boolean")
         if "properties" not in patch:
             self.error(path, f"{context} requires properties")
         else:

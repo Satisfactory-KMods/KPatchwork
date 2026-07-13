@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Coal_Callanite_2_5.Recipe_Converter_Coal_Callanite_2_5_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 100.000000
+      - path: mVariablePowerConsumptionFactor
+        value: 400.000000

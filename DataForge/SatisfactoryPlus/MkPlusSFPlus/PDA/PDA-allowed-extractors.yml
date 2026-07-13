@@ -1,0 +1,11 @@
+type: cdo
+patches:
+  - target: "/SatisfactoryPlus/AssetDatas/Modules/PDA_SFP_ExtractorList.PDA_SFP_ExtractorList"
+    properties:
+      - path: mAllowedExtractors
+        op: append
+        value:
+          - "/MkPlus/Buildables/FrackingSmasher/Build_FrackingSmasher_Mk2.Build_FrackingSmasher_Mk2_C"
+          - "/MkPlus/Buildables/FrackingExtractor/Build_FrackingExtractor_Mk2.Build_FrackingExtractor_Mk2_C"
+          - "/MkPlusSFPlus/Buildings/BioWaterExtractor/Build_BioWaterExtractor_SF+Mk2.Build_BioWaterExtractor_SF+Mk2_C"
+          - "/MkPlusSFPlus/Buildings/MiniExtractor/Build_AB_MiniExMk2.Build_AB_MiniExMk2_C"

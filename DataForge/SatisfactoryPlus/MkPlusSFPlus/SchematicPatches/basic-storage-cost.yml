@@ -1,0 +1,10 @@
+# Basic Power Augmentation
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_4_1.Research_MkPlus_4_1_C
+    properties:
+      - path: mDisplayName
+        value: "Basic Storage Augmentation"
+      - path: mUnlocks
+        op: remove_at
+        index: 0

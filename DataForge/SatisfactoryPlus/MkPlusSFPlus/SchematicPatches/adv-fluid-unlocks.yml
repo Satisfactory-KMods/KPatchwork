@@ -1,0 +1,14 @@
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_5_3.Research_MkPlus_5_3_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value:
+              - /MkPlus/Buildables/Refinery/Recipe_Refinery_Mk2.Recipe_Refinery_Mk2_C
+              - /MkPlusSFPlus/Buildings/OreWasher/Recipe_OreWascherMk2.Recipe_OreWascherMk2_C
+              - /MkPlusSFPlus/Buildings/AIFluidPacker/Recipe_AB_FluidPackerMk2.Recipe_AB_FluidPackerMk2_C
+              - /MkPlusSFPlus/Buildings/ChemReactor/Recipe_ChemReactorMk2.Recipe_ChemReactorMk2_C
+              - /MkPlusSFPlus/Buildings/MiniExtractor/Recipe_AB_MiniExMk2.Recipe_AB_MiniExMk2_C

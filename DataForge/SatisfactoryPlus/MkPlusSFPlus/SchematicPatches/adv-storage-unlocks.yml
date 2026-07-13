@@ -1,0 +1,12 @@
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_4_2.Research_MkPlus_4_2_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value:
+              - /MkPlus/Buildables/StorageContainer/Recipe_StorageContainer2_Mk2.Recipe_StorageContainer2_Mk2_C
+              - /MkPlus/Buildables/StorageTank/Recipe_IndustrialTank_Mk2.Recipe_IndustrialTank_Mk2_C
+              - /MkPlus/Buildables/PowerStorage/Recipe_PowerStorage_Mk2.Recipe_PowerStorage_Mk2_C

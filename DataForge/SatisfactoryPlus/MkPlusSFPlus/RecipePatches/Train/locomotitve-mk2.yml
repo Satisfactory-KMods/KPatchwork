@@ -1,0 +1,16 @@
+type: cdo
+patches:
+  - target: /MkPlus/Buildables/Train/Recipe_Locomotive_Mk2.Recipe_Locomotive_Mk2_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: "/KLib/Assets/Parts/Production/Metal/Frames/TitaniumModularFrame/Desc_TitanModularFrame.Desc_TitanModularFrame_C"
+            amount: 5
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_6.Desc_SpaceElevatorPart_6_C"
+            amount: 5
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/MotorLightweight/Desc_MotorLightweight.Desc_MotorLightweight_C"
+            amount: 5
+          - ItemClass: "/KLib/Assets/Parts/Production/Metal/Pipes/Desc_TitanPipe.Desc_TitanPipe_C"
+            amount: 20
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C"
+            amount: 50

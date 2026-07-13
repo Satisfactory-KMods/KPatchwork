@@ -1,0 +1,15 @@
+# Advanced Quantum Tech
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_4_5.Research_MkPlus_4_5_C
+    properties:
+      - path: mCost
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_11.Desc_SpaceElevatorPart_11_C"
+            amount: 100
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_12.Desc_SpaceElevatorPart_12_C"
+            amount: 150
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_10.Desc_SpaceElevatorPart_10_C"
+            amount: 300
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_9.Desc_SpaceElevatorPart_9_C"
+            amount: 100

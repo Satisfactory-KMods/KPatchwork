@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Chlor_Siterite_11.Recipe_Converter_Chlor_Siterite_11_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 100.000000
+      - path: mVariablePowerConsumptionFactor
+        value: 400.000000

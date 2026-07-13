@@ -1,0 +1,10 @@
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_3_7.Research_MkPlus_3_7_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value:
+              - /MkPlusSFPlus/Buildings/Sorter/Recipe_SorterMk3.Recipe_SorterMk3_C

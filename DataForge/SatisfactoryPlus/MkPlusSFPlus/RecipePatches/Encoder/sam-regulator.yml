@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/Content/SchematicManager/Alternative/SAMRegulator/Recipe_Alternative_SAMRegulator.Recipe_Alternative_SAMRegulator_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 0.000000
+      - path: mVariablePowerConsumptionFactor
+        value: 1000.000000

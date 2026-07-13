@@ -1,0 +1,16 @@
+# Advanced Cargo Transportation (Trains)
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_1_5.Research_MkPlus_1_5_C
+    properties:
+      - path: mCost
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_4.Desc_SpaceElevatorPart_4_C"
+            amount: 250
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_5.Desc_SpaceElevatorPart_5_C"
+            amount: 250
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_2.Desc_SpaceElevatorPart_2_C"
+            amount: 1000
+          - ItemClass: "/KLib/Assets/Parts/Production/SpaceElevator/PowerRelay/Desc_PowerRelay.Desc_PowerRelay_C"
+            amount: 400
+          

@@ -1,0 +1,15 @@
+# Advanced Fusion
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_2_4.Research_MkPlus_2_4_C
+    properties:
+      - path: mCost
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_8.Desc_SpaceElevatorPart_8_C"
+            amount: 150
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_6.Desc_SpaceElevatorPart_6_C"
+            amount: 500
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_7.Desc_SpaceElevatorPart_7_C"
+            amount: 250
+          - ItemClass: "/KLib/Assets/Parts/Production/Metal/Frames/TitaniumModularFrame/Desc_TitanModularFrame.Desc_TitanModularFrame_C"
+            amount: 250

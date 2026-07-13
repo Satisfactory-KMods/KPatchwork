@@ -1,0 +1,14 @@
+# Advanced Fluid Processing
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_4_2.Research_MkPlus_4_2_C
+    properties:
+      - path: mDisplayName
+        value: "Adv. Storage Augmentation"
+      - path: mUnlocks
+        op: clear
+      - path: mCost
+        op: append
+        value:
+          - ItemClass: "/KLib/Assets/Parts/Production/SpaceElevator/PowerRelay/Desc_PowerRelay.Desc_PowerRelay_C"
+            amount: 200  

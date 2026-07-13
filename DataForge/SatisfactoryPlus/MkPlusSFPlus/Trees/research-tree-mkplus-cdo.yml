@@ -1,0 +1,6 @@
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/BPD_ResearchTree_MkPlus1.BPD_ResearchTree_MkPlus1_C
+    properties:
+      - path: mUnlockDependencies
+        op: clear

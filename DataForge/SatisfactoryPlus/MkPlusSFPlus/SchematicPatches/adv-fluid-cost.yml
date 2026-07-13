@@ -1,0 +1,20 @@
+# Fluid Power Augmentation
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_5_3.Research_MkPlus_5_3_C
+    properties:
+      - path: mDisplayName
+        value: "Adv. Fluid Processing"
+      - path: mUnlocks
+        op: remove_at
+        index: 0
+      - path: mCost
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_4.Desc_SpaceElevatorPart_4_C"
+            amount: 150
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_5.Desc_SpaceElevatorPart_5_C"
+            amount: 150
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_2.Desc_SpaceElevatorPart_2_C"
+            amount: 500
+          - ItemClass: "/KLib/Assets/Parts/Production/SpaceElevator/PowerRelay/Desc_PowerRelay.Desc_PowerRelay_C"
+            amount: 200

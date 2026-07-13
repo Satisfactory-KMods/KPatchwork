@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/Content/SchematicManager/Alternative/EncodedComputer/Recipe_Alternative_HighSpeedInterface.Recipe_Alternative_HighSpeedInterface_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 0.000000
+      - path: mVariablePowerConsumptionFactor
+        value: 1000.000000

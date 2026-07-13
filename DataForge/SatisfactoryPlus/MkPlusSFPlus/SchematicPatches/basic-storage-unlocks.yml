@@ -1,0 +1,12 @@
+# Basic Power Augmentation
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_4_1.Research_MkPlus_4_1_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value:
+              - /MkPlus/Buildables/StorageTank/Recipe_PipeStorageTank_Mk2.Recipe_PipeStorageTank_Mk2_C
+              - /MkPlus/Buildables/StorageContainer/Recipe_StorageContainer1_Mk2.Recipe_StorageContainer1_Mk2_C

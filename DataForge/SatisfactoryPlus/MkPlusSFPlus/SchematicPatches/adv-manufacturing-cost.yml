@@ -1,0 +1,11 @@
+# Advanced Manufacturing
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_3_3.Research_MkPlus_3_3_C
+    properties:
+      - path: mCost
+        op: append
+        value:
+          - ItemClass: "/KLib/Assets/Parts/Production/SpaceElevator/PowerRelay/Desc_PowerRelay.Desc_PowerRelay_C"
+            amount: 400
+          

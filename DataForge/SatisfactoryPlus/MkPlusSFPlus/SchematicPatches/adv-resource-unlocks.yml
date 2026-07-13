@@ -1,0 +1,14 @@
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_2_6.Research_MkPlus_2_6_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value:
+              - /MkPlus/Buildables/WaterPump/Recipe_WaterPump_Mk2.Recipe_WaterPump_Mk2_C
+              - /MkPlus/Buildables/OilPump/Recipe_OilPump_Mk2.Recipe_OilPump_Mk2_C
+              - /MkPlus/Buildables/FrackingSmasher/Recipe_FrackingSmasher_Mk2.Recipe_FrackingSmasher_Mk2_C
+              - /MkPlus/Buildables/FrackingExtractor/Recipe_FrackingExtractor_Mk2.Recipe_FrackingExtractor_Mk2_C
+              - /MkPlusSFPlus/Buildings/BioWaterExtractor/Recipe_BioWaterExtractor_SF+Mk2.Recipe_BioWaterExtractor_SF+Mk2_C

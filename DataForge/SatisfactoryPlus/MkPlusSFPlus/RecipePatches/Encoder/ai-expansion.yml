@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/Content/Recipes/QuantumEncoder/Recipe_Encoder_AIExpansionServer_12.Recipe_Encoder_AIExpansionServer_12_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 0.000
+      - path: mVariablePowerConsumptionFactor
+        value: 5000.0000

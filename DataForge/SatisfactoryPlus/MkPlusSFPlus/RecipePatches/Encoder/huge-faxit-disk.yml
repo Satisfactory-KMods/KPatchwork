@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Faxit/Recipes/Recipe_SolidDrive_MK_4.Recipe_SolidDrive_MK_4_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 0.000000
+      - path: mVariablePowerConsumptionFactor
+        value: 3000.000000

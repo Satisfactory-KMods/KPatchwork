@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/Content/Recipes/QuantumEncoder/Recipe_Encoder_FicsoniumFuelRod.Recipe_Encoder_FicsoniumFuelRod_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 0.000000
+      - path: mVariablePowerConsumptionFactor
+        value: 5000.000000

@@ -1,0 +1,9 @@
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_0.Research_MkPlus_0_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value: [/MkPlusSFPlus/Buildings/Crusher/Recipe_CrusherMk2.Recipe_CrusherMk2_C]

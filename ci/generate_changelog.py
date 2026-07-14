@@ -9,13 +9,19 @@ import re
 import subprocess
 from pathlib import Path
 
+import yaml
+
 COMMIT = re.compile(r"^(?P<sha>[^\t]+)\t(?P<date>[^\t]+)\t(?P<author>[^\t]+)\t(?P<subject>.*)$")
 PREFIX = re.compile(r"^(?P<kind>feat|fix|perf|refactor|docs|chore|ci|build|test)(?:\([^)]*\))?:\s*", re.IGNORECASE)
 
 
 def git(root: Path, *args: str) -> list[str]:
+    return [line for line in git_output(root, *args).splitlines() if line]
+
+
+def git_output(root: Path, *args: str) -> str:
     result = subprocess.run(["git", "-C", str(root), *args], text=True, capture_output=True, check=True)
-    return [line for line in result.stdout.splitlines() if line]
+    return result.stdout
 
 
 def version(root: Path) -> str:
@@ -29,6 +35,55 @@ def version(root: Path) -> str:
 
 def changed_files(root: Path, sha: str) -> list[str]:
     return git(root, "diff-tree", "--root", "--no-commit-id", "--name-only", "-r", sha)
+
+
+def added_pack_manifests(root: Path, base: str, head: str) -> list[str]:
+    paths = git(root, "diff", "--diff-filter=A", "--name-only", base, head)
+    return sorted(path for path in paths if path.startswith("DataForge/") and path.endswith("/pack.yml"))
+
+
+def updated_pack_manifests(root: Path, base: str, head: str, added_manifests: list[str]) -> list[str]:
+    manifests = [
+        path
+        for path in git(root, "ls-tree", "-r", "--name-only", head, "--", "DataForge")
+        if path.endswith("/pack.yml")
+    ]
+    changed_paths = git(root, "diff", "--name-only", base, head, "--", "DataForge")
+    added = set(added_manifests)
+    updated: set[str] = set()
+    for changed_path in changed_paths:
+        owners = [
+            manifest
+            for manifest in manifests
+            if changed_path == manifest or changed_path.startswith(f"{Path(manifest).parent.as_posix()}/")
+        ]
+        if owners:
+            owner = max(owners, key=len)
+            if owner not in added:
+                updated.add(owner)
+    return sorted(updated)
+
+
+def pack_at_revision(root: Path, revision: str, manifest: str) -> tuple[str, str, list[str]]:
+    data = yaml.safe_load(git_output(root, "show", f"{revision}:{manifest}"))
+    mapping = data if isinstance(data, dict) else {}
+    pack_ref = str(mapping.get("ref") or Path(manifest).parent.name).strip()
+    pack_name = str(mapping.get("name") or pack_ref).strip()
+    raw_contributors = mapping.get("contributer")
+    contributors = [raw_contributors] if isinstance(raw_contributors, str) else raw_contributors
+    normalized = [str(contributor).strip() for contributor in contributors or [] if str(contributor).strip()]
+    return pack_name, pack_ref, normalized
+
+
+def format_contributors(contributors: list[str]) -> str:
+    names = [f"@{contributor.lstrip('@')}" for contributor in contributors]
+    if not names:
+        return "an unknown contributor"
+    if len(names) == 1:
+        return names[0]
+    if len(names) == 2:
+        return f"{names[0]} and {names[1]}"
+    return f"{', '.join(names[:-1])}, and {names[-1]}"
 
 
 def player_area(paths: list[str]) -> str:
@@ -85,6 +140,15 @@ def main() -> int:
         "--format=%h%x09%ad%x09%an%x09%s",
         range_spec,
     )
+    added_manifests = added_pack_manifests(args.root, base, args.head)
+    new_packs = [
+        pack_at_revision(args.root, args.head, path)
+        for path in added_manifests
+    ]
+    updated_packs = [
+        pack_at_revision(args.root, args.head, path)
+        for path in updated_pack_manifests(args.root, base, args.head, added_manifests)
+    ]
     player_changes: list[str] = []
     pack_author_changes: list[str] = []
     for raw in raw_commits:
@@ -102,23 +166,43 @@ def main() -> int:
                 pack_author_changes.append(sentence)
 
     lines = [
-        "Automatisiertes Update. Siehe changelog für mehr informationen.",
+        "Automated release changelog generated from the included commits.",
         "",
         f"# KPatchwork {version(args.root)}",
         "",
-        "## Changes for players",
+        "## New packs",
         "",
     ]
+    if new_packs:
+        for pack_name, pack_ref, contributors in new_packs:
+            lines.append(f"- Added **{pack_name}** (`{pack_ref}`) by {format_contributors(contributors)}.")
+    else:
+        lines.append("- No new packs in this build.")
+    lines.extend(["", "## Updated packs", ""])
+    if updated_packs:
+        for pack_name, pack_ref, contributors in updated_packs:
+            lines.append(f"- Updated **{pack_name}** (`{pack_ref}`), maintained by {format_contributors(contributors)}.")
+    else:
+        lines.append("- No existing packs were updated in this build.")
+    lines.extend([
+        "",
+        "## Changes for players",
+        "",
+    ])
     if player_changes:
         lines.extend(f"- {change}" for change in player_changes)
+    elif new_packs:
+        lines.append("- New pack additions are listed above.")
     else:
         lines.append("- No player-facing changes in this build.")
     lines.extend(["", "## Changes for pack authors", ""])
     if pack_author_changes:
         lines.extend(f"- {change}" for change in pack_author_changes)
+    elif new_packs:
+        lines.append("- New pack additions and their contributors are listed above.")
     else:
         lines.append("- No pack-facing changes in this build.")
-    lines.extend([f"Generated from `{range_spec}`.", ""])
+    lines.extend(["", f"Generated from `{range_spec}`.", ""])
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text("\n".join(lines), encoding="utf-8")

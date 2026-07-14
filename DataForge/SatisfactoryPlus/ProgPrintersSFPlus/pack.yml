@@ -1,0 +1,9 @@
+ref: ProgPrintersSFPlus
+name: Progressive Blueprinters SatisfactoryPlus Patch
+version: 1.3.0
+contributer: OGBrosephStalin
+enabled: true
+conditions:
+  hasMod:
+  - SatisfactoryPlus
+  - ProgressiveBlueprinter

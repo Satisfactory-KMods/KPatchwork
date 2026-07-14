@@ -1,0 +1,6 @@
+type: cdo
+patches:
+  - target: /Game/FactoryGame/Schematics/Progression/Schematic_6-6.Schematic_6-6_C
+    properties:
+      - path: mType
+        value: "EST_Custom"

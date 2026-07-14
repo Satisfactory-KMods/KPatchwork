@@ -1,0 +1,6 @@
+type: cdo
+patches:
+  - target: /ProgressiveBlueprinter/Milestones/Tier1_Blueprinter.Tier1_Blueprinter_C
+    properties:
+      - path: mType
+        value: "EST_Custom"

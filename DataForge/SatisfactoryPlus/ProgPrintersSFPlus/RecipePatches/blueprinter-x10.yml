@@ -1,0 +1,14 @@
+type: cdo
+patches:
+  - target: /ProgressiveBlueprinter/Recipes/Recipe_BlueprinterX10.Recipe_BlueprinterX10_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C"
+            amount: 20
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/Computer/Desc_Computer.Desc_Computer_C"
+            amount: 10
+          - ItemClass: "/KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C"
+            amount: 100
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C"
+            amount: 500

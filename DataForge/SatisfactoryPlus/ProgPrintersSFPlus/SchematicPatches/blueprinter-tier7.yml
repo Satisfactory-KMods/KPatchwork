@@ -1,0 +1,20 @@
+type: cdo
+patches:
+  - target: /ProgressiveBlueprinter/Milestones/Tier7_Blueprinter.Tier7_Blueprinter_C
+    properties:
+      - path: mTechTier
+        value: 4
+      - path: mSchematicDependencies
+        op: clear
+      - path: mCost
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C"
+            amount: 100
+          - ItemClass: "/KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C"
+            amount: 1000
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C"
+            amount: 1000
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C"
+            amount: 2000
+
+      

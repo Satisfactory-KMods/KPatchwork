@@ -1,0 +1,14 @@
+type: cdo
+patches:
+  - target: /ProgressiveBlueprinter/Recipes/Recipe_BlueprinterX12.Recipe_BlueprinterX12_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C"
+            amount: 50
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/ComputerSuper/Desc_ComputerSuper.Desc_ComputerSuper_C"
+            amount: 10
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/ElectromagneticControlRod/Desc_ElectromagneticControlRod.Desc_ElectromagneticControlRod_C"
+            amount: 100
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C"
+            amount: 1000

@@ -1,0 +1,20 @@
+type: cdo
+patches:
+  - target: /ProgressiveBlueprinter/Milestones/Tier9_Blueprinter.Tier9_Blueprinter_C
+    properties:
+      - path: mTechTier
+        value: 6
+      - path: mSchematicDependencies
+        op: clear
+      - path: mCost
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C"
+            amount: 400
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/ComputerSuper/Desc_ComputerSuper.Desc_ComputerSuper_C"
+            amount: 100
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/ElectromagneticControlRod/Desc_ElectromagneticControlRod.Desc_ElectromagneticControlRod_C"
+            amount: 250
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C"
+            amount: 6000
+
+      

@@ -1,0 +1,6 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T4/Schematic_SF+_T4_6.Schematic_SF+_T4_6_C
+    properties:
+      - path: mTechTier
+        value: 3

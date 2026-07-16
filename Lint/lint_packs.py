@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import math
 import re
 import sys
 from collections import defaultdict
@@ -17,6 +18,7 @@ KNOWN_TYPES = {
     "building",
     "cdo",
     "class",
+    "curve",
     "dataasset",
     "gametag",
     "item",
@@ -39,6 +41,10 @@ CONTENT_KEYS = {
     "unlock": "unlocks",
 }
 REGISTER_AS = {"recipe", "schematic", "research"}
+CURVE_INTERP_MODES = {"constant", "linear", "cubic"}
+CURVE_TANGENT_MODES = {"auto", "smartauto", "user", "break"}
+CURVE_TANGENT_WEIGHT_MODES = {"none", "arrive", "leave", "both"}
+CURVE_EXTRAPOLATION_MODES = {"none", "constant", "linear", "cycle", "cyclewithoffset", "oscillate"}
 OPS = {
     "add",
     "append",
@@ -358,6 +364,109 @@ class Linter:
         else:
             self.validate_property_ops(patch["properties"], path, f"{context}.properties")
 
+    @staticmethod
+    def is_finite_number(value: Any) -> bool:
+        return not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(value)
+
+    def validate_curve_value(self, value: Any, curve_type: str, path: Path, context: str) -> None:
+        if curve_type == "float":
+            if not self.is_finite_number(value):
+                self.error(path, f"{context} must be a finite number")
+            return
+        if isinstance(value, list):
+            if len(value) != 3 or any(not self.is_finite_number(component) for component in value):
+                self.error(path, f"{context} must contain exactly three finite numbers")
+            return
+        if isinstance(value, dict):
+            components = {str(key).casefold(): component for key, component in value.items()}
+            if set(components) != {"x", "y", "z"} or any(
+                not self.is_finite_number(components[axis]) for axis in ("x", "y", "z")
+            ):
+                self.error(path, f"{context} must be an X/Y/Z mapping of finite numbers")
+            return
+        self.error(path, f"{context} must be an X/Y/Z mapping or three-number sequence")
+
+    def validate_curve_document(
+        self, document: dict[str, Any], path: Path, pack_ref: str
+    ) -> None:
+        raw_curve_type = document.get("curveType")
+        curve_type = raw_curve_type.casefold() if isinstance(raw_curve_type, str) else ""
+        if curve_type not in {"float", "vector"}:
+            self.error(path, "curveType must be float or vector")
+            return
+        curves = self.require_sequence(document, "curves", path, "curve")
+        if curves is None:
+            return
+        for index, curve in enumerate(curves):
+            context = f"curve.curves[{index}]"
+            if not isinstance(curve, dict):
+                self.error(path, f"{context} must be a mapping")
+                continue
+            has_id = isinstance(curve.get("id"), str) and bool(curve["id"].strip())
+            has_target = isinstance(curve.get("target"), str) and bool(curve["target"].strip())
+            if has_id == has_target:
+                self.error(path, f"{context} requires exactly one non-empty id or target")
+            if has_id:
+                identifier = curve["id"].strip()
+                if not TOKEN.fullmatch(identifier):
+                    self.error(path, f"{context}.id {identifier!r} contains invalid characters")
+                elif identifier.casefold() in self.generated_ids[pack_ref.casefold()]:
+                    self.error(path, f"duplicate generated id {identifier!r} in pack {pack_ref}")
+                else:
+                    self.generated_ids[pack_ref.casefold()][identifier.casefold()] = path
+
+            keys = self.require_sequence(curve, "keys", path, context)
+            if keys is not None:
+                times: set[float] = set()
+                for key_index, key in enumerate(keys):
+                    key_context = f"{context}.keys[{key_index}]"
+                    if not isinstance(key, dict):
+                        self.error(path, f"{key_context} must be a mapping")
+                        continue
+                    time = key.get("time")
+                    if not self.is_finite_number(time):
+                        self.error(path, f"{key_context}.time must be a finite number")
+                    elif float(time) in times:
+                        self.error(path, f"{key_context}.time duplicates {time}")
+                    else:
+                        times.add(float(time))
+                    self.validate_curve_value(key.get("value"), curve_type, path, f"{key_context}.value")
+                    enum_fields = {
+                        "interpMode": CURVE_INTERP_MODES,
+                        "tangentMode": CURVE_TANGENT_MODES,
+                        "tangentWeightMode": CURVE_TANGENT_WEIGHT_MODES,
+                    }
+                    for field, allowed in enum_fields.items():
+                        if field in key and (
+                            not isinstance(key[field], str) or key[field].casefold() not in allowed
+                        ):
+                            self.error(path, f"{key_context}.{field} must be one of {sorted(allowed)}")
+                    for field in (
+                        "arriveTangent",
+                        "leaveTangent",
+                        "arriveTangentWeight",
+                        "leaveTangentWeight",
+                    ):
+                        if field in key:
+                            self.validate_curve_value(key[field], curve_type, path, f"{key_context}.{field}")
+
+            if "defaultValue" in curve:
+                self.validate_curve_value(curve["defaultValue"], curve_type, path, f"{context}.defaultValue")
+            for field in ("preInfinityExtrap", "postInfinityExtrap"):
+                if field in curve and (
+                    not isinstance(curve[field], str)
+                    or curve[field].casefold() not in CURVE_EXTRAPOLATION_MODES
+                ):
+                    self.error(
+                        path,
+                        f"{context}.{field} must be one of {sorted(CURVE_EXTRAPOLATION_MODES)}",
+                    )
+            if "isEventCurve" in curve:
+                if curve_type != "float":
+                    self.error(path, f"{context}.isEventCurve is only valid for float curves")
+                elif not isinstance(curve["isEventCurve"], bool):
+                    self.error(path, f"{context}.isEventCurve must be boolean")
+
     def validate_content_entries(self, root_type: str, document: dict[str, Any], path: Path, pack_ref: str) -> None:
         key = CONTENT_KEYS[root_type]
         entries = self.require_sequence(document, key, path, root_type)
@@ -521,6 +630,8 @@ class Linter:
                         self.error(path, f"gametag.tags[{i}] must be tag string or mapping with tag")
         elif root_type in CONTENT_KEYS:
             self.validate_content_entries(root_type, mapping, path, pack_ref)
+        elif root_type == "curve":
+            self.validate_curve_document(mapping, path, pack_ref)
         elif root_type in {"asset", "dataasset"}:
             assets = self.require_sequence(mapping, "assets", path, root_type)
             if assets:

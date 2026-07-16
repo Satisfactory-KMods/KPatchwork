@@ -158,10 +158,13 @@ def main() -> int:
         kind = match["kind"].casefold() if match else "change"
         clean_subject = PREFIX.sub("", subject, count=1).strip()
         area = player_area(files)
-        if kind in {"feat", "fix", "perf", "refactor"}:
+        changes_packaged_content = any(
+            path.startswith(("Config/", "DataForge/")) or path == "KPatchwork.uplugin"
+            for path in files
+        )
+        if changes_packaged_content:
             sentence = player_sentence(kind, clean_subject, area)
-            if any(path.startswith("DataForge/") or path == "KPatchwork.uplugin" for path in files):
-                player_changes.append(sentence)
+            player_changes.append(sentence)
             if any(path.startswith("DataForge/") for path in files):
                 pack_author_changes.append(sentence)
 

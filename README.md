@@ -16,8 +16,8 @@ KPatchwork is developed in the public repository:
 https://github.com/Satisfactory-KMods/KPatchwork
 
 Anyone can contribute a compatibility pack through a pull request. Changes that stay inside the
-author's own pack are linted, packaged, and may be merged automatically by CI. A successful merge
-automatically creates and deploys a new release.
+author's own pack are linted, packaged, and may be merged automatically by CI. Release checks run
+hourly; a release is created only when packaged content changed since latest Git tag.
 
 The main contribution area is `DataForge/`:
 
@@ -74,9 +74,10 @@ configuration require an explicit maintainer approval. Changes to the `contribut
 require explicit maintainer approval, including changes that add the pull-request author.
 
 CI creates a release ZIP containing `KPatchwork.uplugin`, `DataForge/`, and `Config/` (excluding
-`Config/Alpakit.ini`) and generates `CHANGELOG.md` from the commit range. Main releases receive
-`<year>.<quarter>.<CI-build-number>`, create a GitHub Release with the ZIP and changelog, and upload
-through ficsit-CLI.
+`Config/Alpakit.ini`) and generates `CHANGELOG.md` from latest Git tag through current `main`.
+Hourly release checks compare those packaged paths against latest tag. A detected change receives
+`<year>.<quarter>.<CI-build-number>`, creates a GitHub Release with ZIP and changelog, and uploads
+through ficsit-CLI. Pushes never release directly.
 
 ## Contributing
 

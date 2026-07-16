@@ -392,8 +392,8 @@ class Linter:
                 for key_name in ("unlocks", "dependencies"):
                     if key_name in entry:
                         self.validate_instanced_list(entry[key_name], path, f"{context}.{key_name}")
-            if root_type == "research" and "nodes" in entry:
-                self.validate_nodes(entry["nodes"], path, f"{context}.nodes")
+            if root_type == "research":
+                self.validate_research_mutations(entry, path, context)
 
     def validate_instanced_list(self, value: Any, path: Path, context: str) -> None:
         if not isinstance(value, list):
@@ -413,13 +413,70 @@ class Linter:
             if not isinstance(node, dict):
                 self.error(path, f"{context}[{index}] must be a mapping")
                 continue
-            if not isinstance(node.get("schematic"), str) and not isinstance(node.get("class"), str):
-                self.error(path, f"{context}[{index}] requires schematic or class")
-            if "coordinate" in node and not isinstance(node["coordinate"], dict):
-                self.error(path, f"{context}[{index}].coordinate must be a mapping")
+            schematic = node.get("schematic")
+            if not isinstance(schematic, str) or not schematic.strip():
+                self.error(path, f"{context}[{index}] requires a non-empty schematic class reference")
+            if "class" in node and (not isinstance(node["class"], str) or not node["class"].strip()):
+                self.error(path, f"{context}[{index}].class must be a non-empty string")
+            if "coordinate" in node:
+                self.validate_coordinate(node["coordinate"], path, f"{context}[{index}].coordinate")
             for key in ("parents", "nodesToUnhide", "unhiddenBy"):
-                if key in node and not isinstance(node[key], list):
-                    self.error(path, f"{context}[{index}].{key} must be a sequence")
+                if key in node:
+                    self.validate_node_references(node[key], path, f"{context}[{index}].{key}")
+            if "properties" in node:
+                self.validate_property_ops(node["properties"], path, f"{context}[{index}].properties")
+
+    def validate_research_mutations(self, entry: dict[str, Any], path: Path, context: str) -> None:
+        if "autoPath" in entry and not isinstance(entry["autoPath"], bool):
+            self.error(path, f"{context}.autoPath must be boolean")
+        if "addNodes" in entry:
+            self.validate_nodes(entry["addNodes"], path, f"{context}.addNodes")
+        if "nodes" in entry:
+            self.validate_nodes(entry["nodes"], path, f"{context}.nodes")
+        if "addNodes" in entry and "nodes" in entry:
+            self.error(path, f"{context} cannot contain both addNodes and legacy nodes; nodes would be ignored")
+        if "removeNodes" in entry:
+            removals = entry["removeNodes"]
+            if not isinstance(removals, list) or not removals:
+                self.error(path, f"{context}.removeNodes must be a non-empty sequence")
+            else:
+                for index, removal in enumerate(removals):
+                    if isinstance(removal, str):
+                        reference = removal
+                    elif isinstance(removal, dict):
+                        reference = removal.get("schematic")
+                    else:
+                        reference = None
+                    if not isinstance(reference, str) or not reference.strip():
+                        self.error(
+                            path,
+                            f"{context}.removeNodes[{index}] requires a non-empty schematic class reference",
+                        )
+
+    def validate_coordinate(self, value: Any, path: Path, context: str) -> None:
+        if not isinstance(value, dict):
+            self.error(path, f"{context} must be a mapping")
+            return
+        for axis in ("X", "Y"):
+            coordinate = value.get(axis)
+            if isinstance(coordinate, bool) or not isinstance(coordinate, int):
+                self.error(path, f"{context}.{axis} must be an integer")
+
+    def validate_node_references(self, value: Any, path: Path, context: str) -> None:
+        if not isinstance(value, list):
+            self.error(path, f"{context} must be a sequence")
+            return
+        for index, reference in enumerate(value):
+            label = f"{context}[{index}]"
+            if not isinstance(reference, dict):
+                self.error(path, f"{label} must be a coordinate or schematic mapping")
+                continue
+            schematic = reference.get("schematic")
+            if schematic is not None:
+                if not isinstance(schematic, str) or not schematic.strip():
+                    self.error(path, f"{label}.schematic must be a non-empty string")
+            else:
+                self.validate_coordinate(reference, path, label)
 
     def validate_document(self, path: Path, document: Any, index: int, multi_document: bool, pack_root: Path) -> None:
         mapping = self.require_map(document, path, f"document[{index}]")

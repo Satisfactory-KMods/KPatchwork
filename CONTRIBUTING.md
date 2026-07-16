@@ -13,7 +13,8 @@
 
 CI lints every KDataForge schema construct, creates the distributable ZIP, generates a commit
 changelog, and checks ownership. A pull request changing only packs whose `contributer` string/list
-contains the author can be auto-merged after successful CI.
+contains the author is rebase-merged after successful CI. Releases are checked hourly and occur only
+when packaged content changed since latest Git tag.
 Changes outside author-owned packs stay open until a maintainer approves them.
 
 `main` is protected for everyone, including repository administrators. Do not push directly.

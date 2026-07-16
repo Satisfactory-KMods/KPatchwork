@@ -1,11 +1,15 @@
 name: KPatchwork CI
 
 on:
-  push:
-    branches: [main]
   pull_request_target:
     types: [opened, synchronize, reopened]
+  schedule:
+    - cron: "0 * * * *"
   workflow_dispatch:
+
+concurrency:
+  group: kpatchwork-${{ github.event_name == 'pull_request_target' && format('pr-{0}', github.event.pull_request.number) || 'release' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request_target' }}
 
 permissions:
   contents: read
@@ -20,12 +24,13 @@ jobs:
     outputs:
       eligible: ${{ steps.policy.outputs.eligible }}
       release: ${{ steps.release-gate.outputs.release }}
+      release-base: ${{ steps.release-gate.outputs.base }}
       version: ${{ steps.release-version.outputs.version }}
     steps:
       - name: Checkout trusted CI code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && github.ref || github.event.repository.default_branch }}
+          ref: ${{ github.event.repository.default_branch }}
           path: ci-repo
           fetch-depth: 0
           persist-credentials: false
@@ -122,21 +127,32 @@ jobs:
         run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
         shell: bash
 
-      - name: Check whether a mod release is required
+      - name: Check for pack changes since latest tag
         id: release-gate
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         shell: bash
         run: |
-          changed=$(git -C "$SOURCE" diff --name-only "${{ github.event.before }}" "${{ github.sha }}")
-          if printf '%s\n' "$changed" | grep -Eq '^(Config/|DataForge/|.*\.uplugin$)'; then
+          LAST_TAG=$(git -C "$SOURCE" describe --tags --abbrev=0 HEAD 2>/dev/null || true)
+          if [ -n "$LAST_TAG" ]; then
+            changed=$(git -C "$SOURCE" diff --name-only "$LAST_TAG" HEAD -- KPatchwork.uplugin Config DataForge)
+            echo "base=$LAST_TAG" >> "$GITHUB_OUTPUT"
+          else
+            changed=$(git -C "$SOURCE" ls-tree -r --name-only HEAD -- KPatchwork.uplugin Config DataForge)
+            ROOT_COMMIT=$(git -C "$SOURCE" rev-list --max-parents=0 HEAD | tail -n 1)
+            echo "base=$ROOT_COMMIT" >> "$GITHUB_OUTPUT"
+          fi
+          changed=$(printf '%s\n' "$changed" | grep -Ev '^Config/Alpakit\.ini$' || true)
+          if [ -n "$changed" ]; then
             echo "release=true" >> "$GITHUB_OUTPUT"
+            printf 'Pack changes since %s:\n%s\n' "${LAST_TAG:-repository start}" "$changed"
           else
             echo "release=false" >> "$GITHUB_OUTPUT"
+            printf 'No pack changes since %s; release skipped.\n' "${LAST_TAG:-repository start}"
           fi
 
       - name: Set release version
         id: release-version
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.release-gate.outputs.release == 'true'
+        if: steps.release-gate.outputs.release == 'true'
         run: |
           uv run --project ci-repo --locked ci-repo/ci/version_release.py \
             --plugin "$SOURCE/KPatchwork.uplugin" \
@@ -147,16 +163,30 @@ jobs:
         shell: bash
 
       - name: Create release ZIP
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.release-gate.outputs.release == 'true'
+        if: steps.release-gate.outputs.release == 'true'
         run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
         shell: bash
 
       - name: Generate changelog from commits
+        env:
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          RELEASE_BASE: ${{ steps.release-gate.outputs.base }}
         run: |
+          if [ "${{ github.event_name }}" = "pull_request_target" ]; then
+            BASE="$PR_BASE"
+            HEAD="$PR_HEAD"
+          elif [ -n "$RELEASE_BASE" ]; then
+            BASE="$RELEASE_BASE"
+            HEAD=$(git -C "$SOURCE" rev-parse HEAD)
+          else
+            HEAD=$(git -C "$SOURCE" rev-parse HEAD)
+            BASE="$HEAD~1"
+          fi
           uv run --project ci-repo --locked ci-repo/ci/generate_changelog.py \
             --root "$SOURCE" \
-            --base "${{ github.event.pull_request.base.sha || github.event.before }}" \
-            --head "${{ github.event.pull_request.head.sha || github.sha }}" \
+            --base "$BASE" \
+            --head "$HEAD" \
             --output "$GITHUB_WORKSPACE/CHANGELOG.md"
         shell: bash
 
@@ -172,7 +202,7 @@ jobs:
   release-github:
     name: Create GitHub release
     needs: validate-package
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.validate-package.outputs.release == 'true'
+    if: needs.validate-package.outputs.release == 'true'
     runs-on: arc-runner-set
     permissions:
       contents: write
@@ -196,7 +226,7 @@ jobs:
   release-ficsit:
     name: Release with ficsit-CLI
     needs: validate-package
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.validate-package.outputs.release == 'true'
+    if: needs.validate-package.outputs.release == 'true'
     runs-on: arc-runner-set
     steps:
       - name: Download release artifact
@@ -228,10 +258,13 @@ jobs:
           "$RUNNER_TEMP/ficsit" smr upload --api-key "$FICSIT_TOKEN" --stability release "$FICSIT_MOD_ID" release/KPatchwork.zip "$CHANGELOG"
 
   auto-merge-owned-packs:
-    name: Auto-merge author-owned packs
+    name: Merge author-owned packs
     needs: validate-package
     if: github.event_name == 'pull_request_target' && needs.validate-package.outputs.eligible == 'true'
     runs-on: arc-runner-set
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Approve author-owned pack changes
         uses: actions/github-script@v7
@@ -246,15 +279,18 @@ jobs:
               body: 'CI verified that all changed packs belong to the pull-request author.'
             });
 
-      - name: Enable squash auto-merge
+      - name: Rebase-merge validated pull request
         uses: actions/github-script@v7
         with:
           github-token: ${{ github.token }}
           script: |
-            await github.graphql(`
-              mutation EnableAutoMerge($pullRequestId: ID!) {
-                enablePullRequestAutoMerge(
-                  input: { pullRequestId: $pullRequestId, mergeMethod: SQUASH }
-                ) { clientMutationId }
-              }
-            `, { pullRequestId: context.payload.pull_request.node_id });
+            const { data } = await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              sha: context.payload.pull_request.head.sha,
+              merge_method: 'rebase',
+            });
+            if (!data.merged) {
+              core.setFailed(data.message || 'GitHub refused to merge validated pull request.');
+            }

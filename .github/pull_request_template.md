@@ -9,4 +9,4 @@
 
 ## Validation
 
-- [ ] `uv run Lint/lint_packs.py`
+- [ ] `kdataforge-linter lint DataForge`

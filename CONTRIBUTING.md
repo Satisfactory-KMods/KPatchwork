@@ -3,10 +3,12 @@
 1. Create a branch from `main`.
 2. Put pack files under any depth below `DataForge/`.
 3. Add `pack.yml` with `contributer: <your-github-login>` or a list of co-maintainers.
-4. Run the local lint command:
+4. Download the CLI from the latest
+   [KDataForge Linter release](https://github.com/Satisfactory-KMods/KDataForge-Linter/releases/latest),
+   then run the local lint command:
 
    ```text
-   uv run Lint/lint_packs.py
+   kdataforge-linter lint DataForge
    ```
 
 5. Open a pull request into `main`.

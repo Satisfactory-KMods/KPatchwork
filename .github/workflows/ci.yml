@@ -6,6 +6,12 @@ on:
   schedule:
     - cron: "0 * * * *"
   workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch, tag, or commit to validate
+        required: false
+        default: main
+        type: string
 
 concurrency:
   group: kpatchwork-${{ github.event_name == 'pull_request_target' && format('pr-{0}', github.event.pull_request.number) || 'release' }}
@@ -16,6 +22,9 @@ permissions:
   issues: write
   pull-requests: write
   checks: write
+
+env:
+  KDF_LINTER_VERSION: "2026.3.2"
 
 jobs:
   validate-package:
@@ -30,7 +39,7 @@ jobs:
       - name: Checkout trusted CI code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.ref || github.event.repository.default_branch }}
           path: ci-repo
           fetch-depth: 0
           persist-credentials: false
@@ -63,8 +72,22 @@ jobs:
         run: uv sync --locked --project ci-repo
         shell: bash
 
+      - name: Download pinned KDataForge Linter
+        shell: bash
+        run: |
+          asset="KDataForge-Linter-Linux-x64.tar.gz"
+          release="https://github.com/Satisfactory-KMods/KDataForge-Linter/releases/download/v${KDF_LINTER_VERSION}"
+          mkdir -p "$RUNNER_TEMP/kdataforge-linter"
+          cd "$RUNNER_TEMP"
+          curl -fsSL "$release/$asset" -o "$asset"
+          curl -fsSL "$release/checksums-sha256.txt" -o checksums-sha256.txt
+          grep "  $asset$" checksums-sha256.txt | sha256sum -c -
+          tar -xzf "$asset" -C "$RUNNER_TEMP/kdataforge-linter"
+          chmod +x "$RUNNER_TEMP/kdataforge-linter/kdataforge-linter"
+          echo "KDF_LINTER=$RUNNER_TEMP/kdataforge-linter/kdataforge-linter" >> "$GITHUB_ENV"
+
       - name: Lint all DataForge packs
-        run: uv run --project ci-repo --locked ci-repo/Lint/lint_packs.py --root "$SOURCE/DataForge"
+        run: '"$KDF_LINTER" lint "$SOURCE/DataForge" --format github'
         shell: bash
 
       - name: Check contributor ownership

@@ -35,10 +35,12 @@ To add or update a pack:
 2. Keep `pack.yml` complete and list every maintainer in its `contributer` field.
 3. Put the actual data changes in focused YAML files next to `pack.yml`.
 4. Explain which mod combination the pack supports.
-5. Run the repository lint before opening the pull request:
+5. Download the CLI from the latest
+   [KDataForge Linter release](https://github.com/Satisfactory-KMods/KDataForge-Linter/releases/latest),
+   then run the repository lint before opening the pull request:
 
 ```text
-uv run --locked Lint/lint_packs.py --root DataForge
+kdataforge-linter lint DataForge
 ```
 
 Changes to shared tooling, CI, or the KPatchwork plugin metadata should be kept separate from pack

@@ -2,7 +2,7 @@ name: KPatchwork CI
 
 on:
   pull_request_target:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, edited]
   schedule:
     - cron: "0 * * * *"
   workflow_dispatch:
@@ -167,7 +167,8 @@ jobs:
         run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
         shell: bash
 
-      - name: Generate changelog from commits
+      - name: Resolve changelog range
+        id: changelog-range
         env:
           PR_BASE: ${{ github.event.pull_request.base.sha }}
           PR_HEAD: ${{ github.event.pull_request.head.sha }}
@@ -183,10 +184,65 @@ jobs:
             HEAD=$(git -C "$SOURCE" rev-parse HEAD)
             BASE="$HEAD~1"
           fi
+          echo "base=$BASE" >> "$GITHUB_OUTPUT"
+          echo "head=$HEAD" >> "$GITHUB_OUTPUT"
+          git -C "$SOURCE" rev-list --reverse "$BASE..$HEAD" > "$RUNNER_TEMP/changelog-commits.txt"
+        shell: bash
+
+      - name: Collect pull request changelogs
+        uses: actions/github-script@v7
+        env:
+          COMMITS_FILE: ${{ runner.temp }}/changelog-commits.txt
+          OUTPUT_FILE: ${{ runner.temp }}/pull-request-changelogs.json
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const fs = require('fs');
+            const pullRequests = new Map();
+
+            if (context.eventName === 'pull_request_target') {
+              const pull = context.payload.pull_request;
+              pullRequests.set(pull.number, pull);
+            } else {
+              const commits = fs.readFileSync(process.env.COMMITS_FILE, 'utf8')
+                .split(/\r?\n/)
+                .filter(Boolean);
+              for (const commit_sha of commits) {
+                const { data: associated } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  commit_sha,
+                });
+                for (const pull of associated) {
+                  if (pull.merged_at && pull.base.ref === context.payload.repository.default_branch) {
+                    pullRequests.set(pull.number, pull);
+                  }
+                }
+              }
+            }
+
+            const records = [...pullRequests.values()]
+              .sort((left, right) => left.number - right.number)
+              .map((pull) => ({
+                number: pull.number,
+                title: pull.title,
+                author: pull.user.login,
+                url: pull.html_url,
+                body: pull.body || '',
+              }));
+            fs.writeFileSync(process.env.OUTPUT_FILE, JSON.stringify(records), 'utf8');
+            core.info(`Collected ${records.length} pull request(s) for changelog extraction.`);
+
+      - name: Generate changelog from commits and pull requests
+        env:
+          CHANGELOG_BASE: ${{ steps.changelog-range.outputs.base }}
+          CHANGELOG_HEAD: ${{ steps.changelog-range.outputs.head }}
+        run: |
           uv run --project ci-repo --locked ci-repo/ci/generate_changelog.py \
             --root "$SOURCE" \
-            --base "$BASE" \
-            --head "$HEAD" \
+            --base "$CHANGELOG_BASE" \
+            --head "$CHANGELOG_HEAD" \
+            --pull-requests "$RUNNER_TEMP/pull-request-changelogs.json" \
             --output "$GITHUB_WORKSPACE/CHANGELOG.md"
         shell: bash
 

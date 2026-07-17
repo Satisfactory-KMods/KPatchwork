@@ -13,6 +13,9 @@ import yaml
 
 COMMIT = re.compile(r"^(?P<sha>[^\t]+)\t(?P<date>[^\t]+)\t(?P<author>[^\t]+)\t(?P<subject>.*)$")
 PREFIX = re.compile(r"^(?P<kind>feat|fix|perf|refactor|docs|chore|ci|build|test)(?:\([^)]*\))?:\s*", re.IGNORECASE)
+CHANGELOG_HEADING = re.compile(r"^[ \t]{0,3}##[ \t]+changelog[ \t]*#*[ \t]*$", re.IGNORECASE)
+SECTION_HEADING = re.compile(r"^[ \t]{0,3}#{1,2}(?:[ \t]+|$)")
+HTML_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
 
 
 def git(root: Path, *args: str) -> list[str]:
@@ -120,11 +123,56 @@ def parse_commit(line: str) -> tuple[str, str, str, str]:
     return match["sha"], match["date"], match["author"], match["subject"]
 
 
+def extract_changelog_section(body: str) -> str | None:
+    lines = body.replace("\r\n", "\n").replace("\r", "\n").splitlines()
+    for index, line in enumerate(lines):
+        if not CHANGELOG_HEADING.match(line):
+            continue
+        section: list[str] = []
+        for candidate in lines[index + 1:]:
+            if SECTION_HEADING.match(candidate):
+                break
+            section.append(candidate)
+        visible = HTML_COMMENT.sub("", "\n".join(section)).strip()
+        return visible or None
+    return None
+
+
+def pull_request_changelogs(path: Path | None) -> list[tuple[int, str, str, str, str]]:
+    if path is None:
+        return []
+    try:
+        raw_records = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise SystemExit(f"unable to read pull request changelogs from {path}: {error}") from error
+    if not isinstance(raw_records, list):
+        raise SystemExit(f"pull request changelog input must contain a JSON array: {path}")
+
+    changelogs: list[tuple[int, str, str, str, str]] = []
+    for record in raw_records:
+        if not isinstance(record, dict):
+            continue
+        body = str(record.get("body") or "")
+        changelog = extract_changelog_section(body)
+        if not changelog:
+            continue
+        try:
+            number = int(record["number"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        title = str(record.get("title") or f"Pull request #{number}").strip()
+        author = str(record.get("author") or "unknown").strip().lstrip("@")
+        url = str(record.get("url") or "").strip()
+        changelogs.append((number, title, author, url, changelog))
+    return sorted(changelogs, key=lambda entry: entry[0])
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("."))
     parser.add_argument("--base", required=True)
     parser.add_argument("--head", required=True)
+    parser.add_argument("--pull-requests", type=Path)
     parser.add_argument("--output", type=Path, default=Path("CHANGELOG.md"))
     args = parser.parse_args()
 
@@ -149,6 +197,7 @@ def main() -> int:
         pack_at_revision(args.root, args.head, path)
         for path in updated_pack_manifests(args.root, base, args.head, added_manifests)
     ]
+    authored_changelogs = pull_request_changelogs(args.pull_requests)
     player_changes: list[str] = []
     pack_author_changes: list[str] = []
     for raw in raw_commits:
@@ -187,6 +236,15 @@ def main() -> int:
             lines.append(f"- Updated **{pack_name}** (`{pack_ref}`), maintained by {format_contributors(contributors)}.")
     else:
         lines.append("- No existing packs were updated in this build.")
+    lines.extend(["", "## Pack author changelogs", ""])
+    if authored_changelogs:
+        for number, title, author, url, changelog in authored_changelogs:
+            pull_request = f"[#{number}]({url})" if url else f"#{number}"
+            lines.extend([f"### {title} ({pull_request}) by @{author}", "", changelog, ""])
+        if lines[-1] == "":
+            lines.pop()
+    else:
+        lines.append("- No pack author changelogs were provided in this build.")
     lines.extend([
         "",
         "## Changes for players",

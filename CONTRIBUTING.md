@@ -9,7 +9,9 @@
    uv run Lint/lint_packs.py
    ```
 
-5. Open a pull request into `main`.
+5. Add optional player-facing release notes below `## Changelog` in the pull-request description.
+   CI copies visible content from that section into the next GitHub and ficsit.app changelog.
+6. Open a pull request into `main`.
 
 CI lints every KDataForge schema construct, creates the distributable ZIP, generates a commit
 changelog, and checks ownership. A pull request changing only packs whose `contributer` string/list

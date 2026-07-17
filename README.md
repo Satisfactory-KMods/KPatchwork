@@ -35,7 +35,8 @@ To add or update a pack:
 2. Keep `pack.yml` complete and list every maintainer in its `contributer` field.
 3. Put the actual data changes in focused YAML files next to `pack.yml`.
 4. Explain which mod combination the pack supports.
-5. Run the repository lint before opening the pull request:
+5. Add optional player-facing release notes below `## Changelog` in the pull-request description.
+6. Run the repository lint before opening the pull request:
 
 ```text
 uv run --locked Lint/lint_packs.py --root DataForge
@@ -75,6 +76,8 @@ require explicit maintainer approval, including changes that add the pull-reques
 
 CI creates a release ZIP containing `KPatchwork.uplugin`, `DataForge/`, and `Config/` (excluding
 `Config/Alpakit.ini`) and generates `CHANGELOG.md` from latest Git tag through current `main`.
+Text below `## Changelog` in included pull requests is copied into the GitHub and ficsit.app
+changelogs. The section ends at the next level-one or level-two heading; an empty section is ignored.
 Hourly release checks compare those packaged paths against latest tag. A detected change receives
 `<year>.<quarter>.<CI-build-number>`, creates a GitHub Release with ZIP and changelog, and uploads
 through ficsit-CLI. Pushes never release directly.

@@ -24,7 +24,7 @@ permissions:
   checks: write
 
 env:
-  KDF_LINTER_VERSION: "2026.3.2"
+  KDF_LINTER_VERSION: "2026.3.3"
 
 jobs:
   validate-package:

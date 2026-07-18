@@ -7,6 +7,8 @@ import argparse
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
+PLATFORM_TARGETS = ("Windows", "LinuxServer", "WindowsServer")
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -27,13 +29,15 @@ def main() -> int:
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with ZipFile(args.output, "w", ZIP_DEFLATED) as archive:
-        archive.write(plugin, plugin.relative_to(root).as_posix())
-        for source_root in (dataforge, config):
-            for path in sorted(source_root.rglob("*")):
-                if path.is_symlink():
-                    raise SystemExit(f"symlinks are not allowed in release content: {path}")
-                if path.is_file() and path.name != "Alpakit.ini":
-                    archive.write(path, path.relative_to(root).as_posix())
+        for platform in PLATFORM_TARGETS:
+            archive.write(plugin, f"{platform}/{plugin.name}")
+            for source_root in (dataforge, config):
+                for path in sorted(source_root.rglob("*")):
+                    if path.is_symlink():
+                        raise SystemExit(f"symlinks are not allowed in release content: {path}")
+                    if path.is_file() and path.name != "Alpakit.ini":
+                        relative_path = path.relative_to(root).as_posix()
+                        archive.write(path, f"{platform}/{relative_path}")
     print(f"created {args.output} ({args.output.stat().st_size} bytes)")
     return 0
 

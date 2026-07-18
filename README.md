@@ -74,8 +74,9 @@ auto-merge after CI passes. Changes to another contributor's pack, plugin metada
 configuration require an explicit maintainer approval. Changes to the `contributer` field always
 require explicit maintainer approval, including changes that add the pull-request author.
 
-CI creates a release ZIP containing `KPatchwork.uplugin`, `DataForge/`, and `Config/` (excluding
-`Config/Alpakit.ini`) and generates `CHANGELOG.md` from latest Git tag through current `main`.
+CI creates a release ZIP containing identical `KPatchwork.uplugin`, `DataForge/`, and `Config/`
+trees under `Windows/`, `LinuxServer/`, and `WindowsServer/` (excluding `Config/Alpakit.ini`) and
+generates `CHANGELOG.md` from latest Git tag through current `main`.
 Text below `## Changelog` in included pull requests is copied into the GitHub and ficsit.app
 changelogs. The section ends at the next level-one or level-two heading; an empty section is ignored.
 Hourly release checks compare those packaged paths against latest tag. A detected change receives

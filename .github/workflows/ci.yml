@@ -1,10 +1,10 @@
 name: KPatchwork CI
 
 on:
+  push:
+    branches: [main]
   pull_request_target:
     types: [opened, synchronize, reopened, edited]
-  schedule:
-    - cron: "0 * * * *"
   workflow_dispatch:
 
 concurrency:
@@ -30,7 +30,7 @@ jobs:
       - name: Checkout trusted CI code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.ref || github.event.repository.default_branch }}
           path: ci-repo
           fetch-depth: 0
           persist-credentials: false
@@ -129,7 +129,7 @@ jobs:
 
       - name: Check for pack changes since latest tag
         id: release-gate
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch'
         shell: bash
         run: |
           LAST_TAG=$(git -C "$SOURCE" describe --tags --abbrev=0 HEAD 2>/dev/null || true)

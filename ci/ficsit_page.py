@@ -19,6 +19,7 @@ from typing import Any, Callable, Mapping, Sequence
 import yaml
 
 FICSIT_API_URL = "https://api.ficsit.app/v2/query"
+FICSIT_MOD_NAME_MAX_LENGTH = 32
 PLACEHOLDER = re.compile(r"{{([A-Z0-9_]+)}}")
 
 GET_MOD_ID_QUERY = """
@@ -263,6 +264,12 @@ def load_page_config(path: Path) -> dict[str, Any]:
     config = _load_yaml_mapping(path, "page config")
     _required_string(config, "modReference", "page config")
     _required_string(config, "shortDescription", "page config")
+    if "name" in config:
+        page_name = _required_string(config, "name", "page config")
+        if len(page_name) > FICSIT_MOD_NAME_MAX_LENGTH:
+            raise ConfigurationError(
+                f"page config name exceeds ficsit.app maximum of {FICSIT_MOD_NAME_MAX_LENGTH} characters"
+            )
     return config
 
 

@@ -1,5 +1,5 @@
 modReference: KPatchwork
-name: "Patchwork: Cross-Mod Compatibility Packs"
+name: "Cross-Mod Compatibility Packs"
 shortDescription: Compatibility patches that connect recipes and assets across installed mod combinations.
 sourceUrl: https://github.com/Satisfactory-KMods/KPatchwork
 hidden: false

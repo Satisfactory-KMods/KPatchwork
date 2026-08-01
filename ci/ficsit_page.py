@@ -195,8 +195,13 @@ def _escape(value: str) -> str:
     return html.escape(value, quote=True)
 
 
+def _mod_link(mod_reference: str) -> str:
+    encoded_reference = urllib.parse.quote(mod_reference, safe="")
+    return f'<a href="https://ficsit.app/mod/{encoded_reference}">{_escape(mod_reference)}</a>'
+
+
 def _render_pack(pack: PackInfo) -> str:
-    required_mods = " + ".join(_escape(mod) for mod in pack.required_mods) or "Always active"
+    required_mods = " + ".join(_mod_link(mod) for mod in pack.required_mods) or "Always active"
     contents = (
         " &middot; ".join(f"{summary.count} {_escape(summary.label)}" for summary in pack.contents)
         or "Manifest only"
@@ -212,7 +217,7 @@ def _render_pack(pack: PackInfo) -> str:
 <td style="padding:12px 14px;border:1px solid #3a3a4e;border-top:none;border-radius:0 0 6px 6px">
 <p>{_escape(pack.description)}</p>
 <table width="100%" cellpadding="3" cellspacing="0" style="border:none">
-<tr><td style="border:none"><strong>Required mods</strong></td><td style="border:none">{required_mods}</td></tr>
+<tr><td style="border:none"><strong>Required mods (to load this pack)</strong></td><td style="border:none">{required_mods}</td></tr>
 <tr><td style="border:none"><strong>Included content</strong></td><td style="border:none">{contents}</td></tr>
 <tr><td style="border:none"><strong>Pack version</strong></td><td style="border:none">{_escape(pack.version)}</td></tr>
 <tr><td style="border:none"><strong>Maintained by</strong></td><td style="border:none">{contributors}</td></tr>

@@ -1,6 +1,10 @@
 ref: SatisfactoryPlusRSS
 name: SatisfactoryPlus RSS Patch Pack
 version: 1.0.0
+description: >-
+  Integrates Really Simple Signs with SatisfactoryPlus by converting sign, pole, foundation,
+  equipment, drone, and vehicle recipes and unlock costs to SatisfactoryPlus materials and
+  progression.
 contributer: Kyri123
 enabled: true
 conditions:

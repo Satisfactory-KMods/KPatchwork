@@ -1,6 +1,10 @@
 ref: MkPlusSFPlus
 name: Industrial Evolution SatisfactoryPlus Patch
 version: 1.3.0
+description: >-
+  Integrates Industrial Evolution with SatisfactoryPlus by extending extractor support, balancing
+  Converter and Quantum Encoder power use, and adapting milestones, research, storage, trains, and
+  advanced production unlocks to SatisfactoryPlus progression.
 contributer: OGBrosephStalin
 enabled: true
 conditions:

@@ -1,6 +1,9 @@
 ref: ProgPrintersSFPlus
 name: Progressive Blueprinters SatisfactoryPlus Patch
 version: 1.3.0
+description: >-
+  Integrates Progressive Blueprinters with SatisfactoryPlus by rebalancing 8x, 10x, and 12x
+  Blueprinter recipes and moving Mk.2 and Mk.3 machines through appropriate SatisfactoryPlus tiers.
 contributer: OGBrosephStalin
 enabled: true
 conditions:

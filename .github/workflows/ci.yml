@@ -1,4 +1,4 @@
-name: KPatchwork CI
+name: "Patchwork: Cross-Mod Compatibility Packs CI"
 
 on:
   push:
@@ -63,8 +63,19 @@ jobs:
         run: uv sync --locked --project ci-repo
         shell: bash
 
-      - name: Lint all DataForge packs
-        run: uv run --project ci-repo --locked ci-repo/Lint/lint_packs.py --root "$SOURCE/DataForge"
+      - name: Lint all DataForge packs with KDataForge Linter
+        run: >-
+          uv run --project ci-repo --locked kdataforge-linter lint "$SOURCE/DataForge"
+          --schema-dir ci-repo/ci/schemas
+          --allow-schema-override
+          --format github
+        shell: bash
+
+      - name: Render standalone ficsit.app page
+        run: |
+          uv run --project ci-repo --locked ci-repo/ci/ficsit_page.py \
+            --root "$SOURCE" \
+            --output "$GITHUB_WORKSPACE/FICSIT_DESCRIPTION.md"
         shell: bash
 
       - name: Check contributor ownership
@@ -253,7 +264,48 @@ jobs:
           path: |
             KPatchwork.zip
             CHANGELOG.md
+            FICSIT_DESCRIPTION.md
           if-no-files-found: error
+
+  deploy-ficsit-page:
+    name: "Update Patchwork: Cross-Mod Compatibility Packs ficsit.app page"
+    needs: validate-package
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: arc-runner-set
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout matching KPatchwork revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: latest
+
+      - name: Sync page deployment dependencies
+        run: uv sync --locked
+        shell: bash
+
+      - name: Download rendered page
+        uses: actions/download-artifact@v4
+        with:
+          name: KPatchwork
+          path: release
+
+      - name: "Update Patchwork: Cross-Mod Compatibility Packs page metadata and description"
+        env:
+          FICSIT_TOKEN: ${{ secrets.FICSIT_TOKEN }}
+        run: |
+          test -n "$FICSIT_TOKEN"
+          uv run --locked ci/ficsit_page.py \
+            --root . \
+            --description release/FICSIT_DESCRIPTION.md \
+            --deploy
+        shell: bash
 
   release-github:
     name: Create GitHub release
@@ -273,7 +325,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ needs.validate-package.outputs.version }}
-          name: KPatchwork ${{ needs.validate-package.outputs.version }}
+          name: "Patchwork: Cross-Mod Compatibility Packs ${{ needs.validate-package.outputs.version }}"
           body_path: release/CHANGELOG.md
           files: release/KPatchwork.zip
           fail_on_unmatched_files: true

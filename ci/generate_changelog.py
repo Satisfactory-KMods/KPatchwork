@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a player-friendly and technically traceable KPatchwork changelog."""
+"""Generate a changelog for Patchwork: Cross-Mod Compatibility Packs."""
 
 from __future__ import annotations
 
@@ -220,7 +220,7 @@ def main() -> int:
     lines = [
         "Automated release changelog generated from the included commits.",
         "",
-        f"# KPatchwork {version(args.root)}",
+        f"# Patchwork: Cross-Mod Compatibility Packs {version(args.root)}",
         "",
         "## New packs",
         "",

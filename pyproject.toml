@@ -1,9 +1,10 @@
 [project]
 name = "kpatchwork-ci"
 version = "0.1.0"
-description = "KPatchwork CI and KDataForge pack tooling"
+description = "Patchwork: Cross-Mod Compatibility Packs CI and pack tooling"
 requires-python = ">=3.11"
 dependencies = [
+  "kdataforge-linter @ git+https://github.com/Satisfactory-KMods/KDataForge-Linter.git@v2026.3.4",
   "PyYAML>=6.0,<7",
 ]
 

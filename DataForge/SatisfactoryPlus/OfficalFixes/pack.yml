@@ -1,0 +1,10 @@
+ref: OfficalSFPPatches
+name: SatisfactoryPlus Official Fixes
+version: 2026.3.435
+description: >-
+  Fixes issues in the official SatisfactoryPlus mod between larger releases.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus

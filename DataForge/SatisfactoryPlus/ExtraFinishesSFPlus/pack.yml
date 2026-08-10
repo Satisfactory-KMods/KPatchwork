@@ -1,0 +1,12 @@
+ref: ExtraFinishesSFPlus
+name: Extra Finishes SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Extra Finishes with SatisfactoryPlus by removing the vanilla milestone prerequisites
+  from all Extra Finishes AWESOME Shop schematics.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - ExtraFinishes

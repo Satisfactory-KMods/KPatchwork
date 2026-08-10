@@ -1,0 +1,21 @@
+type: cdo
+patches:
+  - target:
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Aluminum.Schematic_ExtraFinishes_Aluminum_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Blood.Schematic_ExtraFinishes_Blood_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_DarkEnergy.Schematic_ExtraFinishes_DarkEnergy_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Diamond.Schematic_ExtraFinishes_Diamond_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Ficsite.Schematic_ExtraFinishes_Ficsite_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_HeatedMetal.Schematic_ExtraFinishes_HeatedMetal_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Oil.Schematic_ExtraFinishes_Oil_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_PinkDiamond.Schematic_ExtraFinishes_PinkDiamond_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_PolymerResin.Schematic_ExtraFinishes_PolymerResin_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_PowerShard.Schematic_ExtraFinishes_PowerShard_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Quartz.Schematic_ExtraFinishes_Quartz_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_SAM.Schematic_ExtraFinishes_SAM_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Silicon.Schematic_ExtraFinishes_Silicon_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Sulfur.Schematic_ExtraFinishes_Sulfur_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Uranium.Schematic_ExtraFinishes_Uranium_C
+    properties:
+      - path: mSchematicDependencies
+        value: []

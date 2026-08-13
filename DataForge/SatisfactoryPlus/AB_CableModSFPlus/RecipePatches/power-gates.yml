@@ -1,0 +1,36 @@
+type: cdo
+patches:
+  - target: /AB_CableMod/PowerGates/DelaySwitch/Recipe_AB-DelaySwitch.Recipe_AB-DelaySwitch_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Silica/Desc_Silica.Desc_Silica_C
+            Amount: 10
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C
+            Amount: 5
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 1
+  - target: /AB_CableMod/PowerGates/LogicSwitch/Recipe_AB-LogicSwitch.Recipe_AB-LogicSwitch_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/CircuitBoardHighSpeed/Desc_CircuitBoardHighSpeed.Desc_CircuitBoardHighSpeed_C
+            Amount: 1
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C
+            Amount: 10
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_TinnedWire.Desc_TinnedWire_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 2
+  - target: /AB_CableMod/PowerGates/ProxSwitch/Recipe_AB-ProxSwitch.Recipe_AB-ProxSwitch_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/CrystalOscillator/Desc_CrystalOscillator.Desc_CrystalOscillator_C
+            Amount: 1
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 2

@@ -1,0 +1,12 @@
+type: cdo
+patches:
+  - target:
+      - /AB_CableMod/Schem_ABCCExtras.Schem_ABCCExtras_C
+      - /AB_CableMod/Schem_ABPowerTowerAddons.Schem_ABPowerTowerAddons_C
+    properties:
+      - path: mUnlocks
+        op: clear
+      - path: mSchematicDependencies
+        op: clear
+      - path: mIncludeInBuilds
+        value: EIncludeInBuilds::IIB_Never

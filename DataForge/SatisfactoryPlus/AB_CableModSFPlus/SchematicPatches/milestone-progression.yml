@@ -1,0 +1,103 @@
+type: cdo
+patches:
+  - target: /AB_CableMod/Schem_ABCables-01WireStd.Schem_ABCables-01WireStd_C
+    properties:
+      - path: mTechTier
+        value: 1
+      - path: mCost
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 25
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 25
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/Tutorial/SFP_Schematic_Tutorial_3.SFP_Schematic_Tutorial_3_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+  - target: /AB_CableMod/Schem_AB-2_ExtraPowerpoles.Schem_AB-2_ExtraPowerpoles_C
+    properties:
+      - path: mTechTier
+        value: 2
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C
+            Amount: 100
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 50
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 100
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Satmonium/Schematic_Trees_Satmonium_3_2.Schematic_Trees_Satmonium_3_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+  - target: /AB_CableMod/Schem_ABCables-03Heavy.Schem_ABCables-03Heavy_C
+    properties:
+      - path: mTechTier
+        value: 4
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 200
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 100
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 100
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T4/Schematic_SF+_T4_4.Schematic_SF+_T4_4_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+  - target: /AB_CableMod/Schem_ABCables-05Deco.Schem_ABCables-05Deco_C
+    properties:
+      - path: mTechTier
+        value: 5
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Plastic/Desc_Plastic.Desc_Plastic_C
+            Amount: 100
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 50
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_0.Schematic_SF+_T5_0_C
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Cryolite/Schematic_Trees_Cryolit_4_3.Schematic_Trees_Cryolit_4_3_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+  - target: /AB_CableMod/Schem_ABCables-06Beam.Schem_ABCables-06Beam_C
+    properties:
+      - path: mUnlocks
+        op: clear
+      - path: mSchematicDependencies
+        op: clear
+      - path: mIncludeInBuilds
+        value: EIncludeInBuilds::IIB_Never

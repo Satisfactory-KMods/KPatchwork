@@ -1,0 +1,12 @@
+type: cdo
+patches:
+- target:
+  - /SS_Mod/Recipes/Fences/Recipe_EWAF_AutoRailing_Left.Recipe_EWAF_AutoRailing_Left_C
+  - /SS_Mod/Recipes/Fences/Recipe_EWAF_AutoRailing_Right.Recipe_EWAF_AutoRailing_Right_C
+  - /SS_Mod/Recipes/Fences/Recipe_EWAF_CurvedFenceV1.Recipe_EWAF_CurvedFenceV1_C
+  - /SS_Mod/Recipes/Fences/Recipe_EWAF_CurvedFenceV2.Recipe_EWAF_CurvedFenceV2_C
+  - /SS_Mod/Recipes/Fences/Recipe_EWAF_DiagonalFence.Recipe_EWAF_DiagonalFence_C
+  - /SS_Mod/Recipes/Fences/Recipe_EWAF_RailingCenterHole.Recipe_EWAF_RailingCenterHole_C
+  properties:
+  - path: mIngredients[0].ItemClass
+    value: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C

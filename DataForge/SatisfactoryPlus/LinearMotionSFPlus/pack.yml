@@ -1,0 +1,13 @@
+ref: LinearMotionSFPlus
+name: Linear Motion SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Linear Motion with SatisfactoryPlus by rebalancing elevator, catwalk-lift, and
+  vehicle-lift construction costs and gating every shipped unlock behind matching
+  SatisfactoryPlus production milestones.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - LinearMotion

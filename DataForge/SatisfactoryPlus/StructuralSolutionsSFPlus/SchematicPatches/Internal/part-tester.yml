@@ -1,0 +1,12 @@
+type: cdo
+patches:
+- target: /SS_Mod/Schematics/Schematic_SS_PartTester.Schematic_SS_PartTester_C
+  properties:
+  - path: mUnlocks
+    op: clear
+  - path: mSchematicDependencies
+    op: clear
+  - path: mCost
+    op: clear
+  - path: mIncludeInBuilds
+    value: EIncludeInBuilds::IIB_Never

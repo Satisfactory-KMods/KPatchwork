@@ -1,0 +1,49 @@
+type: cdo
+patches:
+- target:
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Conveyors.Recipe_Concrete_Wall_Conveyors_C
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Conveyors_8m.Recipe_Concrete_Wall_Conveyors_8m_C
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Conveyors_Double.Recipe_Concrete_Wall_Conveyors_Double_C
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Conveyors_Double_Offset.Recipe_Concrete_Wall_Conveyors_Double_Offset_C
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Conveyors_Single.Recipe_Concrete_Wall_Conveyors_Single_C
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Conveyors_Single_Offset.Recipe_Concrete_Wall_Conveyors_Single_Offset_C
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Door.Recipe_Concrete_Wall_Door_C
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Door_8m.Recipe_Concrete_Wall_Door_8m_C
+  - /SS_Mod/Recipes/Concrete/Recipe_Concrete_Wall_Door_Side.Recipe_Concrete_Wall_Door_Side_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_16x16_Auto.Recipe_Frame_Door_16x16_Auto_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_4x8_Auto.Recipe_Frame_Door_4x8_Auto_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_4x8_Center_Auto.Recipe_Frame_Door_4x8_Center_Auto_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_4x8_Center_Auto_Glass.Recipe_Frame_Door_4x8_Center_Auto_Glass_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_4x8_Center_Auto_vBasic.Recipe_Frame_Door_4x8_Center_Auto_vBasic_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_4x8_Center_Auto_vSteel.Recipe_Frame_Door_4x8_Center_Auto_vSteel_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_4x8_Modular_1.Recipe_Frame_Door_4x8_Modular_1_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_4x8_Side_Auto.Recipe_Frame_Door_4x8_Side_Auto_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_4x8_Side_Auto_Glass.Recipe_Frame_Door_4x8_Side_Auto_Glass_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_8x16_Auto.Recipe_Frame_Door_8x16_Auto_C
+  - /SS_Mod/Recipes/Frames/Recipe_Frame_Door_8x8_Auto.Recipe_Frame_Door_8x8_Auto_C
+  - /SS_Mod/Recipes/HeavyFrames/Recipe_HeavyFrame_8x8x4.Recipe_HeavyFrame_8x8x4_C
+  - /SS_Mod/Recipes/HeavyFrames/Recipe_HeavyFrame_8x8x8.Recipe_HeavyFrame_8x8x8_C
+  - /SS_Mod/Recipes/HeavyFrames/Recipe_HeavyFrame_Wall_4m.Recipe_HeavyFrame_Wall_4m_C
+  - /SS_Mod/Recipes/HeavyFrames/Recipe_HeavyFrame_Wall_8m.Recipe_HeavyFrame_Wall_8m_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_HeavyWall_Bottom_8x4.Recipe_HeavyWall_Bottom_8x4_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_HeavyWall_Bottom_8x4_Inverted.Recipe_HeavyWall_Bottom_8x4_Inverted_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_HeavyWall_Middle_8x4.Recipe_HeavyWall_Middle_8x4_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_HeavyWall_Middle_8x4_v2.Recipe_HeavyWall_Middle_8x4_v2_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_4x4_Panel.Recipe_MetalWall_4x4_Panel_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_4x4_Plain.Recipe_MetalWall_4x4_Plain_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_8x4.Recipe_MetalWall_8x4_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_8x4_v2.Recipe_MetalWall_8x4_v2_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_8x4_v3.Recipe_MetalWall_8x4_v3_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_8x4_v4.Recipe_MetalWall_8x4_v4_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_8x4_v5.Recipe_MetalWall_8x4_v5_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_8x4_v8.Recipe_MetalWall_8x4_v8_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_Basic_8x4.Recipe_MetalWall_Basic_8x4_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_Basic_8x4_Gate.Recipe_MetalWall_Basic_8x4_Gate_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_Light1.Recipe_MetalWall_Light1_C
+  - /SS_Mod/Recipes/MetalWall/Recipe_MetalWall_Plain_8x4.Recipe_MetalWall_Plain_8x4_C
+  - /SS_Mod/Recipes/Vanilla/Recipe_FicsitWall_8x4_Curved.Recipe_FicsitWall_8x4_Curved_C
+  properties:
+  - path: mIngredients[0].ItemClass
+    value: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+  - path: mIngredients[1].ItemClass
+    value: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C

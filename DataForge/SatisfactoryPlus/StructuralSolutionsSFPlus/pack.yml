@@ -1,0 +1,13 @@
+ref: StructuralSolutionsSFPlus
+name: Structural Solutions SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Structural Solutions with SatisfactoryPlus by converting every applicable construction
+  recipe to the corresponding SatisfactoryPlus material and aligning its unlocks with the base-building,
+  windows, and steel milestones.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - SS_Mod

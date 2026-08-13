@@ -1,0 +1,17 @@
+type: cdo
+patches:
+  # Match SatisfactoryPlus early foundation balance: concrete structure plus iron-sheet reinforcement.
+  - target:
+      - /GatewaysExtension/Catwalks/Corners/Foundations/Asphalt/Recipe_Foundation_Corner_Asphalt_45_1M.Recipe_Foundation_Corner_Asphalt_45_1M_C
+      - /GatewaysExtension/Catwalks/Corners/Foundations/CoatedConrete/Recipe_Foundation_Corner_CoatedConcrete_45_1M.Recipe_Foundation_Corner_CoatedConcrete_45_1M_C
+      - /GatewaysExtension/Catwalks/Corners/Foundations/Concrete/Recipe_Foundation_Corner_Concrete_45_1M.Recipe_Foundation_Corner_Concrete_45_1M_C
+      - /GatewaysExtension/Catwalks/Corners/Foundations/Ficsit/Recipe_Foundation_Corner_Ficsit_45_1M.Recipe_Foundation_Corner_Ficsit_45_1M_C
+      - /GatewaysExtension/Catwalks/Corners/Foundations/Glass/Recipe_Foundation_Corner_Glass_45_1M.Recipe_Foundation_Corner_Glass_45_1M_C
+      - /GatewaysExtension/Catwalks/Corners/Foundations/GripMetal/Recipe_Foundation_Corner_GripMetal_45_1M.Recipe_Foundation_Corner_GripMetal_45_1M_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 1

@@ -1,0 +1,88 @@
+type: cdo
+patches:
+  # Compact straight sections: preserve source quantities while replacing vanilla plates with
+  # SatisfactoryPlus iron sheets.
+  - target:
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_1M/Recipe_Catwalk_Straight_1M.Recipe_Catwalk_Straight_1M_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_1x1_1R/Recipe_Catwalk_Straight_1x1_1R.Recipe_Catwalk_Straight_1x1_1R_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_1x2_1R/Recipe_Catwalk_Straight_1x2_1R.Recipe_Catwalk_Straight_1x2_1R_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_1x4_1R/Recipe_Catwalk_Straight_1x4_1R.Recipe_Catwalk_Straight_1x4_1R_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_2M/Recipe_Catwalk_Straight_2M.Recipe_Catwalk_Straight_2M_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 1
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 1
+
+  # Remaining metal construction pieces use the same structural balance as their source recipes,
+  # with SatisfactoryPlus iron sheets replacing vanilla iron plates.
+  - target:
+      - /GatewaysExtension/Catwalks/Catwalk_Cross_V2/Recipe_Catwalk_Cross_V2.Recipe_Catwalk_Cross_V2_C
+      - /GatewaysExtension/Catwalks/Catwalk_Cross_V3/Recipe_Catwalk_Cross_V3.Recipe_Catwalk_Cross_V3_C
+      - /GatewaysExtension/Catwalks/Catwalk_Cross_V4/Recipe_Catwalk_Cross_V4.Recipe_Catwalk_Cross_V4_C
+      - /GatewaysExtension/Catwalks/Catwalk_End/Recipe_Catwalk_End.Recipe_Catwalk_End_C
+      - /GatewaysExtension/Catwalks/Catwalk_Ladder/Recipe_Catwalk_Ladder.Recipe_Catwalk_Ladder_C
+      - /GatewaysExtension/Catwalks/Catwalk_Ramp_1M_Left/Recipe_Catwalk_Ramp_1M_Left.Recipe_Catwalk_Ramp_1M_Left_C
+      - /GatewaysExtension/Catwalks/Catwalk_Ramp_1M_Middle/Recipe_Catwalk_Ramp_1M_Middle.Recipe_Catwalk_Ramp_1M_Middle_C
+      - /GatewaysExtension/Catwalks/Catwalk_Ramp_1M_Right/Recipe_Catwalk_Ramp_1M_Right.Recipe_Catwalk_Ramp_1M_Right_C
+      - /GatewaysExtension/Catwalks/Catwalk_Ramp_1M/Recipe_Catwalk_Ramp_1M.Recipe_Catwalk_Ramp_1M_C
+      - /GatewaysExtension/Catwalks/Catwalk_Ramp_Left/Recipe_Catwalk_Ramp_Left.Recipe_Catwalk_Ramp_Left_C
+      - /GatewaysExtension/Catwalks/Catwalk_Ramp_Middle/Recipe_Catwalk_Ramp_Middle.Recipe_Catwalk_Ramp_Middle_C
+      - /GatewaysExtension/Catwalks/Catwalk_Ramp_Right/Recipe_Catwalk_Ramp_Right.Recipe_Catwalk_Ramp_Right_C
+      - /GatewaysExtension/Catwalks/Catwalk_Stairs_1M_Left/Recipe_Catwalk_Stairs_1M_Left.Recipe_Catwalk_Stairs_1M_Left_C
+      - /GatewaysExtension/Catwalks/Catwalk_Stairs_1M_Middle/Recipe_Catwalk_Stairs_1M_Middle.Recipe_Catwalk_Stairs_1M_Middle_C
+      - /GatewaysExtension/Catwalks/Catwalk_Stairs_1M_Right/Recipe_Catwalk_Stairs_1M_Right.Recipe_Catwalk_Stairs_1M_Right_C
+      - /GatewaysExtension/Catwalks/Catwalk_Stairs_1M/Recipe_Catwalk_Stairs_1M.Recipe_Catwalk_Stairs_1M_C
+      - /GatewaysExtension/Catwalks/Catwalk_Stairs_Left/Recipe_Catwalk_Stairs_Left.Recipe_Catwalk_Stairs_Left_C
+      - /GatewaysExtension/Catwalks/Catwalk_Stairs_Middle/Recipe_Catwalk_Stairs_Middle.Recipe_Catwalk_Stairs_Middle_C
+      - /GatewaysExtension/Catwalks/Catwalk_Stairs_Right/Recipe_Catwalk_Stairs_Right.Recipe_Catwalk_Stairs_Right_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_1M_V2/Recipe_Catwalk_Straight_1M_V2.Recipe_Catwalk_Straight_1M_V2_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_1M_V3/Recipe_Catwalk_Straight_1M_V3.Recipe_Catwalk_Straight_1M_V3_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_2M_V2/Recipe_Catwalk_Straight_2M_V2.Recipe_Catwalk_Straight_2M_V2_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_2M_V3/Recipe_Catwalk_Straight_2M_V3.Recipe_Catwalk_Straight_2M_V3_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_2x1_1R/Recipe_Catwalk_Straight_2x1_1R.Recipe_Catwalk_Straight_2x1_1R_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_2x2_1R/Recipe_Catwalk_Straight_2x2_1R.Recipe_Catwalk_Straight_2x2_1R_C
+      - /GatewaysExtension/Catwalks/Catwalk_Straight_2x4_1R/Recipe_Catwalk_Straight_2x4_1R.Recipe_Catwalk_Straight_2x4_1R_C
+      - /GatewaysExtension/Catwalks/Catwalk_T_V2/Recipe_Catwalk_T_V2.Recipe_Catwalk_T_V2_C
+      - /GatewaysExtension/Catwalks/Catwalk_Turn_V2/Recipe_Catwalk_Turn_V2.Recipe_Catwalk_Turn_V2_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Corner_45_4M/Recipe_Catwalk_Corner_45_4M.Recipe_Catwalk_Corner_45_4M_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_1x1/Recipe_Catwalk_Stairs_1x1.Recipe_Catwalk_Stairs_1x1_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_Corner_45_1M_Ext/Recipe_Catwalk_Stairs_Corner_45_1M_Ext.Recipe_Catwalk_Stairs_Corner_45_1M_Ext_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_Corner_45_1M_Int/Recipe_Catwalk_Stairs_Corner_45_1M_Int.Recipe_Catwalk_Stairs_Corner_45_1M_Int_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_Corner_45_4M_Ext/Recipe_Catwalk_Stairs_Corner_45_4M_Ext.Recipe_Catwalk_Stairs_Corner_45_4M_Ext_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_Corner_45_4M_Int/Recipe_Catwalk_Stairs_Corner_45_4M_Int.Recipe_Catwalk_Stairs_Corner_45_4M_Int_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_Corner_90_1M_Ext/Recipe_Catwalk_Stairs_Corner_90_1M_Ext.Recipe_Catwalk_Stairs_Corner_90_1M_Ext_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_Corner_90_1M_Int/Recipe_Catwalk_Stairs_Corner_90_1M_Int.Recipe_Catwalk_Stairs_Corner_90_1M_Int_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_Corner_90_4M_Ext/Recipe_Catwalk_Stairs_Corner_90_4M_Ext.Recipe_Catwalk_Stairs_Corner_90_4M_Ext_C
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_Corner_90_4M_Int/Recipe_Catwalk_Stairs_Corner_90_4M_Int.Recipe_Catwalk_Stairs_Corner_90_4M_Int_C
+      - /GatewaysExtension/Catwalks/Corners/Curved/Catwalk_Corner_Curved_In_V1/Recipe_Catwalk_Corner_Curved_In_V1.Recipe_Catwalk_Corner_Curved_In_V1_C
+      - /GatewaysExtension/Catwalks/Corners/Curved/Catwalk_Corner_Curved_In_V2/Recipe_Catwalk_Corner_Curved_In_V2.Recipe_Catwalk_Corner_Curved_In_V2_C
+      - /GatewaysExtension/Catwalks/Corners/Curved/Catwalk_Corner_Curved_V1/Recipe_Catwalk_Corner_Curved_V1.Recipe_Catwalk_Corner_Curved_V1_C
+      - /GatewaysExtension/Catwalks/Corners/Curved/Catwalk_Corner_Curved_V2/Recipe_Catwalk_Corner_Curved_V2.Recipe_Catwalk_Corner_Curved_V2_C
+      - /GatewaysExtension/Catwalks/Corners/Curved/Catwalk_Corner_Curved_V3/Recipe_Catwalk_Corner_Curved_V3.Recipe_Catwalk_Corner_Curved_V3_C
+      - /GatewaysExtension/Catwalks/Corners/Curved/Catwalk_Corner_Curved_V4/Recipe_Catwalk_Corner_Curved_V4.Recipe_Catwalk_Corner_Curved_V4_C
+      - /GatewaysExtension/Walkways/Walkway_End/Recipe_Walkway_End.Recipe_Walkway_End_C
+      - /GatewaysExtension/Walkways/Walkway_Ladder/Recipe_Walkway_Ladder.Recipe_Walkway_Ladder_C
+      - /GatewaysExtension/Walkways/Walkway_Ramp_1m/Recipe_Walkway_Ramp_1M.Recipe_Walkway_Ramp_1M_C
+      - /GatewaysExtension/Walkways/Walkway_Ramp_Left/Recipe_Walkway_Ramp_Left.Recipe_Walkway_Ramp_Left_C
+      - /GatewaysExtension/Walkways/Walkway_Ramp_Middle/Recipe_Walkway_Ramp_Middle.Recipe_Walkway_Ramp_Middle_C
+      - /GatewaysExtension/Walkways/Walkway_Ramp_Right/Recipe_Walkway_Ramp_Right.Recipe_Walkway_Ramp_Right_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs_1m_L/Recipe_Walkway_Stairs_1m_L.Recipe_Walkway_Stairs_1m_L_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs_1m_M/Recipe_Walkway_Stairs_1m_M.Recipe_Walkway_Stairs_1m_M_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs_1m_R/Recipe_Walkway_Stairs_1m_R.Recipe_Walkway_Stairs_1m_R_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs_1m/Recipe_Walkway_Stairs_1m.Recipe_Walkway_Stairs_1m_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs_2m/Recipe_Walkway_Stairs_2m.Recipe_Walkway_Stairs_2m_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs_L/Recipe_Walkway_Stairs_L.Recipe_Walkway_Stairs_L_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs_M/Recipe_Walkway_Stairs_M.Recipe_Walkway_Stairs_M_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs_R/Recipe_Walkway_Stairs_R.Recipe_Walkway_Stairs_R_C
+      - /GatewaysExtension/Walkways/Walkway_Stairs/Recipe_Walkway_Stairs.Recipe_Walkway_Stairs_C
+      - /GatewaysExtension/Walkways/Walkway_Straight_1M/Recipe_WalkwayStraight_1M.Recipe_WalkwayStraight_1M_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 1

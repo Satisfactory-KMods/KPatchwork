@@ -1,0 +1,14 @@
+type: cdo
+patches:
+  - target:
+      - /Architecture02/Fences/FenceInd_2M/Recipe_FenceInd_2M.Recipe_FenceInd_2M_C
+      - /Architecture02/Fences/FenceInd_4M/Recipe_FenceInd_4M.Recipe_FenceInd_4M_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 1

@@ -1,0 +1,43 @@
+type: schematic
+schematics:
+  - class: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/Tutorial/SFP_Schematic_Tutorial_3.SFP_Schematic_Tutorial_3_C
+    register: false
+    recipes:
+      - /AB_CableMod/PowerNubs/Recipe_PowerCornerMk1.Recipe_PowerCornerMk1_C
+  - class: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Satmonium/Schematic_Trees_Satmonium_3_2.Schematic_Trees_Satmonium_3_2_C
+    register: false
+    recipes:
+      - /AB_CableMod/PowerNubs/Recipe_PowerCornerMk2.Recipe_PowerCornerMk2_C
+  - class: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Satmonium/Schematic_Trees_Satmonium_3_3.Schematic_Trees_Satmonium_3_3_C
+    register: false
+    recipes:
+      - /AB_CableMod/PowerGates/LogicSwitch/Recipe_AB-LogicSwitch.Recipe_AB-LogicSwitch_C
+  - class: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_2.Schematic_SF+_T5_2_C
+    register: false
+    recipes:
+      - /AB_CableMod/-Shared/Customization/MaterialRecipe_ABCable-El.MaterialRecipe_ABCable-El_C
+  - class: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Cryolite/Schematic_Trees_Cryolit_3_1.Schematic_Trees_Cryolit_3_1_C
+    register: false
+    recipes:
+      - /AB_CableMod/PowerGates/DelaySwitch/Recipe_AB-DelaySwitch.Recipe_AB-DelaySwitch_C
+  - class: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Cryolite/Schematic_Trees_Cryolit_4_3.Schematic_Trees_Cryolit_4_3_C
+    register: false
+    recipes:
+      - /AB_CableMod/PowerGates/ProxSwitch/Recipe_AB-ProxSwitch.Recipe_AB-ProxSwitch_C
+  - class: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Satmonium/Schematic_Trees_Satmonium_3_5.Schematic_Trees_Satmonium_3_5_C
+    register: false
+    recipes:
+      - /AB_CableMod/PowerNubs/Recipe_PowerCornerMk3.Recipe_PowerCornerMk3_C
+  - class: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T4/Schematic_SF+_T4_4.Schematic_SF+_T4_4_C
+    register: false
+    recipes:
+      - /AB_CableMod/GroundingSpike/Recipe_AB-GroundingSpike-Tower.Recipe_AB-GroundingSpike-Tower_C
+      - /AB_CableMod/PowerTower/Recipe_PowerTowerEx_Point.Recipe_PowerTowerEx_Point_C
+      - /AB_CableMod/PowerTower/Recipe_PowerTowerEx_Even.Recipe_PowerTowerEx_Even_C
+      - /AB_CableMod/PowerTower/Recipe_PowerTowerEx_Wide.Recipe_PowerTowerEx_Wide_C
+      - /AB_CableMod/PowerTower/Recipe_PowerTower_WallSingle.Recipe_PowerTower_WallSingle_C
+      - /AB_CableMod/PowerTower/Recipe_PowerTower_WallDouble.Recipe_PowerTower_WallDouble_C
+  - class: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_6.Schematic_SF+_T5_6_C
+    register: false
+    recipes:
+      - /AB_CableMod/Railconnector/Recipe_ABRailPowerBox.Recipe_ABRailPowerBox_C

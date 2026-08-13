@@ -1,0 +1,13 @@
+ref: GatewaysExtensionSFPlus
+name: Gateways Extension SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Gateways Extension with SatisfactoryPlus by rebalancing every catwalk, walkway, and
+  corner-foundation recipe around SatisfactoryPlus materials, restoring omitted recipe unlocks,
+  and gating all shop unlocks behind the SatisfactoryPlus AWESOME Programme.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - GatewaysExtension

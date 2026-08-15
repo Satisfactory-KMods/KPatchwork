@@ -8,5 +8,5 @@ patches:
     op: clear
   - path: mCost
     op: clear
-  - path: mIncludeInBuilds
-    value: EIncludeInBuilds::IIB_Never
+  - path: mType
+    value: EST_Custom

@@ -23,7 +23,7 @@
     },
     {
       "Name": "KDataForge",
-      "SemVersion": ">=2026.3.0",
+      "SemVersion": ">=2026.3.468",
       "Enabled": true
     }
   ],

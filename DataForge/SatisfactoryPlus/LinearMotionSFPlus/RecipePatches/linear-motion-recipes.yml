@@ -1,7 +1,5 @@
 type: cdo
 patches:
-  # The shipped 16 m recipe is not referenced by a shipped schematic, but it is a complete
-  # user-facing build recipe and is kept compatible in case Linear Motion registers it at runtime.
   - target: /LinearMotion/Recipes/Recipe_Elevator_16x16_MK1.Recipe_Elevator_16x16_MK1_C
     properties:
       - path: mIngredients
@@ -61,7 +59,6 @@ patches:
           - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
             Amount: 20
 
-  # Gondola retains the base-game cement descriptor because SF+ also uses that exact item class.
   - target: /LinearMotion/Recipes/Recipe_Gondola.Recipe_Gondola_C
     properties:
       - path: mIngredients
@@ -92,8 +89,3 @@ patches:
             Amount: 500
           - ItemClass: /Game/FactoryGame/Resource/Parts/Computer/Desc_Computer.Desc_Computer_C
             Amount: 20
-
-# Complete source-recipe audit: one of nine recipes intentionally needs no patch.
-# /LinearMotion/Recipes/Recipe_LM_SnapDummy.Recipe_LM_SnapDummy_C is an internal, unregistered
-# snapping helper. Its descriptor has no buildable class, display name, or build-category data; its
-# one-coal recipe is absent from all six shipped schematic unlocks.

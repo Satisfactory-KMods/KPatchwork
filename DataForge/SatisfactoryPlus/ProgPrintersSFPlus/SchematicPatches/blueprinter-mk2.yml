@@ -4,3 +4,7 @@ patches:
     properties:
       - path: mType
         value: "EST_Custom"
+      - path: mUnlocks
+        op: clear
+      - path: mSchematicDependencies
+        op: clear

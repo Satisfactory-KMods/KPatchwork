@@ -1,7 +1,0 @@
-type: cdo
-patches:
-  - target:
-      - /Game/FactoryGame/Resource/Parts/Turbofuel/Desc_TurboFuel.Desc_TurboFuel_C
-    properties:
-      - path: mEnergyValue
-        value: 2000.0

@@ -1,0 +1,43 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/cdo.schema.yml
+x-kdf-type: cdo
+title: KDataForge CDO patches
+allOf:
+  - $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/documentBase
+  - type: object
+    required: [patches]
+    properties:
+      type: { const: cdo }
+      priority:
+        type: integer
+        minimum: -2147483648
+        maximum: 2147483647
+      patches:
+        type: array
+        minItems: 1
+        items:
+          type: object
+          additionalProperties: false
+          required: [properties]
+          properties:
+            target:
+              $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/stringOrList
+            allAssetsOfClass:
+              $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/nonEmptyString
+            matchTag:
+              $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/stringOrList
+            ofClass:
+              $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/nonEmptyString
+            tagProperty:
+              $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/nonEmptyString
+            matchAssets: { type: boolean, default: true }
+            applyToSubclasses: { type: boolean, default: false }
+            applyToSpawnedActors: { type: boolean, default: false }
+            deferOneGameTick: { type: boolean, default: false }
+            properties:
+              $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/properties
+          oneOf:
+            - required: [target]
+            - required: [allAssetsOfClass]
+            - required: [matchTag, ofClass]
+unevaluatedProperties: false

@@ -1,0 +1,10 @@
+ref: FaxitBufferReleaseDefault
+name: Faxit Buffer Inventory Release Default
+version: 1.0.0
+description: Disables Faxit receiver buffer inventories until another KDataForge pack enables them.
+contributer: Kyri123
+priority: 2047483647
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus

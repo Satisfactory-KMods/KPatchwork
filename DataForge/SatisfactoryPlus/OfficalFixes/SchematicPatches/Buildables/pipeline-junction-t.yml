@@ -1,0 +1,6 @@
+type: schematic
+schematics:
+  - class: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_6.Schematic_SF+_T2_6_C
+    register: false
+    recipes:
+      - /Game/FactoryGame/Recipes/Buildings/Recipe_PipelineJunction_T.Recipe_PipelineJunction_T_C

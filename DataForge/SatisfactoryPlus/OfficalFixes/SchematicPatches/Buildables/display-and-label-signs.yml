@@ -1,0 +1,15 @@
+type: cdo
+patches:
+  - target:
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_DisplaySigns.ResourceSink_DisplaySigns_C
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_LabelSigns.ResourceSink_LabelSigns_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Cryolite/Schematic_Trees_Cryolit_3_2.Schematic_Trees_Cryolit_3_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: false

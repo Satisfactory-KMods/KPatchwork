@@ -1,0 +1,11 @@
+ref: OfficalSFPPatches
+name: SatisfactoryPlus Official Fixes
+version: 2026.3.436
+description: >-
+  Registers missing vanilla AWESOME Shop schematics and replaces vanilla progression dependencies
+  with SatisfactoryPlus equivalents.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus

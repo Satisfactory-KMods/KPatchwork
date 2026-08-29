@@ -1,0 +1,15 @@
+type: cdo
+patches:
+  - target:
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_LightControlPanel.ResourceSink_LightControlPanel_C
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_StreetLight.ResourceSink_StreetLight_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Satmonium/Schematic_Trees_Satmonium_3_2.Schematic_Trees_Satmonium_3_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: false

@@ -1,0 +1,14 @@
+type: cdo
+patches:
+  - target:
+      - /Game/FactoryGame/Schematics/ResourceSink/Parts/Equipment/ResourceSink_RadiationFilters.ResourceSink_RadiationFilters_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T8/Schematic_SF+_T8_4.Schematic_SF+_T8_4_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true

@@ -1,0 +1,4 @@
+type: schematic
+schematics:
+  - class: /Game/FactoryGame/Schematics/ResourceSink/Parts/Equipment/ResourceSink_RadiationFilters.ResourceSink_RadiationFilters_C
+    register: true

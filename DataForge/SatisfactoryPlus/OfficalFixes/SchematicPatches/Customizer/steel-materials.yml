@@ -1,0 +1,16 @@
+type: cdo
+patches:
+  - target:
+      - /Game/FactoryGame/Schematics/ResourceSink/Customizer/ResourceSink_Customizer_GripMetal_FoundationMaterial.ResourceSink_Customizer_GripMetal_FoundationMaterial_C
+      - /Game/FactoryGame/Schematics/ResourceSink/Customizer/ResourceSink_Customizer_SteelWallMaterial.ResourceSink_Customizer_SteelWallMaterial_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T1/Schematic_SF+_T1_1.Schematic_SF+_T1_1_C
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T3/Schematic_SF+_T3_4.Schematic_SF+_T3_4_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true

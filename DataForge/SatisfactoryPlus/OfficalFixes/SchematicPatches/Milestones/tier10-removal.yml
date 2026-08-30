@@ -1,0 +1,18 @@
+type: cdo
+patches:
+  - target:
+      - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T10/Schematic_SF+_T10_0.Schematic_SF+_T10_0_C
+      - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T10/Schematic_SF+_T10_1.Schematic_SF+_T10_1_C
+      - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T10/Schematic_SF+_T10_2.Schematic_SF+_T10_2_C
+      - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T10/Schematic_SF+_T10_3.Schematic_SF+_T10_3_C
+      - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T10/Schematic_SF+_T10_4.Schematic_SF+_T10_4_C
+      - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T10/Schematic_SF+_T10_5.Schematic_SF+_T10_5_C
+    properties:
+      - path: mUnlocks
+        op: clear
+      - path: mCost
+        op: clear
+      - path: mSchematicDependencies
+        op: clear
+      - path: mType
+        value: EST_Custom

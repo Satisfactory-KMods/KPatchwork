@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /Game/FactoryGame/Recipes/Packager/Recipe_PackagedSulfuricAcid.Recipe_PackagedSulfuricAcid_C
+    properties:
+      - path: mProducedIn
+        value:
+          - /AB_FluidExtras/FluidPacker/Build_AB_FluidPacker.Build_AB_FluidPacker_C
+          - /Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C

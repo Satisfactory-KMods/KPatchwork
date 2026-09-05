@@ -1,0 +1,6 @@
+type: schematic
+schematics:
+  - class: /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_PipelineFloorHole.ResourceSink_PipelineFloorHole_C
+    register: true
+  - class: /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_PipelineWallAttachments.ResourceSink_PipelineWallAttachments_C
+    register: true

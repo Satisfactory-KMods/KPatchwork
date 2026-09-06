@@ -1,0 +1,11 @@
+ref: SGPaintedMetalRoofSFPlus
+name: Painted Metal Roof SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Painted Metal Roof with SatisfactoryPlus.
+contributer: SerGreen
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - SGPaintedMetalRoof

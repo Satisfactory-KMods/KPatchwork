@@ -1,0 +1,14 @@
+type: cdo
+patches:
+  - target: /SGPaintedMetalRoof/MaterialDefinition/ResourceSink_Customizer_PaintedSteelRoofMaterial.ResourceSink_Customizer_PaintedSteelRoofMaterial_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_Roofs_Basic.ResourceSink_Roofs_Basic_C
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T3/Schematic_SF+_T3_4.Schematic_SF+_T3_4_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true

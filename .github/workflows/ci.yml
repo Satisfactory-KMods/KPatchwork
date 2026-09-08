@@ -13,16 +13,15 @@ concurrency:
 
 permissions:
   contents: read
-  issues: write
-  pull-requests: write
-  checks: write
+  pull-requests: read
 
 jobs:
   validate-package:
     name: Lint packs and package project
-    runs-on: arc-runner-set
+    runs-on: ${{ github.event_name == 'pull_request_target' && 'ubuntu-latest' || 'arc-runner-set' }}
     outputs:
       eligible: ${{ steps.policy.outputs.eligible }}
+      reason: ${{ steps.policy.outputs.reason }}
       release: ${{ steps.release-gate.outputs.release }}
       release-base: ${{ steps.release-gate.outputs.base }}
       version: ${{ steps.release-version.outputs.version }}
@@ -30,7 +29,7 @@ jobs:
       - name: Checkout trusted CI code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && github.ref || github.event.repository.default_branch }}
+          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || github.sha }}
           path: ci-repo
           fetch-depth: 0
           persist-credentials: false
@@ -44,6 +43,19 @@ jobs:
           path: pr-repo
           fetch-depth: 0
           persist-credentials: false
+          allow-unsafe-pr-checkout: true
+
+      - name: Reject links in pull request contents
+        if: github.event_name == 'pull_request_target'
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import subprocess
+
+          entries = subprocess.check_output(["git", "-C", "pr-repo", "ls-files", "--stage", "-z"])
+          if any(entry.startswith((b"120000 ", b"160000 ")) for entry in entries.split(b"\0")):
+              raise SystemExit("Pull request contents must not contain symlinks or submodules.")
+          PY
 
       - name: Select source tree
         shell: bash
@@ -58,6 +70,7 @@ jobs:
         uses: astral-sh/setup-uv@v5
         with:
           version: latest
+          enable-cache: ${{ github.event_name != 'pull_request_target' }}
 
       - name: Sync CI dependencies
         run: uv sync --locked --project ci-repo
@@ -81,58 +94,19 @@ jobs:
       - name: Check contributor ownership
         id: policy
         if: github.event_name == 'pull_request_target'
+        env:
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: |
+          git -C "$SOURCE" fetch --no-tags ../ci-repo "$PR_BASE"
           uv run --project ci-repo --locked ci-repo/ci/changed_pack_policy.py \
-            --base "${{ github.event.pull_request.base.sha }}" \
-            --head "${{ github.event.pull_request.head.sha }}" \
-            --author "${{ github.event.pull_request.user.login }}" \
+            --base "$PR_BASE" \
+            --head "$PR_HEAD" \
+            --author "$PR_AUTHOR" \
             --root "$SOURCE" \
             --repo "$SOURCE"
         shell: bash
-
-      - name: Comment on auto-merge ineligibility
-        if: github.event_name == 'pull_request_target' && steps.policy.outputs.eligible == 'false'
-        uses: actions/github-script@v7
-        env:
-          REASON: ${{ steps.policy.outputs.reason }}
-        with:
-          github-token: ${{ github.token }}
-          script: |
-            const marker = '<!-- kpatchwork-auto-merge-status -->';
-            const reason = (process.env.REASON || 'No policy reason was emitted.').replace(/```/g, "'''");
-            const body = `${marker}
-            ## Auto-merge is not enabled
-
-            This pull request requires maintainer review and will not be auto-merged.
-
-            **Reason**
-            \`\`\`text
-            ${reason}
-            \`\`\``;
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              per_page: 100,
-            });
-            const existing = comments.find((comment) =>
-              comment.user.login === 'github-actions[bot]' && comment.body.includes(marker),
-            );
-            if (existing) {
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: existing.id,
-                body,
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.issue.number,
-                body,
-              });
-            }
 
       - name: Create KPatchwork ZIP
         run: uv run --project ci-repo --locked ci-repo/ci/package_project.py --root "$SOURCE" --output "$GITHUB_WORKSPACE/KPatchwork.zip"
@@ -364,6 +338,59 @@ jobs:
           CHANGELOG="$(<release/CHANGELOG.md)"
           test -n "$CHANGELOG"
           "$RUNNER_TEMP/ficsit" smr upload --api-key "$FICSIT_TOKEN" --stability release "$FICSIT_MOD_ID" release/KPatchwork.zip "$CHANGELOG"
+
+  report-pack-policy:
+    name: Report contributor ownership
+    needs: validate-package
+    if: >-
+      always() && github.event_name == 'pull_request_target' &&
+      needs.validate-package.outputs.eligible == 'false'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Comment on auto-merge ineligibility
+        uses: actions/github-script@v7
+        env:
+          REASON: ${{ needs.validate-package.outputs.reason }}
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            const marker = '<!-- kpatchwork-auto-merge-status -->';
+            const reason = (process.env.REASON || 'No policy reason was emitted.').replace(/```/g, "'''");
+            const body = `${marker}
+            ## Auto-merge is not enabled
+
+            This pull request requires maintainer review and will not be auto-merged.
+
+            **Reason**
+            \`\`\`text
+            ${reason}
+            \`\`\``;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) =>
+              comment.user.login === 'github-actions[bot]' && comment.body.includes(marker),
+            );
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
 
   auto-merge-owned-packs:
     name: Merge author-owned packs

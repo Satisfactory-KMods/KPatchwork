@@ -1,0 +1,33 @@
+type: cdo
+patches:
+  - target:
+      - /Architecture05/Ficsit/Roof_Ficsit_Flat_8x8_V2/Recipe_Roof_Ficsit_Flat_8x8_V2.Recipe_Roof_Ficsit_Flat_8x8_V2_C
+      - /Architecture05/Roofs/Roof_Window_4x4x2/Recipe_Roof_Window_4x4x2.Recipe_Roof_Window_4x4x2_C
+      - /Architecture05/Roofs/Roof_Window_4x4x2_V2/Recipe_Roof_Window_4x4x2_V2.Recipe_Roof_Window_4x4x2_V2_C
+      - /Architecture05/Roofs/Roof_Window_4x8x4/Recipe_Roof_Window_4x8x4.Recipe_Roof_Window_4x8x4_C
+      - /Architecture05/Roofs/Roof_Window_4x8x4_V2/Recipe_Roof_Window_4x8x4_V2.Recipe_Roof_Window_4x8x4_V2_C
+      - /Architecture05/Roofs/Roof_Window_8x4x2/Recipe_Roof_Window_8x4x2.Recipe_Roof_Window_8x4x2_C
+      - /Architecture05/Roofs/Roof_Window_8x4x2_V2/Recipe_Roof_Window_8x4x2_V2.Recipe_Roof_Window_8x4x2_V2_C
+      - /Architecture05/Roofs/Roof_Window_8x8x4_V2/Recipe_Roof_Window_8x8x4_V2.Recipe_Roof_Window_8x8x4_V2_C
+      - /Architecture05/Roofs/Roof_Window_Curved_4m_In/Recipe_Roof_Window_Curved_4m_In.Recipe_Roof_Window_Curved_4m_In_C
+      - /Architecture05/Roofs/Roof_Window_Curved_4m_In_V2/Recipe_Roof_Window_Curved_4m_In_V2.Recipe_Roof_Window_Curved_4m_In_V2_C
+      - /Architecture05/Roofs/Roof_Window_Curved_4m_In_V3/Recipe_Roof_Window_Curved_4m_In_V3.Recipe_Roof_Window_Curved_4m_In_V3_C
+      - /Architecture05/Roofs/Roof_Window_Curved_4m_Out/Recipe_Roof_Window_Curved_4m_Out.Recipe_Roof_Window_Curved_4m_Out_C
+      - /Architecture05/Roofs/Roof_Window_Curved_4m_Out_V2/Recipe_Roof_Window_Curved_4m_Out_V2.Recipe_Roof_Window_Curved_4m_Out_V2_C
+      - /Architecture05/Roofs/Roof_Window_Curved_Flat_4m_OutCorner_V2/Recipe_Roof_Window_Curved_Flat_4m_OutCorner_V2.Recipe_Roof_Window_Curved_Flat_4m_OutCorner_V2_C
+      - /Architecture05/Roofs/Roof_Window_Curved_InCorner_4x4/Recipe_Roof_Window_Curved_InCorner_4x4.Recipe_Roof_Window_Curved_InCorner_4x4_C
+      - /Architecture05/Roofs/Roof_Window_Flat_4x4_V2/Recipe_Roof_Window_Flat_4x4_V2.Recipe_Roof_Window_Flat_4x4_V2_C
+      - /Architecture05/Roofs/Roof_Window_Flat_4x4m/Recipe_Roof_Window_Flat_4x4m.Recipe_Roof_Window_Flat_4x4m_C
+      - /Architecture05/Roofs/Roof_Window_Flat_4x8/Recipe_Roof_Window_Flat_4x8.Recipe_Roof_Window_Flat_4x8_C
+      - /Architecture05/Roofs/Roof_Window_Flat_8x4/Recipe_Roof_Window_Flat_8x4.Recipe_Roof_Window_Flat_8x4_C
+      - /Architecture05/Roofs/Roof_Window_Flat_8x4_V2/Recipe_Roof_Window_Flat_8x4_V2.Recipe_Roof_Window_Flat_8x4_V2_C
+      - /Architecture05/Roofs/Roof_Window_Flat_8x8_V2/Recipe_Roof_Window_Flat_8x8_V2.Recipe_Roof_Window_Flat_8x8_V2_C
+      - /Architecture05/Roofs/Roof_Window_Flat_CornerInner_V2/Recipe_Roof_Window_Flat_CornerInner_V2.Recipe_Roof_Window_Flat_CornerInner_V2_C
+      - /Architecture05/Roofs/Roof_Window_InCorner_4x4/Recipe_Roof_Window_InCorner_4x4.Recipe_Roof_Window_InCorner_4x4_C
+      - /Architecture05/Roofs/Roof_Window_OutCorner_4x4/Recipe_Roof_Window_OutCorner_4x4.Recipe_Roof_Window_OutCorner_4x4_C
+      - /Architecture05/Roofs/Roof_Window_OutCorner_4x4_V2/Recipe_Roof_Window_OutCorner_4x4_V2.Recipe_Roof_Window_OutCorner_4x4_V2_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 3

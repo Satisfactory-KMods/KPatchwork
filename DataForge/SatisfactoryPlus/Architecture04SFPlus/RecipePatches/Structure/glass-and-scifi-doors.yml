@@ -1,0 +1,20 @@
+type: cdo
+patches:
+  - target:
+      - /Architecture04/Glass_Doors/Double_Glass_Door/Recipe_Double_Sliding_GlassDoor.Recipe_Double_Sliding_GlassDoor_C
+      - /Architecture04/Glass_Doors/Frameless_Windows_Doors/Frameless_Windows_Door_4x4/Recipe_Frameless_Windows_Door_4x4.Recipe_Frameless_Windows_Door_4x4_C
+      - /Architecture04/Glass_Doors/Frameless_Windows_Doors/Frameless_Windows_Door_8x4_C/Recipe_Frameless_Windows_Door_8x4_C.Recipe_Frameless_Windows_Door_8x4_C_C
+      - /Architecture04/Glass_Doors/Frameless_Windows_Doors/Frameless_Windows_Door_8x4_S/Recipe_Frameless_Windows_Door_8x4_S.Recipe_Frameless_Windows_Door_8x4_S_C
+      - /Architecture04/Glass_Doors/Full_Frame_Window_Doors/Full_Frame_Window_Door_4x4/Recipe_Full_Frame_Window_Door_4x4.Recipe_Full_Frame_Window_Door_4x4_C
+      - /Architecture04/Glass_Doors/Full_Frame_Window_Doors/Full_Frame_Window_Door_8x4_C/Recipe_Full_Frame_Window_Door_8Mx4_C.Recipe_Full_Frame_Window_Door_8Mx4_C_C
+      - /Architecture04/Glass_Doors/Full_Frame_Window_Doors/Full_Frame_Window_Door_8x4_S/Recipe_Full_Frame_Window_Door_8x4_S.Recipe_Full_Frame_Window_Door_8x4_S_C
+      - /Architecture04/Scifi_Door_01/Recipe_Scifi_Door_01.Recipe_Scifi_Door_01_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 3
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 2

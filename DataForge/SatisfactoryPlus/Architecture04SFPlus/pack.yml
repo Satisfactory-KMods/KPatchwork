@@ -1,0 +1,12 @@
+ref: Architecture04SFPlus
+name: Architecture + 04 SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Architecture + 04 with SatisfactoryPlus by converting all door and wall construction
+  recipes to tier-appropriate SatisfactoryPlus materials and aligning its milestone with tier 1.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - Architecture04

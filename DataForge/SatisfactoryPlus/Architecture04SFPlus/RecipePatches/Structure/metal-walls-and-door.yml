@@ -1,0 +1,21 @@
+type: cdo
+patches:
+  - target:
+      - /Architecture04/Vanilla_Doors/Basic_Door/Recipe_BasicDoor.Recipe_BasicDoor_C
+      - /Architecture04/Vanilla_Doors/Walls/Center_4x4/Ficsit/Recipe_Wall_Door_Ficsit_4x4.Recipe_Wall_Door_Ficsit_4x4_C
+      - /Architecture04/Vanilla_Doors/Walls/Center_4x4/Steel/Recipe_Wall_Door_Steel_4x4.Recipe_Wall_Door_Steel_4x4_C
+      - /Architecture04/Vanilla_Doors/Walls/Center_8x4/Ficsit/Recipe_Wall_CDoor_Ficsit_8x4.Recipe_Wall_CDoor_Ficsit_8x4_C
+      - /Architecture04/Vanilla_Doors/Walls/Center_8x4/Steel/Recipe_Wall_CDoor_Steel_8x4.Recipe_Wall_CDoor_Steel_8x4_C
+      - /Architecture04/Vanilla_Doors/Walls/Side_8x4/Ficsit/Recipe_Wall_SDoor_Ficsit_8x4.Recipe_Wall_SDoor_Ficsit_8x4_C
+      - /Architecture04/Vanilla_Doors/Walls/Side_8x4/Steel/Recipe_Wall_SDoor_Steel_8x4.Recipe_Wall_SDoor_Steel_8x4_C
+      - /Architecture04/Scifi_Door_01/Wall_4M/Ficsit/Recipe_Wall_Door_Scifi-01_4M_Ficsit.Recipe_Wall_Door_Scifi-01_4M_Ficsit_C
+      - /Architecture04/Scifi_Door_01/Wall_4M/Steel/Recipe_Wall_Door_Scifi-01_4M_Steel.Recipe_Wall_Door_Scifi-01_4M_Steel_C
+      - /Architecture04/Scifi_Door_01/Wall_8M/Ficsit/Recipe_Wall_Door_Scifi-01_8M_Ficsit.Recipe_Wall_Door_Scifi-01_8M_Ficsit_C
+      - /Architecture04/Scifi_Door_01/Wall_8M/Steel/Recipe_Wall_Door_Scifi-01_8M_Steel.Recipe_Wall_Door_Scifi-01_8M_Steel_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2

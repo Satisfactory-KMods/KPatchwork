@@ -1,0 +1,18 @@
+type: cdo
+patches:
+  - target: /Architecture04/Vanilla_Doors/Garage_8x8/Concrete/Recipe_GarageDoor_8x8_Concrete.Recipe_GarageDoor_8x8_Concrete_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 8
+  - target:
+      - /Architecture04/Vanilla_Doors/Garage_8x8/Ficsit/Recipe_GarageDoor_8x8_Ficsit.Recipe_GarageDoor_8x8_Ficsit_C
+      - /Architecture04/Vanilla_Doors/Garage_8x8/Steel/Recipe_GarageDoor_8x8_Steel.Recipe_GarageDoor_8x8_Steel_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 8
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 8

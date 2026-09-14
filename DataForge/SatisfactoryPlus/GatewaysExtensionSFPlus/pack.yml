@@ -1,6 +1,6 @@
 ref: GatewaysExtensionSFPlus
 name: Gateways Extension SatisfactoryPlus Patch
-version: 1.0.0
+version: 1.1.0
 description: >-
   Integrates Gateways Extension with SatisfactoryPlus by rebalancing every catwalk, walkway, and
   corner-foundation recipe around SatisfactoryPlus materials, restoring omitted recipe unlocks,

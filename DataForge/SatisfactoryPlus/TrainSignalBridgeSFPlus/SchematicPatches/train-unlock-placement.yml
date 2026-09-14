@@ -1,0 +1,12 @@
+type: schematic
+schematics:
+  - class: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_6.Schematic_SF+_T5_6_C
+    register: false
+    recipes:
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_Beam.Recipe_SignalBridge_Beam_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_PathSignal.Recipe_SignalBridge_PathSignal_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_Pillar.Recipe_SignalBridge_Pillar_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_BlockSignal.Recipe_SignalBridge_BlockSignal_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_2m.Recipe_SignalBridge_2m_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_2m_NoRailing.Recipe_SignalBridge_2m_NoRailing_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_2m_OneRailing.Recipe_SignalBridge_2m_OneRailing_C

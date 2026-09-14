@@ -1,0 +1,52 @@
+type: cdo
+patches:
+  - target:
+      - /SmallTrainStation/Rec_SmallDocking.Rec_SmallDocking_C
+      - /SmallTrainStation/Rec_SmallDockingLiq.Rec_SmallDockingLiq_C
+      - /SmallTrainStation/Rec_SmallDockingLiqUnderground.Rec_SmallDockingLiqUnderground_C
+      - /SmallTrainStation/Rec_SmallDockingLiq_2.Rec_SmallDockingLiq_2_C
+      - /SmallTrainStation/Rec_SmallDockingLiq_3.Rec_SmallDockingLiq_3_C
+      - /SmallTrainStation/Rec_SmallDockingUnderground.Rec_SmallDockingUnderground_C
+      - /SmallTrainStation/Rec_SmallDocking_2.Rec_SmallDocking_2_C
+      - /SmallTrainStation/Rec_SmallDocking_3.Rec_SmallDocking_3_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 30
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 50
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 15
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 60
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 50
+
+  - target: /SmallTrainStation/Rec_SmallEmptyPlatform.Rec_SmallEmptyPlatform_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 25
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 50
+
+  - target: /SmallTrainStation/Rec_SmallStation.Rec_SmallStation_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 20
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 20
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 40

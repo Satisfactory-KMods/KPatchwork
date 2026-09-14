@@ -10,3 +10,4 @@ conditions:
   hasMod:
     - SatisfactoryPlus
     - PneumaticFrackingMachine
+priority: 10000

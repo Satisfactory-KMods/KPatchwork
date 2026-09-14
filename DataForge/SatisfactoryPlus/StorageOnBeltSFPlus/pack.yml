@@ -1,0 +1,13 @@
+ref: StorageOnBeltSFPlus
+name: Storage On Belt SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Storage On Belt with SatisfactoryPlus by replacing its construction recipe with
+  early-game SF+/KLib materials and placing its milestone in the matching logistics tier.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - StorageOnBelt
+priority: 10000

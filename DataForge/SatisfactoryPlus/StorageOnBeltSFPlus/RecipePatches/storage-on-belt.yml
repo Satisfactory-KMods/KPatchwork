@@ -1,0 +1,12 @@
+type: cdo
+patches:
+  - target: /StorageOnBelt/SOB_Recipe.SOB_Recipe_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4

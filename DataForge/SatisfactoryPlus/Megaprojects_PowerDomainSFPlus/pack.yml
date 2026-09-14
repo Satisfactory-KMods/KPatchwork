@@ -1,0 +1,13 @@
+ref: Megaprojects_PowerDomainSFPlus
+name: Megaprojects Power Domain SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Megaprojects: Power Domain with SatisfactoryPlus by rebalancing its Power Satellite
+  construction recipe and aligning the project milestone with SF+ tier 4 materials.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - Megaprojects_PowerDomain
+priority: 10000

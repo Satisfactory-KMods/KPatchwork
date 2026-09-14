@@ -1,0 +1,18 @@
+type: cdo
+patches:
+  - target: /Megaprojects_PowerDomain/Schematics/Schematic_PowerDomain.Schematic_PowerDomain_C
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 4
+      - path: mCost
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 2500
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlateReinforced/Desc_SteelPlateReinforced.Desc_SteelPlateReinforced_C
+            Amount: 200
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_2.Desc_SpaceElevatorPart_2_C
+            Amount: 100
+      - path: mSchematicDependencies
+        value: []

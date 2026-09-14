@@ -1,0 +1,12 @@
+ref: Architecture03SFPlus
+name: Architecture + 03 SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Architecture + 03 with SatisfactoryPlus by converting all Oeil-de-Boeuf window
+  construction recipes to SatisfactoryPlus materials and aligning its milestone with tier 1.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - Architecture03

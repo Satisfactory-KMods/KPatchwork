@@ -1,0 +1,45 @@
+type: cdo
+patches:
+  - target:
+      - /Architecture03/OdB_FX_4x4/Recipe_OdB_FX_4x4.Recipe_OdB_FX_4x4_C
+      - /Architecture03/OdB_FX_8x4/Recipe_OdB_FX_8x4.Recipe_OdB_FX_8x4_C
+      - /Architecture03/OdB_FX_Corner/Recipe_OdB_FX_Corner.Recipe_OdB_FX_Corner_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Frame/Concrete/Recipe_OdB_Frame_4x4_Concrete.Recipe_OdB_Frame_4x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Frame/Ficsit/Recipe_OdB_Frame_4x4_Ficsit.Recipe_OdB_Frame_4x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Frame/Steel/Recipe_OdB_Frame_4x4_Steel.Recipe_OdB_Frame_4x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/FullFrame/Concrete/Recipe_OdB_FullFrame_4x4_Concrete.Recipe_OdB_FullFrame_4x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/FullFrame/Ficsit/Recipe_OdB_FullFrame_4x4_Ficsit.Recipe_OdB_FullFrame_4x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/FullFrame/Steel/Recipe_OdB_FullFrame_4x4_Steel.Recipe_OdB_FullFrame_4x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/HexFrame/Concrete/Recipe_OdB_HexFrame_4x4_Concrete.Recipe_OdB_HexFrame_4x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/HexFrame/Ficsit/Recipe_OdB_HexFrame_4x4_Ficsit.Recipe_OdB_HexFrame_4x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/HexFrame/Steel/Recipe_OdB_HexFrame_4x4_Steel.Recipe_OdB_HexFrame_4x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Honey/Concrete/Recipe_OdB_Honey_4x4_Concrete.Recipe_OdB_Honey_4x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Honey/Ficsit/Recipe_OdB_Honey_4x4_Ficsit.Recipe_OdB_Honey_4x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Honey/Steel/Recipe_OdB_Honey_4x4_Steel.Recipe_OdB_Honey_4x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Panel/Concrete/Recipe_OdB_Panel_4x4_Concrete.Recipe_OdB_Panel_4x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Panel/Ficsit/Recipe_OdB_Panel_4x4_Ficsit.Recipe_OdB_Panel_4x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_4x4/Panel/Steel/Recipe_OdB_Panel_4x4_Steel.Recipe_OdB_Panel_4x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Frame/Concrete/Recipe_OdB_Frame_8x4_Concrete.Recipe_OdB_Frame_8x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Frame/Ficsit/Recipe_OdB_Frame_8x4_Ficsit.Recipe_OdB_Frame_8x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Frame/Steel/Recipe_OdB_Frame_8x4_Steel.Recipe_OdB_Frame_8x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/FullFrame/Concrete/Recipe_OdB_FullFrame_8x4_Concrete.Recipe_OdB_FullFrame_8x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/FullFrame/Ficsit/Recipe_OdB_FullFrame_8x4_Ficsit.Recipe_OdB_FullFrame_8x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/FullFrame/Steel/Recipe_OdB_FullFrame_8x4_Steel.Recipe_OdB_FullFrame_8x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/HexFrame/Concrete/Recipe_OdB_HexFrame_8x4_Concrete.Recipe_OdB_HexFrame_8x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/HexFrame/Ficsit/Recipe_OdB_HexFrame_8x4_Ficsit.Recipe_OdB_HexFrame_8x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/HexFrame/Steel/Recipe_OdB_HexFrame_8x4_Steel.Recipe_OdB_HexFrame_8x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Honey/Concrete/Recipe_OdB_Honey_8x4_Concrete.Recipe_OdB_Honey_8x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Honey/Ficsit/Recipe_OdB_Honey_8x4_Ficsit.Recipe_OdB_Honey_8x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Honey/Steel/Recipe_OdB_Honey_8x4_Steel.Recipe_OdB_Honey_8x4_Steel_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Panel/Concrete/Recipe_OdB_Panel_8x4_Concrete.Recipe_OdB_Panel_8x4_Concrete_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Panel/Ficsit/Recipe_OdB_Panel_8x4_Ficsit.Recipe_OdB_Panel_8x4_Ficsit_C
+      - /Architecture03/Oeil-De-Boeuf_8x4/Panel/Steel/Recipe_OdB_Panel_8x4_Steel.Recipe_OdB_Panel_8x4_Steel_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 3
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 2

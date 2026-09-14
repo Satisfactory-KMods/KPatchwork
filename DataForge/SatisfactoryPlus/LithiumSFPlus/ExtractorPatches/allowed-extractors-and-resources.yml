@@ -5,8 +5,11 @@ patches:
       - path: mAllowedExtractors
         op: append
         value:
+          - /AlkaLib/Buildables/ReactiveOreExtractor/Mk1/Build_ReactiveOreExtractorMk1.Build_ReactiveOreExtractorMk1_C
           - /AlkaLib/Buildables/ReactiveOreExtractor/Mk2/Build_ReactiveOreExtractorMk2.Build_ReactiveOreExtractorMk2_C
+          - /AlkaLib/Buildables/ReactiveOreExtractor/Mk3/Build_ReactiveOreExtractorMk3.Build_ReactiveOreExtractorMk3_C
       - path: mAllowedResources
         op: append
         value:
+          - /Lithium/Resources/Lithium/Desc_Lithium.Desc_Lithium_C
           - /Lithium/Resources/Lithium/Desc_OreLithium.Desc_OreLithium_C

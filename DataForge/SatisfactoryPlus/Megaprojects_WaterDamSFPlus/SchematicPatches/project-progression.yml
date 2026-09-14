@@ -1,0 +1,63 @@
+type: cdo
+patches:
+  - target: /Megaprojects_WaterDam/Schematics/Schematic_WaterDams.Schematic_WaterDams_C
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 3
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 1500
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 500
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 400
+          - ItemClass: /KLib/Assets/Parts/Production/WaterBlade/Desc_FanBlade.Desc_FanBlade_C
+            Amount: 250
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrame/Desc_ModularFrame.Desc_ModularFrame_C
+            Amount: 100
+      - path: mSchematicDependencies
+        value: []
+
+  - target: /Megaprojects_WaterDam/Schematics/Schematic_WaterDamA_Phase1.Schematic_WaterDamA_Phase1_C
+    properties:
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 5000
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 1000
+          - ItemClass: /KLib/Assets/Parts/Production/WaterBlade/Desc_FanBlade.Desc_FanBlade_C
+            Amount: 500
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrame/Desc_ModularFrame.Desc_ModularFrame_C
+            Amount: 250
+
+  - target: /Megaprojects_WaterDam/Schematics/Schematic_WaterDamB_Phase1.Schematic_WaterDamB_Phase1_C
+    properties:
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 25000
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 5000
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_4.Desc_SpaceElevatorPart_4_C
+            Amount: 1500
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 1000
+
+  - target: /Megaprojects_WaterDam/Schematics/Schematic_WaterDamC_Phase1.Schematic_WaterDamC_Phase1_C
+    properties:
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 500000
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_1.Desc_SpaceElevatorPart_1_C
+            Amount: 10000
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ElectromagneticControlRod/Desc_ElectromagneticControlRod.Desc_ElectromagneticControlRod_C
+            Amount: 2500
+          - ItemClass: /Game/FactoryGame/Resource/Parts/MotorLightweight/Desc_MotorLightweight.Desc_MotorLightweight_C
+            Amount: 2000
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Frames/TitaniumModularFrame/Desc_TitanModularFrame.Desc_TitanModularFrame_C
+            Amount: 1000

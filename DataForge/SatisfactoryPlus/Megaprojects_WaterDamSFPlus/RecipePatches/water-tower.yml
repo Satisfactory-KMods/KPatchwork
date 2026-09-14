@@ -1,0 +1,12 @@
+type: cdo
+patches:
+  - target: /Megaprojects_WaterDam/Buildables/WaterTower/Recipe_WaterTower.Recipe_WaterTower_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 500
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 200
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrame/Desc_ModularFrame.Desc_ModularFrame_C
+            Amount: 100

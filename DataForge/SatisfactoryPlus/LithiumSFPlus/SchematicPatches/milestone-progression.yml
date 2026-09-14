@@ -1,0 +1,81 @@
+type: cdo
+patches:
+  - target: /Lithium/Schematics/Milestones/Schematic_6-Li.Schematic_6-Li_C
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 6
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Plastic/Desc_Plastic.Desc_Plastic_C
+            Amount: 200
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Rubber/Desc_Rubber.Desc_Rubber_C
+            Amount: 200
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Turbofuel/Desc_TurboFuel.Desc_TurboFuel_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_InvarPipe.Desc_InvarPipe_C
+            Amount: 200
+      - path: mSchematicDependencies
+        value: []
+
+  - target: /Lithium/Schematics/Milestones/Schematic_7-Li.Schematic_7-Li_C
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 7
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Silica/Desc_Silica.Desc_Silica_C
+            Amount: 500
+          - ItemClass: /Lithium/Resources/PetrolEther/Desc_PetrolEther.Desc_PetrolEther_C
+            Amount: 200
+          - ItemClass: /Game/FactoryGame/Resource/Parts/AluminumIngot/Desc_AluminumIngot.Desc_AluminumIngot_C
+            Amount: 100
+          - ItemClass: /KLib/Assets/Parts/Production/Powder/Desc_MagnesiumGranules.Desc_MagnesiumGranules_C
+            Amount: 200
+      - path: mSchematicDependencies
+        value: []
+
+  - target: /Lithium/Schematics/Milestones/Schematic_8-Li.Schematic_8-Li_C
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 8
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Battery/Desc_Battery.Desc_Battery_C
+            Amount: 400
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_LeadSheet.Desc_LeadSheet_C
+            Amount: 400
+          - ItemClass: /Lithium/Resources/Ceramics/Desc_Ceramics.Desc_Ceramics_C
+            Amount: 200
+          - ItemClass: /Lithium/Resources/Li_ModularFrameLightweight/Desc_Li_ModularFrameLightweight.Desc_Li_ModularFrameLightweight_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ElectromagneticControlRod/Desc_ElectromagneticControlRod.Desc_ElectromagneticControlRod_C
+            Amount: 100
+      - path: mSchematicDependencies
+        value: []
+
+  - target: /Lithium/Schematics/Milestones/Schematic_9-Li.Schematic_9-Li_C
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 9
+      - path: mCost
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Frames/TitaniumModularFrame/Desc_TitanModularFrame.Desc_TitanModularFrame_C
+            Amount: 100
+          - ItemClass: /Lithium/Resources/Ceramics/Desc_Ceramics.Desc_Ceramics_C
+            Amount: 400
+          - ItemClass: /Game/FactoryGame/Resource/Parts/FicsiteMesh/Desc_FicsiteMesh.Desc_FicsiteMesh_C
+            Amount: 400
+          - ItemClass: /Game/FactoryGame/Resource/Parts/TimeCrystal/Desc_TimeCrystal.Desc_TimeCrystal_C
+            Amount: 200
+          - ItemClass: /Lithium/Resources/LithiumBattery/Desc_LithiumBattery.Desc_LithiumBattery_C
+            Amount: 200
+      - path: mSchematicDependencies
+        value: []

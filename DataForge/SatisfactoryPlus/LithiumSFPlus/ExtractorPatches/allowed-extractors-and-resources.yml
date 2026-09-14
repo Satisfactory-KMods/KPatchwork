@@ -1,0 +1,12 @@
+type: cdo
+patches:
+  - target: /SatisfactoryPlus/AssetDatas/Modules/PDA_SFP_ExtractorList.PDA_SFP_ExtractorList
+    properties:
+      - path: mAllowedExtractors
+        op: append
+        value:
+          - /AlkaLib/Buildables/ReactiveOreExtractor/Mk2/Build_ReactiveOreExtractorMk2.Build_ReactiveOreExtractorMk2_C
+      - path: mAllowedResources
+        op: append
+        value:
+          - /Lithium/Resources/Lithium/Desc_OreLithium.Desc_OreLithium_C

@@ -1,0 +1,12 @@
+type: cdo
+patches:
+  - target: /Lithium/Recipes/T8/Alternate/Recipe_Alternate_CeramicCoolingSystem.Recipe_Alternate_CeramicCoolingSystem_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/AluminumPlateReinforced/Desc_AluminumPlateReinforced.Desc_AluminumPlateReinforced_C
+            Amount: 4
+          - ItemClass: /Lithium/Resources/Ceramics/Desc_Ceramics.Desc_Ceramics_C
+            Amount: 16
+          - ItemClass: /KLib/Assets/Parts/Production/CateriumHeatsink/Desc_CateriumHeatsink.Desc_CateriumHeatsink_C
+            Amount: 15

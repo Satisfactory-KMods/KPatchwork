@@ -1,0 +1,25 @@
+type: cdo
+patches:
+  - target: /Lithium/Recipes/T9/Alternate/Recipe_Alternate_SuperlightModularFrame.Recipe_Alternate_SuperlightModularFrame_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrame/Desc_ModularFrame.Desc_ModularFrame_C
+            Amount: 1
+          - ItemClass: /Lithium/Resources/GrapheneRod/Desc_GrapheneRod.Desc_GrapheneRod_C
+            Amount: 6
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 125
+
+  - target: /Lithium/Recipes/T9/Recipe_QuantumChip.Recipe_QuantumChip_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/TimeCrystal/Desc_TimeCrystal.Desc_TimeCrystal_C
+            Amount: 2
+          - ItemClass: /Lithium/Resources/Li_AluminumPlateReinforced/Desc_Li_AluminumPlateReinforced.Desc_Li_AluminumPlateReinforced_C
+            Amount: 1
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Frames/TitaniumModularFrame/Desc_TitanModularFrame.Desc_TitanModularFrame_C
+            Amount: 1
+          - ItemClass: /Game/FactoryGame/Resource/Parts/QuantumEnergy/Desc_QuantumEnergy.Desc_QuantumEnergy_C
+            Amount: 25000

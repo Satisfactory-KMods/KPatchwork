@@ -1,0 +1,14 @@
+type: cdo
+patches:
+  - target: /SpiralStairs/GlassFondation/Recipe_QuarterPipeMiddleInCorner_Glass_8x1.Recipe_QuarterPipeMiddleInCorner_Glass_8x1_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 3
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 3

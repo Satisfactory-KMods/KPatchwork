@@ -1,0 +1,17 @@
+type: schematic
+schematics:
+  - class: /SpiralStairs/Schematic_Catwalk_SpiralStairs.Schematic_Catwalk_SpiralStairs_C
+    register: false
+    properties:
+      - path: mTechTier
+        value: 2
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+    dependencies:
+      - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+        properties:
+          - path: mSchematics
+            value:
+              - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_2.Schematic_SF+_T2_2_C
+          - path: mRequireAllSchematicsToBePurchased
+            value: true

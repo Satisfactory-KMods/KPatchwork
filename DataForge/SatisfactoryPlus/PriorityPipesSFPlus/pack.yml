@@ -1,0 +1,13 @@
+ref: PriorityPipesSFPlus
+name: Pipe Priorities SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Pipe Priorities with SatisfactoryPlus by rebalancing both pipe-router construction
+  recipes and aligning its Tier 5 milestone cost with SF+ fluid-transport materials.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - PriorityPipes
+priority: 10000

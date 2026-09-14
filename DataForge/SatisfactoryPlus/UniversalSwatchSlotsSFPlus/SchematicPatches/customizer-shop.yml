@@ -1,0 +1,13 @@
+type: cdo
+patches:
+  - target: /UniversalSwatchSlots/Swatches/USS_Schematic.USS_Schematic_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T1/Schematic_SF+_T1_1.Schematic_SF+_T1_1_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true

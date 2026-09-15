@@ -1,0 +1,8 @@
+type: cdo
+patches:
+  - target: /LocomotiveBUnits/Schematic_Locomotive_B_Unit.Schematic_Locomotive_B_Unit_C
+    properties:
+      - path: mUnlocks
+        op: clear
+      - path: mType
+        value: EST_Custom

@@ -1,0 +1,6 @@
+type: schematic
+schematics:
+  - class: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_6.Schematic_SF+_T5_6_C
+    register: false
+    recipes:
+      - /LocomotiveBUnits/Blueprints/Recipe_Locomotive_BUnit.Recipe_Locomotive_BUnit_C

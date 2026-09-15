@@ -1,0 +1,18 @@
+type: cdo
+patches:
+  - target:
+      - /LocomotiveBUnits/Recipe_Locomotive_B_Unit.Recipe_Locomotive_B_Unit_C
+      - /LocomotiveBUnits/Blueprints/Recipe_Locomotive_BUnit.Recipe_Locomotive_BUnit_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 5
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 12
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPipe/Desc_SteelPipe.Desc_SteelPipe_C
+            Amount: 25
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 20
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 50

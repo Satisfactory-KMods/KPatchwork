@@ -1,0 +1,13 @@
+ref: LocomotiveBUnitsSFPlus
+name: Locomotives B-Units SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Locomotives B-Units with SatisfactoryPlus by adapting both locomotive construction
+  recipes to SF+ train materials and unlocking the B-Unit with the SF+ train milestone.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - LocomotiveBUnits
+priority: 10000

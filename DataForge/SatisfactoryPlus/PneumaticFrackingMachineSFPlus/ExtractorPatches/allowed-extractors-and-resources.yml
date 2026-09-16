@@ -8,3 +8,7 @@ patches:
           - /PneumaticFrackingMachine/Build_PneuMk1.Build_PneuMk1_C
           - /PneumaticFrackingMachine/Build_PneuMk2.Build_PneuMk2_C
           - /PneumaticFrackingMachine/Build_PneuMk3.Build_PneuMk3_C
+      - path: mAllowedResources
+        op: append
+        value:
+          - /PneumaticFrackingMachine/Desc_AeratedOil.Desc_AeratedOil_C

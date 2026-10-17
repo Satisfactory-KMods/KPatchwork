@@ -1,0 +1,9 @@
+type: cdo
+patches:
+  - target: /Game/FactoryGame/-Shared/Blueprint/BP_BlueprintSusbystem.BP_BlueprintSusbystem_C
+    properties:
+      - path: mBlacklistedDesignerBuildables
+        op: append_unique
+        value:
+          - /KBlueprintDesignPlus/BP_BlueprintDesignerMk4.BP_BlueprintDesignerMk4_C
+          - /KBlueprintDesignPlus/BP_BlueprintDesignerMk5.BP_BlueprintDesignerMk5_C

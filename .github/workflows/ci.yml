@@ -18,7 +18,7 @@ permissions:
 jobs:
   validate-package:
     name: Lint packs and package project
-    runs-on: ${{ github.event_name == 'pull_request_target' && 'ubuntu-latest' || 'arc-runner-set' }}
+    runs-on: ubuntu-latest
     outputs:
       eligible: ${{ steps.policy.outputs.eligible }}
       reason: ${{ steps.policy.outputs.reason }}
@@ -245,7 +245,7 @@ jobs:
     name: "Update Patchwork: Cross-Mod Compatibility Packs ficsit.app page"
     needs: validate-package
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-    runs-on: arc-runner-set
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
@@ -285,7 +285,7 @@ jobs:
     name: Create GitHub release
     needs: validate-package
     if: needs.validate-package.outputs.release == 'true'
-    runs-on: arc-runner-set
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -309,7 +309,7 @@ jobs:
     name: Release with ficsit-CLI
     needs: validate-package
     if: needs.validate-package.outputs.release == 'true'
-    runs-on: arc-runner-set
+    runs-on: ubuntu-latest
     steps:
       - name: Download release artifact
         uses: actions/download-artifact@v4
@@ -396,7 +396,7 @@ jobs:
     name: Merge author-owned packs
     needs: validate-package
     if: github.event_name == 'pull_request_target' && needs.validate-package.outputs.eligible == 'true'
-    runs-on: arc-runner-set
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write

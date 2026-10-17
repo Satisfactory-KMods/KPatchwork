@@ -1,0 +1,10 @@
+type: cdo
+patches:
+  - target:
+      - /AB_CableMod/-Shared/Customization/MaterialRecipe_ABCable-Cu.MaterialRecipe_ABCable-Cu_C
+      - /AB_CableMod/GroundingSpike/Recipe_AB-GroundingSpike.Recipe_AB-GroundingSpike_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 1

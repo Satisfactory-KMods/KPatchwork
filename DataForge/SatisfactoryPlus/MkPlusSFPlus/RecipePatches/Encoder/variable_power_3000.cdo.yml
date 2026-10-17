@@ -1,0 +1,12 @@
+type: cdo
+patches:
+  - target:
+      - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Faxit/Recipes/Recipe_SolidDrive_MK_4.Recipe_SolidDrive_MK_4_C
+      - /SatisfactoryPlus/Content/Recipes/QuantumEncoder/Recipe_Encoder_NeuralQuantumProcessor.Recipe_Encoder_NeuralQuantumProcessor_C
+      - /SatisfactoryPlus/Content/Recipes/QuantumEncoder/Recipe_Encoder_QuantumOscillator.Recipe_Encoder_QuantumOscillator_C
+      - /SatisfactoryPlus/Content/Recipes/QuantumEncoder/Recipe_Encoder_SyntheticPowerShard.Recipe_Encoder_SyntheticPowerShard_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 0.000000
+      - path: mVariablePowerConsumptionFactor
+        value: 3000.000000

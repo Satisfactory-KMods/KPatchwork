@@ -12,6 +12,10 @@ patches:
       - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_2x1_Vanilla.RecipeRSS_2x1_Vanilla_C
       - /RSS/Buildable/Vanilla/Recipes/RecipeRSS_8x4_Vanilla.RecipeRSS_8x4_Vanilla_C
     properties:
+      - path: mDisplayName
+        value: ''
+      - path: mDisplayNameOverride
+        value: false
       - path: mIngredients
         value:
           - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C

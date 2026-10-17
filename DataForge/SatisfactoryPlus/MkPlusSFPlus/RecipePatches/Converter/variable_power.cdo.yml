@@ -1,0 +1,27 @@
+type: cdo
+patches:
+  - target:
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Aurovite_Callanite_5_5.Recipe_Converter_Aurovite_Callanite_5_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Aurovite_Kyalite_5.Recipe_Converter_Aurovite_Kyalite_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Callanite_Larrussite_3.Recipe_Converter_Callanite_Larrussite_3_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Callanite_Sulfur_3_5.Recipe_Converter_Callanite_Sulfur_3_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Chlor_KerrCrystal_11_5.Recipe_Converter_Chlor_KerrCrystal_11_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Chlor_Siterite_11.Recipe_Converter_Chlor_Siterite_11_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Coal_Callanite_2_5.Recipe_Converter_Coal_Callanite_2_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Coal_Siterite_2.Recipe_Converter_Coal_Siterite_2_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_KerrCrystal_8_5.Recipe_Converter_KerrCrystal_8_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Kyalite_Larrussite_4.Recipe_Converter_Kyalite_Larrussite_4_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Kyalite_Montanion_4_5.Recipe_Converter_Kyalite_Montanion_4_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Larrusite_Siterite_1_5.Recipe_Converter_Larrusite_Siterite_1_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Montanion_Aurovite_6.Recipe_Converter_Montanion_Aurovite_6_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Montanion_KerrCrystal_6_5.Recipe_Converter_Montanion_KerrCrystal_6_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Nitrogen_Sulfur_9.Recipe_Converter_Nitrogen_Sulfur_9_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Nitrogen_Uranium_9_5.Recipe_Converter_Nitrogen_Uranium_9_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Sulfur_Coal_8.Recipe_Converter_Sulfur_Coal_8_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Uranium_Aurovite_7_5.Recipe_Converter_Uranium_Aurovite_7_5_C
+      - /SatisfactoryPlus/Content/Recipes/Converter/OreConversion/Recipe_Converter_Uranium_Montanion_7.Recipe_Converter_Uranium_Montanion_7_C
+    properties:
+      - path: mVariablePowerConsumptionConstant
+        value: 100.000000
+      - path: mVariablePowerConsumptionFactor
+        value: 400.000000

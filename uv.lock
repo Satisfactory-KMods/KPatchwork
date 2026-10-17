@@ -41,7 +41,7 @@ wheels = [
 [[package]]
 name = "kdataforge-linter"
 version = "0.1.0"
-source = { git = "https://github.com/Satisfactory-KMods/KDataForge-Linter.git?rev=v2026.3.4#06a79e5e5928c6db17a226a5526061af66af837b" }
+source = { git = "https://github.com/Satisfactory-KMods/KDataForge-Linter.git?rev=d953c4215b101a0e460e721fd790ca387917bd25#d953c4215b101a0e460e721fd790ca387917bd25" }
 dependencies = [
     { name = "jsonschema" },
     { name = "pyyaml" },
@@ -58,7 +58,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "kdataforge-linter", git = "https://github.com/Satisfactory-KMods/KDataForge-Linter.git?rev=v2026.3.4" },
+    { name = "kdataforge-linter", git = "https://github.com/Satisfactory-KMods/KDataForge-Linter.git?rev=d953c4215b101a0e460e721fd790ca387917bd25" },
     { name = "pyyaml", specifier = ">=6.0,<7" },
 ]
 

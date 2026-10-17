@@ -1,0 +1,31 @@
+type: cdo
+patches:
+  - target:
+      - /SmallTrainStation/Routing/Rec_SmallEmptyPlatform.Rec_SmallEmptyPlatform_C
+      - /SmallTrainStation/Rec_SmallEmptyPlatform.Rec_SmallEmptyPlatform_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 25
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 50
+
+  - target:
+      - /SmallTrainStation/Routing/Rec_SmallStation.Rec_SmallStation_C
+      - /SmallTrainStation/Rec_SmallStation.Rec_SmallStation_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 20
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 20
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 40

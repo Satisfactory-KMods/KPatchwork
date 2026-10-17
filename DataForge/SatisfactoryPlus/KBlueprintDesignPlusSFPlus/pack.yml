@@ -1,0 +1,11 @@
+ref: SatisfactoryPlusBlueprintDesignPlus
+name: 'Blueprint Design Plus: SatisfactoryPlus compatibility'
+version: 1.0.0
+description: Prevents Mk4 and Mk5 Blueprint Designers from being placed inside blueprints while playing SatisfactoryPlus.
+contributer: Kyri123
+priority: 101
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - KBlueprintDesignPlus

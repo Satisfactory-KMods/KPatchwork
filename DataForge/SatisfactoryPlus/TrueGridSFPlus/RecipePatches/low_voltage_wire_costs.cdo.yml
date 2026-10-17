@@ -1,0 +1,14 @@
+type: cdo
+patches:
+  - target:
+      - /TrueGrid/Buildables/PowerTransfomers/DOWN/Recipe_TransformerDown_QVHV.Recipe_TransformerDown_QVHV_C
+      - /TrueGrid/Buildables/-Shared/Recipe_TrueGridMachine_Base.Recipe_TrueGridMachine_Base_C
+      - /TrueGrid/Buildables/ForcedFuseBreaker/Recipe_FuseBreaker.Recipe_FuseBreaker_C
+      - /TrueGrid/Buildables/Substation/Recipe_SubstationBase.Recipe_SubstationBase_C
+      - /TrueGrid/Buildables/Substation/SubstationDOWN/Recipe_SubstationProduce.Recipe_SubstationProduce_C
+      - /TrueGrid/Buildables/Substation/SubstationUP/Recipe_SubstationConsume.Recipe_SubstationConsume_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 1

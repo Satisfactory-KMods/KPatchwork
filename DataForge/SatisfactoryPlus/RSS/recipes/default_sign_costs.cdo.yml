@@ -1,0 +1,91 @@
+type: cdo
+patches:
+  - target:
+      - /RSS/Buildable/CeilingSigns/Recipes/Holo/recipe_RSS_holoscreen_1x1_Ceiling.recipe_RSS_holoscreen_1x1_Ceiling_C
+      - /RSS/Buildable/CeilingSigns/Recipes/Holo/recipe_RSS_holoscreen_1x2_Ceiling.recipe_RSS_holoscreen_1x2_Ceiling_C
+      - /RSS/Buildable/CeilingSigns/Recipes/Holo/recipe_RSS_holoscreen_2x1_Ceiling.recipe_RSS_holoscreen_2x1_Ceiling_C
+      - /RSS/Buildable/CeilingSigns/Recipes/Holo/recipe_RSS_holoscreen_7x1_Ceiling.recipe_RSS_holoscreen_7x1_Ceiling_C
+      - /RSS/Buildable/CeilingSigns/Recipes/Recipe_RSS_1x1_Ceiling.Recipe_RSS_1x1_Ceiling_C
+      - /RSS/Buildable/CeilingSigns/Recipes/Recipe_RSS_1x2_Ceiling.Recipe_RSS_1x2_Ceiling_C
+      - /RSS/Buildable/CeilingSigns/Recipes/Recipe_RSS_2x1_Ceiling.Recipe_RSS_2x1_Ceiling_C
+      - /RSS/Buildable/CeilingSigns/Recipes/Recipe_RSS_7x1_Ceiling.Recipe_RSS_7x1_Ceiling_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Holo/Recipe_RSS_1x1_Belt_Holo.Recipe_RSS_1x1_Belt_Holo_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Holo/Recipe_RSS_1x1_Belt_Holo_2.Recipe_RSS_1x1_Belt_Holo_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Holo/Recipe_RSS_1x2_Belt_Holo.Recipe_RSS_1x2_Belt_Holo_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Holo/Recipe_RSS_1x2_Belt_Holo_2.Recipe_RSS_1x2_Belt_Holo_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Holo/Recipe_RSS_2x1_Belt_Holo.Recipe_RSS_2x1_Belt_Holo_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Holo/Recipe_RSS_2x1_Belt_Holo_2.Recipe_RSS_2x1_Belt_Holo_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Holo/Recipe_RSS_7x1_Belt_Holo.Recipe_RSS_7x1_Belt_Holo_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Holo/Recipe_RSS_7x1_Belt_Holo_2.Recipe_RSS_7x1_Belt_Holo_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_1x1_Belt.Recipe_RSS_1x1_Belt_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_1x1_Belt_2.Recipe_RSS_1x1_Belt_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_1x2_Belt.Recipe_RSS_1x2_Belt_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_1x2_Belt_2.Recipe_RSS_1x2_Belt_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_2x1_Belt.Recipe_RSS_2x1_Belt_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_2x1_Belt_2.Recipe_RSS_2x1_Belt_2_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_7x1_Belt.Recipe_RSS_7x1_Belt_C
+      - /RSS/Buildable/ConveyorSigns/Recipes/Recipe_RSS_7x1_Belt_2.Recipe_RSS_7x1_Belt_2_C
+      - /RSS/Buildable/Drohnes/Recipes/Recipe_RSS_1x1_Drohnes.Recipe_RSS_1x1_Drohnes_C
+      - /RSS/Buildable/Drohnes/Recipes/Recipe_RSS_1x2_Drohnes.Recipe_RSS_1x2_Drohnes_C
+      - /RSS/Buildable/Drohnes/Recipes/Recipe_RSS_2x1_Drohnes.Recipe_RSS_2x1_Drohnes_C
+      - /RSS/Buildable/Drohnes/Recipes/Recipe_RSS_7x1_Drohnes.Recipe_RSS_7x1_Drohnes_C
+      - /RSS/Buildable/PipeSigns/Recipes/Holo/Recipe_RSS_1x1_Pipe_Holo.Recipe_RSS_1x1_Pipe_Holo_C
+      - /RSS/Buildable/PipeSigns/Recipes/Holo/Recipe_RSS_1x1_Pipe_Holo_2.Recipe_RSS_1x1_Pipe_Holo_2_C
+      - /RSS/Buildable/PipeSigns/Recipes/Holo/Recipe_RSS_1x2_Pipe_Holo.Recipe_RSS_1x2_Pipe_Holo_C
+      - /RSS/Buildable/PipeSigns/Recipes/Holo/Recipe_RSS_1x2_Pipe_Holo_2.Recipe_RSS_1x2_Pipe_Holo_2_C
+      - /RSS/Buildable/PipeSigns/Recipes/Holo/Recipe_RSS_2x1_Pipe_Holo.Recipe_RSS_2x1_Pipe_Holo_C
+      - /RSS/Buildable/PipeSigns/Recipes/Holo/Recipe_RSS_2x1_Pipe_Holo_2.Recipe_RSS_2x1_Pipe_Holo_2_C
+      - /RSS/Buildable/PipeSigns/Recipes/Holo/Recipe_RSS_7x1_Pipe_Holo.Recipe_RSS_7x1_Pipe_Holo_C
+      - /RSS/Buildable/PipeSigns/Recipes/Holo/Recipe_RSS_7x1_Pipe_Holo_2.Recipe_RSS_7x1_Pipe_Holo_2_C
+      - /RSS/Buildable/PipeSigns/Recipes/Recipe_RSS_1x1_Pipe.Recipe_RSS_1x1_Pipe_C
+      - /RSS/Buildable/PipeSigns/Recipes/Recipe_RSS_1x1_Pipe_2.Recipe_RSS_1x1_Pipe_2_C
+      - /RSS/Buildable/PipeSigns/Recipes/Recipe_RSS_1x2_Pipe.Recipe_RSS_1x2_Pipe_C
+      - /RSS/Buildable/PipeSigns/Recipes/Recipe_RSS_1x2_Pipe_2.Recipe_RSS_1x2_Pipe_2_C
+      - /RSS/Buildable/PipeSigns/Recipes/Recipe_RSS_2x1_Pipe.Recipe_RSS_2x1_Pipe_C
+      - /RSS/Buildable/PipeSigns/Recipes/Recipe_RSS_2x1_Pipe_2.Recipe_RSS_2x1_Pipe_2_C
+      - /RSS/Buildable/PipeSigns/Recipes/Recipe_RSS_7x1_Pipe.Recipe_RSS_7x1_Pipe_C
+      - /RSS/Buildable/PipeSigns/Recipes/Recipe_RSS_7x1_Pipe_2.Recipe_RSS_7x1_Pipe_2_C
+      - /RSS/Buildable/RoundedSigns/Recipes/Holo/recipe_RSS_holoscreen_25x2.recipe_RSS_holoscreen_25x2_C
+      - /RSS/Buildable/RoundedSigns/Recipes/Recipe_RSS_25x2.Recipe_RSS_25x2_C
+      - /RSS/Buildable/StackableSign/Recipes/Holo/Recipe_RSS_2x1_Stackable_Holo.Recipe_RSS_2x1_Stackable_Holo_C
+      - /RSS/Buildable/StackableSign/Recipes/Holo/Recipe_RSS_7x1_Stackable.Recipe_RSS_7x1_Stackable_C
+      - /RSS/Buildable/StackableSign/Recipes/Holo/Recipe_RSS_7x1_Stackable_Holo.Recipe_RSS_7x1_Stackable_Holo_C
+      - /RSS/Buildable/StackableSign/Recipes/Recipe_RSS_1x1_Stackable.Recipe_RSS_1x1_Stackable_C
+      - /RSS/Buildable/StackableSign/Recipes/Recipe_RSS_1x1_Stackable_Holo.Recipe_RSS_1x1_Stackable_Holo_C
+      - /RSS/Buildable/StackableSign/Recipes/Recipe_RSS_2x1_Stackable.Recipe_RSS_2x1_Stackable_C
+      - /RSS/Buildable/StandSigns/Recipes/Holo/recipe_RSS_holoscreen_1x1_Stand.recipe_RSS_holoscreen_1x1_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Holo/recipe_RSS_holoscreen_1x2_Stand.recipe_RSS_holoscreen_1x2_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Holo/recipe_RSS_holoscreen_2x1_Stand.recipe_RSS_holoscreen_2x1_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Holo/recipe_RSS_holoscreen_7x1_Stand.recipe_RSS_holoscreen_7x1_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Recipe_RSS_1x1_Stand.Recipe_RSS_1x1_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Recipe_RSS_1x2_Stand.Recipe_RSS_1x2_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Recipe_RSS_2x1_Stand.Recipe_RSS_2x1_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/Recipe_RSS_7x1_Stand.Recipe_RSS_7x1_Stand_C
+      - /RSS/Buildable/StandSigns/Recipes/recipe_RSS_Secret.recipe_RSS_Secret_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Holo/recipe_RSS_holoscreen_1x1_Wall.recipe_RSS_holoscreen_1x1_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Holo/recipe_RSS_holoscreen_1x2_Wall.recipe_RSS_holoscreen_1x2_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Holo/recipe_RSS_holoscreen_1x7_Wall.recipe_RSS_holoscreen_1x7_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Holo/recipe_RSS_holoscreen_2x1_Wall.recipe_RSS_holoscreen_2x1_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Holo/recipe_RSS_holoscreen_7x1_Wall.recipe_RSS_holoscreen_7x1_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Recipe_RSS_1x1_Wall.Recipe_RSS_1x1_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Recipe_RSS_1x2_Wall.Recipe_RSS_1x2_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Recipe_RSS_1x7_Wall.Recipe_RSS_1x7_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Recipe_RSS_2x1_Wall.Recipe_RSS_2x1_Wall_C
+      - /RSS/Buildable/WallOutsideSigns/Recipes/Recipe_RSS_7x1_Wall.Recipe_RSS_7x1_Wall_C
+      - /RSS/Buildable/WallSigns/Recipes/Holo/recipe_RSS_holoscreen_1x1.recipe_RSS_holoscreen_1x1_C
+      - /RSS/Buildable/WallSigns/Recipes/Holo/recipe_RSS_holoscreen_1x2.recipe_RSS_holoscreen_1x2_C
+      - /RSS/Buildable/WallSigns/Recipes/Holo/recipe_RSS_holoscreen_2x1.recipe_RSS_holoscreen_2x1_C
+      - /RSS/Buildable/WallSigns/Recipes/Holo/recipe_RSS_holoscreen_7x1.recipe_RSS_holoscreen_7x1_C
+      - /RSS/Buildable/WallSigns/Recipes/Recipe_RSS_1x1.Recipe_RSS_1x1_C
+      - /RSS/Buildable/WallSigns/Recipes/Recipe_RSS_1x2.Recipe_RSS_1x2_C
+      - /RSS/Buildable/WallSigns/Recipes/Recipe_RSS_2x1.Recipe_RSS_2x1_C
+      - /RSS/Buildable/WallSigns/Recipes/Recipe_RSS_7x1.Recipe_RSS_7x1_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 4

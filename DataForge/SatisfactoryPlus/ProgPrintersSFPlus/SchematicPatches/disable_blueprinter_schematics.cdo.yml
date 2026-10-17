@@ -1,0 +1,15 @@
+type: cdo
+patches:
+  - target:
+      - /Game/FactoryGame/Schematics/Progression/Schematic_6-6.Schematic_6-6_C
+      - /ProgressiveBlueprinter/Milestones/Tier2_Blueprinter.Tier2_Blueprinter_C
+      - /ProgressiveBlueprinter/Milestones/Tier3_Blueprinter.Tier3_Blueprinter_C
+      - /ProgressiveBlueprinter/Milestones/Tier5_Blueprinter.Tier5_Blueprinter_C
+      - /ProgressiveBlueprinter/Milestones/Tier6_Blueprinter.Tier6_Blueprinter_C
+    properties:
+      - path: mType
+        value: "EST_Custom"
+      - path: mUnlocks
+        op: clear
+      - path: mSchematicDependencies
+        op: clear

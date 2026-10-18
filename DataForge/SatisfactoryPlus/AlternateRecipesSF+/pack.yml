@@ -5,3 +5,7 @@ description: Integrates Alternate Extras with SatisfactoryPlus
 contributer:
   - Ripnium
 enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - RNMoreAltRecipes

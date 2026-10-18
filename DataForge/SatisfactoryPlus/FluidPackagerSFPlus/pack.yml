@@ -1,0 +1,13 @@
+ref: FluidPackagerSFPlus
+name: Fluid Packager SatisfactoryPlus Compatibility
+version: 1.0.0
+description: >-
+  Makes foreign mod recipes using the vanilla Packager available in the SF+ fluid packer,
+  preserving explicit recipe exclusions and leaving owned SF+/KLib assets untouched.
+contributer: Kyri123
+enabled: true
+priority: 20000
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - AB_FluidExtras

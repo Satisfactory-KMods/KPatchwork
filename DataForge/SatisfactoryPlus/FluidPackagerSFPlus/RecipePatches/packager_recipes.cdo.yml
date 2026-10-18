@@ -1,0 +1,40 @@
+type: cdo
+patches:
+- ofClass: /Script/FactoryGame.FGRecipe
+  matchAssets: false
+  where:
+    path: mProducedIn[*]
+    matches: /Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C
+  properties:
+  - path: mProducedIn
+    value:
+    - /AB_FluidExtras/FluidPacker/Build_AB_FluidPacker.Build_AB_FluidPacker_C
+    - /Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C
+  excludeClasses:
+  - /Game/*
+  - /Script/FactoryGame.*
+  - /SatisfactoryPlus/*
+  - /KLib/*
+  - /KAPI/*
+  - /KPrivateCodeLib/*
+  - /KUI/*
+  - /Script/SatisfactoryPlus.*
+  - /Script/KLib.*
+  - /Script/KAPI.*
+  - /Script/KPrivateCodeLib.*
+  - /Script/KUI.*
+  - /Script/KDataForge.*
+  - /RefinedPower/Resource/Parts/Canisters/Recipe_RP_Co2Canister.Recipe_RP_Co2Canister_C
+  - /RefinedPower/Resource/Parts/Canisters/Recipe_RP_Co2Canister_Alternate.Recipe_RP_Co2Canister_Alternate_C
+  - /RefinedPower/Resource/Parts/Canisters/Recipe_RP_HPSCanister.Recipe_RP_HPSCanister_C
+  - /RefinedPower/Resource/Parts/Canisters/Recipe_RP_HPSCanister_Alternate.Recipe_RP_HPSCanister_Alternate_C
+  - /RefinedPower/Resource/Parts/Canisters/Recipe_RP_LPSCanister.Recipe_RP_LPSCanister_C
+  - /RefinedPower/Resource/Parts/Canisters/Recipe_RP_LPSCanister_Alternate.Recipe_RP_LPSCanister_Alternate_C
+  - /KLib/Assets/Parts/Packaged/Recipes/Packaged/Recipe_Packaged_DieselOil.Recipe_Packaged_DieselOil_C
+  - /KLib/Assets/Parts/Packaged/Recipes/UnPackaged/Recipe_UnPackaged_DieselOil.Recipe_UnPackaged_DieselOil_C
+  - /KLib/Assets/Parts/Packaged/Recipes/Packaged/Recipe_Packaged_LiquidHydrocarbons.Recipe_Packaged_LiquidHydrocarbons_C
+  - /KLib/Assets/Parts/Packaged/Recipes/UnPackaged/Recipe_UnPackaged_LiquidHydrocarbons.Recipe_UnPackaged_LiquidHydrocarbons_C
+  - /KLib/Assets/Parts/Packaged/Recipes/Packaged/Recipe_Packaged_Paraffin.Recipe_Packaged_Paraffin_C
+  - /KLib/Assets/Parts/Packaged/Recipes/UnPackaged/Recipe_UnPackaged_Paraffin.Recipe_UnPackaged_Paraffin_C
+  - /RefinedPower/Resource/Parts/DTReactorCore/Recipe_RP_DTReactorCore.Recipe_RP_DTReactorCore_C
+  - /RefinedPower/Resource/Parts/DeanoriumReactorCore/Recipe_RP_DeanoriumReactorCore.Recipe_RP_DeanoriumReactorCore_C

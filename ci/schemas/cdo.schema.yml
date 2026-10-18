@@ -17,9 +17,27 @@ allOf:
         minItems: 1
         items:
           type: object
-          additionalProperties: false
+          unevaluatedProperties: false
           required: [properties]
+          allOf:
+            - $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/scopeFilters
+            - $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/scopeNeedsOfClass
+            - if:
+                anyOf:
+                  - required: [classType]
+                  - required: [excludeClasses]
+              then:
+                anyOf:
+                  - required: [ofClass]
+                  - required: [producedIn]
+                  - required: [ingredient]
+                  - required: [product]
           properties:
+            classType:
+              type: string
+              enum: [any, blueprint, native]
+            excludeClasses:
+              $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/stringOrList
             target:
               $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/stringOrList
             allAssetsOfClass:
@@ -36,8 +54,10 @@ allOf:
             deferOneGameTick: { type: boolean, default: false }
             properties:
               $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/properties
-          oneOf:
+          anyOf:
             - required: [target]
             - required: [allAssetsOfClass]
-            - required: [matchTag, ofClass]
+            - $ref: https://raw.githubusercontent.com/Satisfactory-KMods/KDataForge-Linter/main/src/kdataforge_linter/schemas/common.schema.yml#/$defs/hasScopeFilter
+            - required: [classType]
+            - required: [excludeClasses]
 unevaluatedProperties: false

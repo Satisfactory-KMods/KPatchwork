@@ -2,8 +2,7 @@ ref: RNMoreAltRecipesSFPlus
 name: Alternate Extras SF+ Patch
 version: 1.0.0
 description: Integrates Alternate Extras with SatisfactoryPlus
-contributer:
-  - Ripnium
+contributer: Ripnium
 enabled: true
 conditions:
   hasMod:

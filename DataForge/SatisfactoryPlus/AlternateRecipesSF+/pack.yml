@@ -1,0 +1,7 @@
+ref: RNMoreAltRecipes
+name: Alternate Extras
+version: 1.0.0
+description: Integrates Alternate Extras with SatisfactoryPlus
+contributer:
+  - Ripnium
+enabled: true

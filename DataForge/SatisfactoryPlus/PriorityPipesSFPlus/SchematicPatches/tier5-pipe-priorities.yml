@@ -1,0 +1,20 @@
+type: cdo
+patches:
+  - target: /PriorityPipes/Schematic_PriorityPipes.Schematic_PriorityPipes_C
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 5
+      - path: mCost
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 15
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Rubber/Desc_Rubber.Desc_Rubber_C
+            Amount: 25
+      - path: mSchematicDependencies
+        value: []

@@ -1,0 +1,13 @@
+# All four shipped recipes contain exactly 2 Silica at ingredient index 0.
+# Keep that amount and their material customization recipe; use SF+ glass.
+# The other 24 recipes already use SF+-compatible concrete (2 each, garage 8).
+type: cdo
+patches:
+  - target:
+      - /SGRoughConcreteWallMaterial/Walls/Window/Recipe_Wall_RoughConcrete_8x4_Window_01.Recipe_Wall_RoughConcrete_8x4_Window_01_C
+      - /SGRoughConcreteWallMaterial/Walls/Window/Recipe_Wall_RoughConcrete_8x4_Window_02.Recipe_Wall_RoughConcrete_8x4_Window_02_C
+      - /SGRoughConcreteWallMaterial/Walls/Window/Recipe_Wall_RoughConcrete_8x4_Window_03.Recipe_Wall_RoughConcrete_8x4_Window_03_C
+      - /SGRoughConcreteWallMaterial/Walls/Window/Recipe_Wall_RoughConcrete_8x4_Window_04.Recipe_Wall_RoughConcrete_8x4_Window_04_C
+    properties:
+      - path: mIngredients[0].ItemClass
+        value: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C

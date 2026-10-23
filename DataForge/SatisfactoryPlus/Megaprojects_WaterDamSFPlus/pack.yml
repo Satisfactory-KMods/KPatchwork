@@ -1,0 +1,13 @@
+ref: Megaprojects_WaterDamSFPlus
+name: Megaprojects Water Dam SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Megaprojects: Water Dam with SatisfactoryPlus by rebalancing the Water Tower
+  construction recipe and aligning the project milestone and upgrade phases with SF+ materials.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - Megaprojects_WaterDam
+priority: 10000

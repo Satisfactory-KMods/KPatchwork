@@ -1,0 +1,122 @@
+type: cdo
+patches:
+  - target: /AB_CableMod/GroundingSpike/Recipe_AB-GroundingSpike.Recipe_AB-GroundingSpike_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 1
+  - target: /AB_CableMod/GroundingSpike/Recipe_AB-GroundingSpike-Tower.Recipe_AB-GroundingSpike-Tower_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 2
+  - target: /AB_CableMod/SkyhookPowerpole/Recipe_AB-SkyhookPowerPole.Recipe_AB-SkyhookPowerPole_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C
+            Amount: 4
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 3
+  - target: /AB_CableMod/SkyhookPowerpole/Recipe_AB-SkyhookWallmount.Recipe_AB-SkyhookWallmount_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C
+            Amount: 6
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 1
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 1
+  - target: /AB_CableMod/PowerNubs/Recipe_PowerCornerMk1.Recipe_PowerCornerMk1_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 1
+  - target: /AB_CableMod/PowerNubs/Recipe_PowerCornerMk2.Recipe_PowerCornerMk2_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 1
+  - target: /AB_CableMod/PowerNubs/Recipe_PowerCornerMk3.Recipe_PowerCornerMk3_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedConnector/Desc_HighSpeedConnector.Desc_HighSpeedConnector_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 1
+  - target: /AB_CableMod/PowerTower/Recipe_PowerTowerEx_Point.Recipe_PowerTowerEx_Point_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 5
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 4
+  - target: /AB_CableMod/PowerTower/Recipe_PowerTowerEx_Even.Recipe_PowerTowerEx_Even_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 10
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 8
+  - target: /AB_CableMod/PowerTower/Recipe_PowerTowerEx_Wide.Recipe_PowerTowerEx_Wide_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 4
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 10
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 7
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 8
+  - target: /AB_CableMod/PowerTower/Recipe_PowerTower_WallSingle.Recipe_PowerTower_WallSingle_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 10
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 6
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 8
+  - target: /AB_CableMod/PowerTower/Recipe_PowerTower_WallDouble.Recipe_PowerTower_WallDouble_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 20
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 6
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 12

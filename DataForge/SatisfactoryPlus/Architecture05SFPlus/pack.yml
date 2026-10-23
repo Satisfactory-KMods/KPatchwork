@@ -1,0 +1,12 @@
+ref: Architecture05SFPlus
+name: Architecture + 05 SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Architecture + 05 with SatisfactoryPlus by converting every glass-roof construction
+  recipe to SatisfactoryPlus glass and aligning its milestone with tier 1 progression.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - Architecture05

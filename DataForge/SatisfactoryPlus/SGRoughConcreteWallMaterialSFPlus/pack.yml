@@ -1,0 +1,11 @@
+ref: SGRoughConcreteWallMaterialSFPlus
+name: Rough Concrete Wall Material SatisfactoryPlus Patch
+version: 1.2.4
+description: >-
+  Integrates Rough Concrete Wall Material with SatisfactoryPlus.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - SGRoughConcreteWallMaterial

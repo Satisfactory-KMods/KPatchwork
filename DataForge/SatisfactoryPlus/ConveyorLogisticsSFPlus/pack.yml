@@ -1,0 +1,13 @@
+ref: ConveyorLogisticsSFPlus
+name: Simple Conveyor Logistics SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Simple Conveyor Logistics with SatisfactoryPlus by rebalancing every construction
+  recipe with SF+ logistics materials and moving its unlocks into SF+ Logistics Mk. 2.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - ConveyorLogistics
+priority: 10000

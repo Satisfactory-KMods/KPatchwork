@@ -1,0 +1,13 @@
+ref: TrueGridSFPlus
+name: TrueGrid SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates TrueGrid with SatisfactoryPlus by rebalancing every construction recipe with SF+/KLib
+  materials and placing its grid milestones in matching SF+ power tiers.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - TrueGrid
+priority: 10000

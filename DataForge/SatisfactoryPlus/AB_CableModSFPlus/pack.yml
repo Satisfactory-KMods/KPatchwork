@@ -1,0 +1,13 @@
+ref: ABCableModSFPlus
+name: Cable Choices Plus SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Cable Choices Plus with SatisfactoryPlus by rebalancing every cable, material,
+  power-pole, power-gate, power-tower, rail, and decorative recipe and placing its unlocks in
+  SatisfactoryPlus milestones and MAM progression.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - AB_CableMod

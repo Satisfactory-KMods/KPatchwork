@@ -1,0 +1,12 @@
+ref: PropsAndDecoSFPlus
+name: Props and Deco SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Props and Deco with SatisfactoryPlus by rebalancing all construction recipes around
+  early-game SF+/KLib materials and aligning its milestone with tier 1 progression.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - PropsAndDeco

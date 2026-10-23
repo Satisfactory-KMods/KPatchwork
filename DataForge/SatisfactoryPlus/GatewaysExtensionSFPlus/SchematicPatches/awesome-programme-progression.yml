@@ -1,0 +1,87 @@
+type: schematic
+schematics:
+  - class: /GatewaysExtension/Catwalks/Schematic_Catwalks_Extension.Schematic_Catwalks_Extension_C
+    register: false
+    properties:
+      - path: mTechTier
+        value: 2
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+    dependencies:
+      - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+        properties:
+          - path: mSchematics
+            value:
+              - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_2.Schematic_SF+_T2_2_C
+          - path: mRequireAllSchematicsToBePurchased
+            value: true
+
+  - class: /GatewaysExtension/Catwalks/Schematic_Catwalks_Extension_Corners.Schematic_Catwalks_Extension_Corners_C
+    register: false
+    properties:
+      - path: mTechTier
+        value: 2
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+    dependencies:
+      - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+        properties:
+          - path: mSchematics
+            value:
+              - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_2.Schematic_SF+_T2_2_C
+          - path: mRequireAllSchematicsToBePurchased
+            value: true
+    # This source recipe exists but is omitted from every Gateways Extension unlock array.
+    recipes:
+      - /GatewaysExtension/Catwalks/Corners/Catwalk_Stairs_1x1/Recipe_Catwalk_Stairs_1x1.Recipe_Catwalk_Stairs_1x1_C
+
+  - class: /GatewaysExtension/Catwalks/Schematic_Catwalks_Extension_Ramps.Schematic_Catwalks_Extension_Ramps_C
+    register: false
+    properties:
+      - path: mTechTier
+        value: 2
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+    dependencies:
+      - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+        properties:
+          - path: mSchematics
+            value:
+              - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_2.Schematic_SF+_T2_2_C
+          - path: mRequireAllSchematicsToBePurchased
+            value: true
+
+  - class: /GatewaysExtension/Catwalks/Schematic_Catwalks_Extension_Stairs.Schematic_Catwalks_Extension_Stairs_C
+    register: false
+    properties:
+      - path: mTechTier
+        value: 2
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+    dependencies:
+      - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+        properties:
+          - path: mSchematics
+            value:
+              - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_2.Schematic_SF+_T2_2_C
+          - path: mRequireAllSchematicsToBePurchased
+            value: true
+
+  - class: /GatewaysExtension/Walkways/Schematic_RS_Walkways_Extension.Schematic_RS_Walkways_Extension_C
+    register: false
+    properties:
+      - path: mTechTier
+        value: 2
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+    dependencies:
+      - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+        properties:
+          - path: mSchematics
+            value:
+              - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_2.Schematic_SF+_T2_2_C
+          - path: mRequireAllSchematicsToBePurchased
+            value: true
+    # This source recipe exists but is omitted from every Gateways Extension unlock array.
+    recipes:
+      - /GatewaysExtension/Walkways/Walkway_Stairs_2m/Recipe_Walkway_Stairs_2m.Recipe_Walkway_Stairs_2m_C

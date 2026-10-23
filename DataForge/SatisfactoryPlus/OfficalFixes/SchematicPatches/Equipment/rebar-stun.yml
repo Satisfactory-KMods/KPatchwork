@@ -1,0 +1,14 @@
+type: cdo
+patches:
+  - target:
+      - /Game/FactoryGame/Schematics/ResourceSink/Parts/Equipment/ResourceSink_RebarStun.ResourceSink_RebarStun_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Satmonium/Schematic_Trees_Satmonium_2_4_U6.Schematic_Trees_Satmonium_2_4_U6_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: false

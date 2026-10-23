@@ -1,0 +1,34 @@
+type: cdo
+patches:
+  - target: /Lithium/Recipes/T7/Alternate/Recipe_Alternate_CeramicOscillator.Recipe_Alternate_CeramicOscillator_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/QuartzCrystal/Desc_QuartzCrystal.Desc_QuartzCrystal_C
+            Amount: 8
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 4
+          - ItemClass: /Lithium/Resources/Ceramics/Desc_Ceramics.Desc_Ceramics_C
+            Amount: 6
+
+  - target: /Lithium/Recipes/T7/Alternate/Recipe_Alternate_CeramicWiring.Recipe_Alternate_CeramicWiring_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Stator/Desc_Stator.Desc_Stator_C
+            Amount: 1
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 40
+          - ItemClass: /Lithium/Resources/Ceramics/Desc_Ceramics.Desc_Ceramics_C
+            Amount: 6
+
+  - target: /Lithium/Recipes/T7/Recipe_Li_ModularFrameLightweight.Recipe_Li_ModularFrameLightweight_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrame/Desc_ModularFrame.Desc_ModularFrame_C
+            Amount: 4
+          - ItemClass: /Lithium/Resources/Lithium/Desc_Lithium.Desc_Lithium_C
+            Amount: 15
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 8

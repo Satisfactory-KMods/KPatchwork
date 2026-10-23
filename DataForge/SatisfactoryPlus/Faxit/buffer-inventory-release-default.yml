@@ -1,0 +1,9 @@
+type: cdo
+priority: -2147483648
+patches:
+  - target: /Script/KPrivateCodeLib.KPCLNetworkBuildingBase
+    applyToSubclasses: true
+    applyToSpawnedActors: true
+    properties:
+      - path: bHasBufferInventory
+        value: false

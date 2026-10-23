@@ -1,0 +1,14 @@
+ref: PneumaticFrackingMachineSFPlus
+name: Pneumatic Fracking Machine SatisfactoryPlus Patch
+version: 1.0.1
+description: >-
+  Integrates Pneumatic Fracking Machine with SatisfactoryPlus by rebalancing all three extractor
+  build recipes, allowing the extractors and aerated oil resource, and gating their milestones
+  behind matching progression.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - PneumaticFrackingMachine
+priority: 10000

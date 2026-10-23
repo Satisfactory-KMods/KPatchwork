@@ -1,0 +1,16 @@
+type: cdo
+patches:
+  - target: /Megaprojects_PowerDomain/Buildables/PowerSatellite/Recipe_PowerSatellite.Recipe_PowerSatellite_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Silica/Desc_Silica.Desc_Silica_C
+            Amount: 400
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedConnector/Desc_HighSpeedConnector.Desc_HighSpeedConnector_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/CrystalOscillator/Desc_CrystalOscillator.Desc_CrystalOscillator_C
+            Amount: 50
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ComputerSuper/Desc_ComputerSuper.Desc_ComputerSuper_C
+            Amount: 25
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Frames/TitaniumModularFrame/Desc_TitanModularFrame.Desc_TitanModularFrame_C
+            Amount: 25

@@ -1,0 +1,16 @@
+type: cdo
+patches:
+  - target:
+      - /PriorityPipes/Recipe_PriorityPipeMerger.Recipe_PriorityPipeMerger_C
+      - /PriorityPipes/Recipe_PriorityPipeSplitter.Recipe_PriorityPipeSplitter_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 6
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 15
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 5
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Rubber/Desc_Rubber.Desc_Rubber_C
+            Amount: 10

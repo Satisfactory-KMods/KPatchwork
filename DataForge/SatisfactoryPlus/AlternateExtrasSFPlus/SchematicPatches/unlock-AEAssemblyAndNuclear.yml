@@ -1,0 +1,11 @@
+type: cdo
+patches:
+  - target: /RNMoreAltRecipes/MAM/ResearchTree_AlternateExtrasAssemblyandNuclear.ResearchTree_AlternateExtrasAssemblyandNuclear_C
+    properties:
+      - path: mUnlockDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T3/Schematic_SF+_T3_4

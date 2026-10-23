@@ -1,0 +1,13 @@
+ref: UniversalSwatchSlotsSFPlus
+name: Universal Swatch Slots SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Universal Swatch Slots with SatisfactoryPlus by making its AWESOME Shop unlock
+  require the SF+ Tier 1 Customizer upgrade while preserving its one-coupon shop price.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - UniversalSwatchSlots
+priority: 10000

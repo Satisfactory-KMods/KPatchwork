@@ -1,0 +1,12 @@
+ref: Architecture02SFPlus
+name: Architecture + 02 SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Architecture + 02 with SatisfactoryPlus by converting all construction recipes to
+  SatisfactoryPlus materials and gating its milestone behind the tier 1 Windows milestone.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - Architecture02

@@ -1,0 +1,125 @@
+type: cdo
+patches:
+  - target: /LinearMotion/Schematics/Schematic_LinearMotion_Elevator_MK1.Schematic_LinearMotion_Elevator_MK1_C
+    properties:
+      - path: mTechTier
+        value: 1
+      - path: mCost
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 20
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Rotor/Desc_Rotor.Desc_Rotor_C
+            Amount: 20
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T1/Schematic_SF+_T1_3.Schematic_SF+_T1_3_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+
+  - target: /LinearMotion/Schematics/Schematic_LinearMotion_Elevator_MK2.Schematic_LinearMotion_Elevator_MK2_C
+    properties:
+      - path: mTechTier
+        value: 4
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+            Amount: 200
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrame/Desc_ModularFrame.Desc_ModularFrame_C
+            Amount: 20
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 20
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T4/Schematic_SF+_T4_1.Schematic_SF+_T4_1_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+
+  - target: /LinearMotion/Schematics/Schematic_LinearMotion_Elevator_MK3.Schematic_LinearMotion_Elevator_MK3_C
+    properties:
+      - path: mTechTier
+        value: 5
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlateReinforced/Desc_SteelPlateReinforced.Desc_SteelPlateReinforced_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 20
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Plastic/Desc_Plastic.Desc_Plastic_C
+            Amount: 100
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 200
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_2.Schematic_SF+_T5_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+
+  - target:
+      - /LinearMotion/Schematics/Schematic_LinearMotion_FourPostCatwalkLIft.Schematic_LinearMotion_FourPostCatwalkLIft_C
+      - /LinearMotion/Schematics/Schematic_LinearMotion_SinglePostCatwalkLIft.Schematic_LinearMotion_SinglePostCatwalkLIft_C
+    properties:
+      - path: mTechTier
+        value: 2
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_2.Schematic_SF+_T2_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+
+  - target: /LinearMotion/Schematics/Schematic_LinearMotion_VehicleLIft_Diagonal_MKI.Schematic_LinearMotion_VehicleLIft_Diagonal_MKI_C
+    properties:
+      - path: mTechTier
+        value: 5
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlateReinforced/Desc_SteelPlateReinforced.Desc_SteelPlateReinforced_C
+            Amount: 200
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 30
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 200
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 500
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Computer/Desc_Computer.Desc_Computer_C
+            Amount: 20
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_2.Schematic_SF+_T5_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true

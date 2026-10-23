@@ -1,0 +1,13 @@
+ref: SpiralStairsSFPlus
+name: Spiral Stairs SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Spiral Stairs with SatisfactoryPlus by rebalancing every stair, landing, center-pole,
+  and glass-foundation construction recipe around SatisfactoryPlus materials and gating its shop
+  unlock behind the SatisfactoryPlus AWESOME Programme.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - SpiralStairs

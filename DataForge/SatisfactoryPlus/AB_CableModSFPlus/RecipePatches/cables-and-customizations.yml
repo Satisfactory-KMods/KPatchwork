@@ -1,0 +1,62 @@
+type: cdo
+patches:
+  - target: /AB_CableMod/Cables_Wire/Recipe_AB-PLWire-Cu.Recipe_AB-PLWire-Cu_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Wire/Desc_Wire.Desc_Wire_C
+            Amount: 1
+  - target: /AB_CableMod/Cables_Wire/Recipe_AB-PLWire-Au.Recipe_AB-PLWire-Au_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Wire/Desc_Wire.Desc_Wire_C
+            Amount: 1
+  - target: /AB_CableMod/Cables_Wire/Recipe_AB-PLWire-Si.Recipe_AB-PLWire-Si_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 1
+  - target: /AB_CableMod/Cables_Standard/Recipe_AB-PLStandard-Cu.Recipe_AB-PLStandard-Cu_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 1
+  - target: /AB_CableMod/Cables_Heavy/Recipe_AB-PLHeavy-Cu.Recipe_AB-PLHeavy-Cu_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cable/Desc_Cable.Desc_Cable_C
+            Amount: 2
+  - target: /AB_CableMod/-Shared/Customization/MaterialRecipe_ABCable-Au.MaterialRecipe_ABCable-Au_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/HighSpeedWire/Desc_HighSpeedWire.Desc_HighSpeedWire_C
+            Amount: 2
+  - target: /AB_CableMod/-Shared/Customization/MaterialRecipe_ABCable-Cu.MaterialRecipe_ABCable-Cu_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_CopperRod.Desc_CopperRod_C
+            Amount: 1
+  - target: /AB_CableMod/-Shared/Customization/MaterialRecipe_ABCable-El.MaterialRecipe_ABCable-El_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 2
+  - target: /AB_CableMod/-Shared/Customization/MaterialRecipe_ABCable-Si.MaterialRecipe_ABCable-Si_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Silica/Desc_Silica.Desc_Silica_C
+            Amount: 2
+  - target: /AB_CableMod/-Shared/Customization/SkinRecipe_Powerline_Lumifibre.SkinRecipe_Powerline_Lumifibre_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/QuartzCrystal/Desc_QuartzCrystal.Desc_QuartzCrystal_C
+            Amount: 1

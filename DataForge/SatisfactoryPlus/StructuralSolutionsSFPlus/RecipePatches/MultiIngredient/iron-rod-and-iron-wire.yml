@@ -1,0 +1,12 @@
+type: cdo
+patches:
+- target:
+  - /SS_Mod/Recipes/Deco/Recipe_Deco_Bollard.Recipe_Deco_Bollard_C
+  - /SS_Mod/Recipes/Deco/Recipe_Deco_FlashingCeilingLight.Recipe_Deco_FlashingCeilingLight_C
+  - /SS_Mod/Recipes/Deco/Recipe_Deco_FlashingFloorLight_1.Recipe_Deco_FlashingFloorLight_1_C
+  - /SS_Mod/Recipes/Deco/Recipe_Deco_FlashingWallLight_1.Recipe_Deco_FlashingWallLight_1_C
+  properties:
+  - path: mIngredients[0].ItemClass
+    value: /Game/FactoryGame/Resource/Parts/IronRod/Desc_IronRod.Desc_IronRod_C
+  - path: mIngredients[1].ItemClass
+    value: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C

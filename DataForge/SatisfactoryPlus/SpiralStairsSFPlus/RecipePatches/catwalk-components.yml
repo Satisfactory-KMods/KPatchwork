@@ -1,0 +1,18 @@
+type: cdo
+patches:
+  - target:
+      - /SpiralStairs/90_1M/Recipe_Catwalk_SpiralStairs_90_1M_Left.Recipe_Catwalk_SpiralStairs_90_1M_Left_C
+      - /SpiralStairs/90_1M/Recipe_Catwalk_SpiralStairs_90_1M_Right.Recipe_Catwalk_SpiralStairs_90_1M_Right_C
+      - /SpiralStairs/270_4M/Recipe_Catwalk_SpiralStairs_270_4M_Left.Recipe_Catwalk_SpiralStairs_270_4M_Left_C
+      - /SpiralStairs/270_4M/Recipe_Catwalk_SpiralStairs_270_4M_Right.Recipe_Catwalk_SpiralStairs_270_4M_Right_C
+      - /SpiralStairs/Stair_Landing/Recipe_Catwalk_Stair_Landing.Recipe_Catwalk_Stair_Landing_C
+      - /SpiralStairs/CenterPole/Recipe_Centerpole.Recipe_Centerpole_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 3

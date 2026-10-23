@@ -1,0 +1,16 @@
+type: schematic
+schematics:
+  - class: /ConveyorLogistics/Schematic/Schematic_ConveyorLogistics.Schematic_ConveyorLogistics_C
+    register: false
+    properties:
+      - path: mUnlocks
+        value: []
+
+  - class: /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T1/Schematic_SF+_T1_4.Schematic_SF+_T1_4_C
+    register: false
+    properties:
+      - path: mSchematicDependencies
+        value: []
+    recipes:
+      - /ConveyorLogistics/Buildables/ConveyorAttachmentSplitterWeighted/Recipe_ConveyorAttachmentSplitterWeighted.Recipe_ConveyorAttachmentSplitterWeighted_C
+      - /ConveyorLogistics/Buildables/ConveyorAttachmentJunction/Recipe_ConveyorAttachmentJunction.Recipe_ConveyorAttachmentJunction_C

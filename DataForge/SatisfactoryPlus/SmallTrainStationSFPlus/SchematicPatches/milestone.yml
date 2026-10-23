@@ -1,0 +1,22 @@
+type: cdo
+patches:
+  - target: /SmallTrainStation/Schem_SmallStation.Schem_SmallStation_C
+    properties:
+      - path: mTechTier
+        value: 5
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 25
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 500
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 500
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 500
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_LeadSheet.Desc_LeadSheet_C
+            Amount: 200
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 200
+      - path: mSchematicDependencies
+        value: []

@@ -1,0 +1,45 @@
+type: cdo
+patches:
+  - target:
+      - /SmallTrainStation/MK2/Rec_SmallDocking.Rec_SmallDocking_C
+      - /SmallTrainStation/MK2/Rec_SmallDockingLiq.Rec_SmallDockingLiq_C
+      - /SmallTrainStation/MK2/Rec_SmallDockingLiqUnderground.Rec_SmallDockingLiqUnderground_C
+      - /SmallTrainStation/MK2/Rec_SmallDockingLiq_2.Rec_SmallDockingLiq_2_C
+      - /SmallTrainStation/MK2/Rec_SmallDockingLiq_3.Rec_SmallDockingLiq_3_C
+      - /SmallTrainStation/MK2/Rec_SmallDockingUnderground.Rec_SmallDockingUnderground_C
+      - /SmallTrainStation/MK2/Rec_SmallDocking_2.Rec_SmallDocking_2_C
+      - /SmallTrainStation/MK2/Rec_SmallDocking_3.Rec_SmallDocking_3_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 10
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 60
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 30
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 120
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 100
+
+  - target:
+      - /SmallTrainStation/DI_Stations/Rec_SmallDocking_2.Rec_SmallDocking_2_C
+      - /SmallTrainStation/DI_Stations/Rec_SmallDocking_3.Rec_SmallDocking_3_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/ModularFrameHeavy/Desc_ModularFrameHeavy.Desc_ModularFrameHeavy_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BrassPlates.Desc_BrassPlates_C
+            Amount: 300
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 500
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Motor/Desc_Motor.Desc_Motor_C
+            Amount: 150
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 600
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 500

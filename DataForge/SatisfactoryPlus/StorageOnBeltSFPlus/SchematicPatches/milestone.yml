@@ -1,0 +1,18 @@
+type: cdo
+patches:
+  - target: /StorageOnBelt/SOB_Schematic.SOB_Schematic_C
+    properties:
+      - path: mTechTier
+        value: 1
+      - path: mCost
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Rotor/Desc_Rotor.Desc_Rotor_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 20
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_CopperBusbar.Desc_CopperBusbar_C
+            Amount: 20
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 25
+      - path: mSchematicDependencies
+        value: []

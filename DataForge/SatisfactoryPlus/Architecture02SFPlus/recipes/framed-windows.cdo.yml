@@ -1,0 +1,19 @@
+type: cdo
+patches:
+  - target:
+      - /Architecture02/Walls/Framed_Windows/AngledFrame/Recipe_AngledFrame_4x4.Recipe_AngledFrame_4x4_C
+      - /Architecture02/Walls/Framed_Windows/AngledFrame/Recipe_AngledFrame_4x4_V2.Recipe_AngledFrame_4x4_V2_C
+      - /Architecture02/Walls/Framed_Windows/FullFrame/Recipe_FullFrame_4x4.Recipe_FullFrame_4x4_C
+      - /Architecture02/Walls/Framed_Windows/HexFrame/Recipe_HexFrame_4x4.Recipe_HexFrame_4x4_C
+      - /Architecture02/Walls/Framed_Windows/HoneyFrame/Recipe_HoneyFrame_4x4.Recipe_HoneyFrame_4x4_C
+      - /Architecture02/Walls/Framed_Windows/TripleFrame/Recipe_TripleFrame_4x4.Recipe_TripleFrame_4x4_C
+      - /Architecture02/Walls/Frameless_Windows/Recipe_GlassWindow_Wall_4x4.Recipe_GlassWindow_Wall_4x4_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 3
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 2

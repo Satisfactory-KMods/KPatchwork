@@ -1,0 +1,4 @@
+type: schematic
+schematics:
+  - class: /Game/FactoryGame/Schematics/ResourceSink/Parts/Equipment/ResourceSink_Explosives.ResourceSink_Explosives_C
+    register: true

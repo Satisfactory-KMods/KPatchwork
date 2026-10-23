@@ -1,0 +1,25 @@
+type: cdo
+patches:
+- target: /SS_Mod/Schematics/Sch_StructuralSolutions_Frames.Sch_StructuralSolutions_Frames_C
+  properties:
+  - path: mTechTier
+    value: 1
+  - path: mCost
+    value:
+    - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+      Amount: 50
+    - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+      Amount: 100
+    - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+      Amount: 100
+  - path: mSchematicDependencies
+    value:
+    - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+      properties:
+      - path: mSchematics
+        value:
+        - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T1/Schematic_SF+_T1_0.Schematic_SF+_T1_0_C
+      - path: mRequireAllSchematicsToBePurchased
+        value: true
+  - path: mDependenciesBlocksSchematicAccess
+    value: true

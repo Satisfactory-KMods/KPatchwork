@@ -1,0 +1,27 @@
+type: schematic
+schematics:
+  - class: /Architecture02/Schematic_Architecture+02.Schematic_Architecture+02_C
+    register: false
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 1
+      - path: mCost
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 100
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+    dependencies:
+      - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+        properties:
+          - path: mSchematics
+            value:
+              - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T1/Schematic_SF+_T1_0.Schematic_SF+_T1_0_C
+          - path: mRequireAllSchematicsToBePurchased
+            value: true

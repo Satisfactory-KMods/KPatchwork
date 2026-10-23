@@ -1,0 +1,18 @@
+type: cdo
+patches:
+  - target: /Architecture04/Schematic_A+04_Doors.Schematic_A+04_Doors_C
+    properties:
+      - path: mType
+        value: EST_Milestone
+      - path: mTechTier
+        value: 1
+      - path: mCost
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 100
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 100
+      - path: mSchematicDependencies
+        value: []

@@ -1,0 +1,30 @@
+type: cdo
+patches:
+  - target:
+      - /Architecture02/Basics_Walls/4x1/Concrete/Recipe_Wall_Concrete_4x1.Recipe_Wall_Concrete_4x1_C
+      - /Architecture02/Basics_Walls/4x4/Concrete/Recipe_Wall_Concrete_4x4.Recipe_Wall_Concrete_4x4_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 2
+  - target:
+      - /Architecture02/Basics_Walls/4x1/Ficsit/Recipe_Wall_Ficsit_4x1.Recipe_Wall_Ficsit_4x1_C
+      - /Architecture02/Basics_Walls/4x4/Ficsit/Recipe_Wall_Ficsit_4x4.Recipe_Wall_Ficsit_4x4_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+  - target:
+      - /Architecture02/Basics_Walls/4x1/Steel/Recipe_Wall_Steel_4x1.Recipe_Wall_Steel_4x1_C
+      - /Architecture02/Basics_Walls/4x4/Steel/Recipe_Wall_Steel_4x4.Recipe_Wall_Steel_4x4_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2

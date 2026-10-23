@@ -1,0 +1,55 @@
+type: cdo
+patches:
+  - target: /TrainSignalBridge/Buildables/Recipe_BasicLadder.Recipe_BasicLadder_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 2
+
+  - target: /TrainSignalBridge/Buildables/Recipe_SafetyLadder.Recipe_SafetyLadder_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 3
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
+            Amount: 3
+
+  - target:
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_2m.Recipe_SignalBridge_2m_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_2m_NoRailing.Recipe_SignalBridge_2m_NoRailing_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_2m_OneRailing.Recipe_SignalBridge_2m_OneRailing_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 4
+
+  - target:
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_Beam.Recipe_SignalBridge_Beam_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_Pillar.Recipe_SignalBridge_Pillar_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 4
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 8
+
+  - target:
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_BlockSignal.Recipe_SignalBridge_BlockSignal_C
+      - /TrainSignalBridge/Buildables/Recipe_SignalBridge_PathSignal.Recipe_SignalBridge_PathSignal_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_BrassPipe.Desc_BrassPipe_C
+            Amount: 2
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 10
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_LeadSheet.Desc_LeadSheet_C
+            Amount: 5

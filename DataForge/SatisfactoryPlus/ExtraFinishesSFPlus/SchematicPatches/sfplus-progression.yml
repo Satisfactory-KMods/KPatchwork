@@ -1,0 +1,161 @@
+type: cdo
+patches:
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Aluminum.Schematic_ExtraFinishes_Aluminum_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T7/Schematic_SF+_T7_0.Schematic_SF+_T7_0_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Blood.Schematic_ExtraFinishes_Blood_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_6.Schematic_SF+_T2_6_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_DarkEnergy.Schematic_ExtraFinishes_DarkEnergy_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T9/Schematic_SF+_T9_1.Schematic_SF+_T9_1_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Diamond.Schematic_ExtraFinishes_Diamond_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T8/Schematic_SF+_T8_3.Schematic_SF+_T8_3_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target:
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Ficsite.Schematic_ExtraFinishes_Ficsite_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_SAM.Schematic_ExtraFinishes_SAM_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T9/Schematic_SF+_T9_0.Schematic_SF+_T9_0_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_HeatedMetal.Schematic_ExtraFinishes_HeatedMetal_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T3/Schematic_SF+_T3_0.Schematic_SF+_T3_0_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target:
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Oil.Schematic_ExtraFinishes_Oil_C
+      - /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_PolymerResin.Schematic_ExtraFinishes_PolymerResin_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_0.Schematic_SF+_T5_0_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_PinkDiamond.Schematic_ExtraFinishes_PinkDiamond_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T10/Schematic_SF+_T10_2.Schematic_SF+_T10_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_PowerShard.Schematic_ExtraFinishes_PowerShard_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T6/Schematic_SF+_T6_3.Schematic_SF+_T6_3_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Quartz.Schematic_ExtraFinishes_Quartz_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T4/Schematic_SF+_T4_4.Schematic_SF+_T4_4_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Silicon.Schematic_ExtraFinishes_Silicon_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T2/Schematic_SF+_T2_1.Schematic_SF+_T2_1_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Sulfur.Schematic_ExtraFinishes_Sulfur_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T5/Schematic_SF+_T5_1.Schematic_SF+_T5_1_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+
+  - target: /ExtraFinishes/Master/Schematics/Schematic_ExtraFinishes_Uranium.Schematic_ExtraFinishes_Uranium_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T8/Schematic_SF+_T8_1.Schematic_SF+_T8_1_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true

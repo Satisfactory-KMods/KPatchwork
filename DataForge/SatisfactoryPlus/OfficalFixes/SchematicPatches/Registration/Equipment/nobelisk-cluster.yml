@@ -1,0 +1,4 @@
+type: schematic
+schematics:
+  - class: /Game/FactoryGame/Schematics/ResourceSink/Parts/Equipment/ResourceSink_NobeliskCluster.ResourceSink_NobeliskCluster_C
+    register: true

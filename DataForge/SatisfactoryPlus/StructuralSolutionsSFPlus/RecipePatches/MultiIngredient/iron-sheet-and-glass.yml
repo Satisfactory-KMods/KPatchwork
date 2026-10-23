@@ -1,0 +1,10 @@
+type: cdo
+patches:
+- target:
+  - /SS_Mod/Recipes/Deco/Recipe_Deco_LEDPanel.Recipe_Deco_LEDPanel_C
+  - /SS_Mod/Recipes/Deco/Recipe_Deco_WallSconce.Recipe_Deco_WallSconce_C
+  properties:
+  - path: mIngredients[0].ItemClass
+    value: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+  - path: mIngredients[1].ItemClass
+    value: /KLib/Assets/Parts/Production/Metal/Plates/Desc_Glass.Desc_Glass_C

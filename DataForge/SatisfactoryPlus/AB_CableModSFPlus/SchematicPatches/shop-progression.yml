@@ -1,0 +1,41 @@
+type: cdo
+patches:
+  - target: /AB_CableMod/Schem_ABCableMaterial-Au.Schem_ABCableMaterial-Au_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Satmonium/Schematic_Trees_Satmonium_3_2.Schematic_Trees_Satmonium_3_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+  - target: /AB_CableMod/Schem_ABCableMaterial-Si.Schem_ABCableMaterial-Si_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Cryolite/Schematic_Trees_Cryolit_3_1.Schematic_Trees_Cryolit_3_1_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true
+  - target: /AB_CableMod/Schem_ABCableSkin-Lumifibre.Schem_ABCableSkin-Lumifibre_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Cryolite/Schematic_Trees_Cryolit_3_2.Schematic_Trees_Cryolit_3_2_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true
+      - path: mDependenciesBlocksSchematicAccess
+        value: true

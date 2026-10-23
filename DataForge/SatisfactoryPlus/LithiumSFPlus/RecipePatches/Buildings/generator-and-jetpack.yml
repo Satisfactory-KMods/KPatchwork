@@ -1,0 +1,31 @@
+type: cdo
+patches:
+  - target: /Lithium/Buildables/GeneratorDisperser/Recipe_GeneratorDisperser.Recipe_GeneratorDisperser_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Lithium/Resources/QuantumChip/Desc_QuantumChip.Desc_QuantumChip_C
+            Amount: 10
+          - ItemClass: /Lithium/Resources/Li_ModularFrameLightweight/Desc_Li_ModularFrameLightweight.Desc_Li_ModularFrameLightweight_C
+            Amount: 25
+          - ItemClass: /Lithium/Resources/Li_AluminumPlateReinforced/Desc_Li_AluminumPlateReinforced.Desc_Li_AluminumPlateReinforced_C
+            Amount: 10
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_SolderWire.Desc_SolderWire_C
+            Amount: 100
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Pipes/Desc_InvarPipe.Desc_InvarPipe_C
+            Amount: 50
+          - ItemClass: /Game/FactoryGame/Resource/Parts/FicsiteMesh/Desc_FicsiteMesh.Desc_FicsiteMesh_C
+            Amount: 100
+
+  - target: /Lithium/Equipment/JetpackMk2/Recipe_JetpackMk2.Recipe_JetpackMk2_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Lithium/Resources/Li_ModularFrameLightweight/Desc_Li_ModularFrameLightweight.Desc_Li_ModularFrameLightweight_C
+            Amount: 10
+          - ItemClass: /Lithium/Resources/Ceramics/Desc_Ceramics.Desc_Ceramics_C
+            Amount: 200
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+            Amount: 250
+          - ItemClass: /Game/FactoryGame/Resource/Equipment/JetPack/BP_EquipmentDescriptorJetPack.BP_EquipmentDescriptorJetPack_C
+            Amount: 2

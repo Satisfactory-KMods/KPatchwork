@@ -1,0 +1,13 @@
+ref: SmallTrainStationSFPlus
+name: Small Stations and Track Props SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Small Stations and Track Props with SatisfactoryPlus by rebalancing every construction
+  recipe with SF+ train materials and placing its milestone in the matching SF+ train tier.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - SmallTrainStation
+priority: 10000

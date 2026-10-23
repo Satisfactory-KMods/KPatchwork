@@ -1,0 +1,13 @@
+ref: TrainSignalBridgeSFPlus
+name: Signal Bridge SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Signal Bridge with SatisfactoryPlus by rebalancing every construction recipe with
+  SF+ materials and placing the bridge recipes in the matching SF+ train milestone.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - TrainSignalBridge
+priority: 10000

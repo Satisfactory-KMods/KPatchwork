@@ -1,0 +1,22 @@
+type: cdo
+patches:
+  - target: /PneumaticFrackingMachine/Schema_Mk1.Schema_Mk1_C
+    properties:
+      - path: mTechTier
+        value: 5
+      - path: mSchematicDependencies
+        value: []
+
+  - target: /PneumaticFrackingMachine/Schema_Mk2.Schema_Mk2_C
+    properties:
+      - path: mTechTier
+        value: 7
+      - path: mSchematicDependencies
+        value: []
+
+  - target: /PneumaticFrackingMachine/Schema_Mk3.Schema_Mk3_C
+    properties:
+      - path: mTechTier
+        value: 9
+      - path: mSchematicDependencies
+        value: []

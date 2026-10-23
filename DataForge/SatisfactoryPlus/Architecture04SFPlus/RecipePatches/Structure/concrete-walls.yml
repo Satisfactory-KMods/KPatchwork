@@ -1,0 +1,13 @@
+type: cdo
+patches:
+  - target:
+      - /Architecture04/Vanilla_Doors/Walls/Center_4x4/Concrete/Recipe_Wall_Door_Concrete_4x4.Recipe_Wall_Door_Concrete_4x4_C
+      - /Architecture04/Vanilla_Doors/Walls/Center_8x4/Concrete/Recipe_Wall_CDoor_Concrete_8x4.Recipe_Wall_CDoor_Concrete_8x4_C
+      - /Architecture04/Vanilla_Doors/Walls/Side_8x4/Concrete/Recipe_Wall_SDoor_Concrete_8x4.Recipe_Wall_SDoor_Concrete_8x4_C
+      - /Architecture04/Scifi_Door_01/Wall_4M/Concrete/Recipe_Wall_Door_Scifi-01_4M_Concrete.Recipe_Wall_Door_Scifi-01_4M_Concrete_C
+      - /Architecture04/Scifi_Door_01/Wall_8M/Concrete/Recipe_Wall_Door_Scifi-01_8M_Concrete.Recipe_Wall_Door_Scifi-01_8M_Concrete_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+            Amount: 2

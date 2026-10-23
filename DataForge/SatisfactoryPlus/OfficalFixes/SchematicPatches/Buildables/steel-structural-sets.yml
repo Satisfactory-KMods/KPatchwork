@@ -1,0 +1,18 @@
+type: cdo
+patches:
+  - target:
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_BeamSet.ResourceSink_BeamSet_C
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_BeamSet2.ResourceSink_BeamSet2_C
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_BeamSet_Cables.ResourceSink_BeamSet_Cables_C
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_FramePillarSet.ResourceSink_FramePillarSet_C
+      - /Game/FactoryGame/Schematics/ResourceSink/ResourceSink_FrameworkFoundations.ResourceSink_FrameworkFoundations_C
+    properties:
+      - path: mSchematicDependencies
+        value:
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T3/Schematic_SF+_T3_4.Schematic_SF+_T3_4_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: false

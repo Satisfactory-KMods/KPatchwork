@@ -1,0 +1,17 @@
+# Change the ingredients to match Steel Roofs in SF+
+type: cdo
+patches:
+  - target:
+      - /SGPaintedMetalRoof/Roofs/Corners/Recipe_Roof_PaintedMetal_InCorner_01.Recipe_Roof_PaintedMetal_InCorner_01_C
+      - /SGPaintedMetalRoof/Roofs/Corners/Recipe_Roof_PaintedMetal_InCorner_02.Recipe_Roof_PaintedMetal_InCorner_02_C
+      - /SGPaintedMetalRoof/Roofs/Corners/Recipe_Roof_PaintedMetal_InCorner_03.Recipe_Roof_PaintedMetal_InCorner_03_C
+      - /SGPaintedMetalRoof/Roofs/Corners/Recipe_Roof_PaintedMetal_OutCorner_01.Recipe_Roof_PaintedMetal_OutCorner_01_C
+      - /SGPaintedMetalRoof/Roofs/Corners/Recipe_Roof_PaintedMetal_OutCorner_02.Recipe_Roof_PaintedMetal_OutCorner_02_C
+      - /SGPaintedMetalRoof/Roofs/Corners/Recipe_Roof_PaintedMetal_OutCorner_03.Recipe_Roof_PaintedMetal_OutCorner_03_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C"
+            amount: 3
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C"
+            amount: 2

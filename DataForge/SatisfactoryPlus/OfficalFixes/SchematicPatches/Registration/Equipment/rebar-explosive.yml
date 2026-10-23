@@ -1,0 +1,4 @@
+type: schematic
+schematics:
+  - class: /Game/FactoryGame/Schematics/ResourceSink/Parts/Equipment/ResourceSink_RebarExplosive.ResourceSink_RebarExplosive_C
+    register: true

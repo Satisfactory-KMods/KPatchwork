@@ -1,0 +1,29 @@
+type: cdo
+patches:
+  - target:
+      - /ConveyorLogistics/Buildables/ConveyorAttachmentJunction/Recipe_ConveyorAttachmentJunction.Recipe_ConveyorAttachmentJunction_C
+      - /ConveyorLogistics/Buildables/ConveyorAttachmentJunction/Recipe_ConveyorAttachmentJunctionLift.Recipe_ConveyorAttachmentJunctionLift_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 5
+
+  - target:
+      - /ConveyorLogistics/Buildables/ConveyorAttachmentSplitterWeighted/Recipe_ConveyorAttachmentSplitterWeighted.Recipe_ConveyorAttachmentSplitterWeighted_C
+      - /ConveyorLogistics/Buildables/ConveyorAttachmentSplitterWeighted/Recipe_ConveyorAttachmentSplitterWeightedLift.Recipe_ConveyorAttachmentSplitterWeightedLift_C
+    properties:
+      - path: mIngredients
+        value:
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronPlate/Desc_IronPlate.Desc_IronPlate_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Sheets/Desc_IronSheet.Desc_IronSheet_C
+            Amount: 2
+          - ItemClass: /Game/FactoryGame/Resource/Parts/IronScrew/Desc_IronScrew.Desc_IronScrew_C
+            Amount: 5
+          - ItemClass: /KLib/Assets/Parts/Production/Belt/Desc_BeltDriveMk1.Desc_BeltDriveMk1_C
+            Amount: 1

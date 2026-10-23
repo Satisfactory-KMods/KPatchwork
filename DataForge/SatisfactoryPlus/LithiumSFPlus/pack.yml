@@ -1,0 +1,13 @@
+ref: LithiumSFPlus
+name: Lithium SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Integrates Lithium with SatisfactoryPlus by adapting its production and construction recipes,
+  aligning milestone costs with SF+ progression, and allowing its reactive extraction chain.
+contributer: Kyri123
+enabled: true
+conditions:
+  hasMod:
+    - SatisfactoryPlus
+    - Lithium
+priority: 10000

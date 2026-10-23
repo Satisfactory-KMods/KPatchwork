@@ -1,0 +1,49 @@
+type: cdo
+patches:
+- target:
+  - /SS_Mod/Schematics/Sch_StructuralSolutions_MonoRail_Supports.Sch_StructuralSolutions_MonoRail_Supports_C
+  - /SS_Mod/Schematics/Schematic_FrameBeams.Schematic_FrameBeams_C
+  - /SS_Mod/Schematics/Schematic_SS_Beams.Schematic_SS_Beams_C
+  properties:
+  - path: mTechTier
+    value: 3
+  - path: mCost
+    value:
+    - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+      Amount: 100
+    - ItemClass: /KLib/Assets/Parts/Production/Metal/Screw/Desc_SteelBolt.Desc_SteelBolt_C
+      Amount: 100
+    - ItemClass: /Game/FactoryGame/Resource/Parts/Cement/Desc_Cement.Desc_Cement_C
+      Amount: 100
+  - path: mSchematicDependencies
+    value:
+    - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+      properties:
+      - path: mSchematics
+        value:
+        - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T3/Schematic_SF+_T3_4.Schematic_SF+_T3_4_C
+      - path: mRequireAllSchematicsToBePurchased
+        value: true
+  - path: mDependenciesBlocksSchematicAccess
+    value: true
+- target: /SS_Mod/Schematics/Schematic_SS_SteelCables.Schematic_SS_SteelCables_C
+  properties:
+  - path: mTechTier
+    value: 3
+  - path: mCost
+    value:
+    - ItemClass: /Game/FactoryGame/Resource/Parts/SteelPlate/Desc_SteelPlate.Desc_SteelPlate_C
+      Amount: 75
+    - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_SteelRod.Desc_SteelRod_C
+      Amount: 50
+  - path: mSchematicDependencies
+    value:
+    - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+      properties:
+      - path: mSchematics
+        value:
+        - /SatisfactoryPlus/Content/SchematicManager/Schematics/Milestones/T3/Schematic_SF+_T3_4.Schematic_SF+_T3_4_C
+      - path: mRequireAllSchematicsToBePurchased
+        value: true
+  - path: mDependenciesBlocksSchematicAccess
+    value: true

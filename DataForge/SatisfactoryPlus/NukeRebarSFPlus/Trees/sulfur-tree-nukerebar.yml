@@ -1,0 +1,18 @@
+# Adds Nuke Rebar to the SatisfactoryPlus Sulfur tree, which replaces the vanilla Sulfur tree.
+type: research
+
+research:
+  - class: /SatisfactoryPlus/Content/SchematicManager/MAM/NewTrees/ResearchTree_Sulfur.ResearchTree_Sulfur_C
+    register: false
+    autoPath: true
+    addNodes:
+      - schematic: /NukeRebar/Schematics/Research_NukeRebar.Research_NukeRebar_C
+        coordinate:
+          X: 4
+          Y: 6
+        parents:
+          # Explosive Rebar
+          - schematic: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Sulfur/U6/Schematic_Trees_Sulfur_4_5.Schematic_Trees_Sulfur_4_5_C
+        unhiddenBy:
+          - schematic: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Sulfur/U6/Schematic_Trees_Sulfur_4_5.Schematic_Trees_Sulfur_4_5_C
+          - schematic: /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Sulfur/U6/Schematic_Trees_Sulfur_3_6.Schematic_Trees_Sulfur_3_6_C

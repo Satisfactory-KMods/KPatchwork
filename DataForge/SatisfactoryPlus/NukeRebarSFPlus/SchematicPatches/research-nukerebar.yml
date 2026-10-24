@@ -1,0 +1,20 @@
+# NukeRebar gates its research on the vanilla Nuke Nobelisk (Research_Sulfur_5_1), which SF+ replaces
+
+type: schematic
+
+schematics:
+  - class: /NukeRebar/Schematics/Research_NukeRebar.Research_NukeRebar_C
+    # Already registered through NukeRebar's GameFeatureData; only patch it
+    register: false
+    properties:
+      - path: mSchematicDependencies
+        value:
+          # FGSchematicPurchasedDependency is abstract and can't be instanced; use the vanilla BP subclass
+          - class: /Game/FactoryGame/AvailabilityDependencies/BP_SchematicPurchasedDependency.BP_SchematicPurchasedDependency_C
+            properties:
+              - path: mSchematics
+                value:
+                  # Explosive Rebar
+                  - /SatisfactoryPlus/Content/SchematicManager/MAM/Schematics/Sulfur/U6/Schematic_Trees_Sulfur_4_5.Schematic_Trees_Sulfur_4_5_C
+              - path: mRequireAllSchematicsToBePurchased
+                value: true

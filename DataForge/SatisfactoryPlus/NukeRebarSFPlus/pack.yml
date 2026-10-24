@@ -1,0 +1,13 @@
+ref: NukeRebarSFPlus
+name: Nuke Rebar SatisfactoryPlus Patch
+version: 1.0.0
+description: >-
+  Moves the Nuke Rebar research into the SatisfactoryPlus Sulfur M.A.M. tree, directly below
+  Explosive Rebar, and requires Explosive Rebar to be researched first.
+contributer: OGBrosephStalin
+enabled: true
+conditions:
+  hasMod:
+  - SatisfactoryPlus
+  - NukeRebar
+priority: 50

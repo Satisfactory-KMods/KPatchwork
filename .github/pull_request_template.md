@@ -7,6 +7,8 @@
 <!--
 Optional: Write player-facing release notes for your pack here.
 Content in this section is copied to the next GitHub and ficsit.app changelog.
+Describe what players will notice. Example: Added the missing costs for Base Tech Augmentation recipes.
+These notes replace automatic summaries of this PR's commits.
 Leave this section empty when no custom release note is needed.
 -->
 

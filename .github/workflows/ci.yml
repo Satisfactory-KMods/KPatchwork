@@ -194,14 +194,16 @@ jobs:
           script: |
             const fs = require('fs');
             const pullRequests = new Map();
+            const commitsByPull = new Map();
+            const commits = fs.readFileSync(process.env.COMMITS_FILE, 'utf8')
+              .split(/\r?\n/)
+              .filter(Boolean);
 
             if (context.eventName === 'pull_request_target') {
               const pull = context.payload.pull_request;
               pullRequests.set(pull.number, pull);
+              commitsByPull.set(pull.number, commits);
             } else {
-              const commits = fs.readFileSync(process.env.COMMITS_FILE, 'utf8')
-                .split(/\r?\n/)
-                .filter(Boolean);
               for (const commit_sha of commits) {
                 const { data: associated } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
                   owner: context.repo.owner,
@@ -211,6 +213,9 @@ jobs:
                 for (const pull of associated) {
                   if (pull.merged_at && pull.base.ref === context.payload.repository.default_branch) {
                     pullRequests.set(pull.number, pull);
+                    const covered = commitsByPull.get(pull.number) || [];
+                    covered.push(commit_sha);
+                    commitsByPull.set(pull.number, covered);
                   }
                 }
               }
@@ -224,6 +229,7 @@ jobs:
                 author: pull.user.login,
                 url: pull.html_url,
                 body: pull.body || '',
+                commits: commitsByPull.get(pull.number) || [],
               }));
             fs.writeFileSync(process.env.OUTPUT_FILE, JSON.stringify(records), 'utf8');
             core.info(`Collected ${records.length} pull request(s) for changelog extraction.`);

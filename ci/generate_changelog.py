@@ -7,6 +7,7 @@ import argparse
 import json
 import re
 import subprocess
+from dataclasses import dataclass
 from pathlib import Path
 
 import yaml
@@ -16,6 +17,16 @@ PREFIX = re.compile(r"^(?P<kind>feat|fix|perf|refactor|docs|chore|ci|build|test)
 CHANGELOG_HEADING = re.compile(r"^[ \t]{0,3}##[ \t]+changelog[ \t]*#*[ \t]*$", re.IGNORECASE)
 SECTION_HEADING = re.compile(r"^[ \t]{0,3}#{1,2}(?:[ \t]+|$)")
 HTML_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
+
+
+@dataclass(frozen=True)
+class PullRequestChangelog:
+    number: int
+    title: str
+    author: str
+    url: str
+    text: str
+    commits: frozenset[str]
 
 
 def git(root: Path, *args: str) -> list[str]:
@@ -89,31 +100,29 @@ def format_contributors(contributors: list[str]) -> str:
     return f"{', '.join(names[:-1])}, and {names[-1]}"
 
 
-def player_area(paths: list[str]) -> str:
-    if any(path.startswith("DataForge/") for path in paths):
-        return "KDataForge patch content"
-    if any(path == "KPatchwork.uplugin" for path in paths):
-        return "Mod metadata"
-    if any(path.startswith("Config/") for path in paths):
-        return "Mod configuration"
-    return "Mod infrastructure"
-
-
-def player_sentence(kind: str, subject: str, area: str) -> str:
+def release_sentence(kind: str, subject: str) -> str:
     text = subject.strip()
-    verbs = {
-        "feat": "Added",
-        "fix": "Fixed",
-        "perf": "Improved",
-        "refactor": "Updated",
+    actions = {
+        "add": "Added", "adds": "Added", "fix": "Fixed", "fixes": "Fixed",
+        "update": "Updated", "updates": "Updated", "improve": "Improved",
+        "remove": "Removed", "rename": "Renamed", "restore": "Restored",
+        "clean": "Cleaned", "correct": "Corrected", "make": "Made", "create": "Created",
+        "allow": "Allowed", "enable": "Enabled", "disable": "Disabled",
+        "prevent": "Prevented", "handle": "Handled", "use": "Used",
     }
-    prefix = verbs.get(kind, "Updated")
-    lowered = text.casefold()
-    for leading in ("add ", "adds ", "added ", "fix ", "fixed ", "update ", "updated ", "improve ", "improved "):
-        if lowered.startswith(leading):
-            text = text[len(leading):]
-            break
-    return f"{prefix} {text} ({area})."
+    first, separator, rest = text.partition(" ")
+    if first.casefold() in actions and separator:
+        text = f"{actions[first.casefold()]} {rest}"
+    elif first.casefold() not in {action.casefold() for action in actions.values()}:
+        prefix = {"feat": "Added", "fix": "Fixed", "perf": "Improved"}.get(kind)
+        if prefix:
+            text = f"{prefix} {text}"
+    text = text[:1].upper() + text[1:]
+    return text if text.endswith((".", "!", "?")) else f"{text}."
+
+
+def note_key(text: str) -> str:
+    return " ".join(text.strip().lstrip("-* ").rstrip(".!?").casefold().split())
 
 
 def parse_commit(line: str) -> tuple[str, str, str, str]:
@@ -138,7 +147,7 @@ def extract_changelog_section(body: str) -> str | None:
     return None
 
 
-def pull_request_changelogs(path: Path | None) -> list[tuple[int, str, str, str, str]]:
+def pull_request_changelogs(path: Path | None) -> list[PullRequestChangelog]:
     if path is None:
         return []
     try:
@@ -148,7 +157,7 @@ def pull_request_changelogs(path: Path | None) -> list[tuple[int, str, str, str,
     if not isinstance(raw_records, list):
         raise SystemExit(f"pull request changelog input must contain a JSON array: {path}")
 
-    changelogs: list[tuple[int, str, str, str, str]] = []
+    changelogs: list[PullRequestChangelog] = []
     for record in raw_records:
         if not isinstance(record, dict):
             continue
@@ -163,8 +172,13 @@ def pull_request_changelogs(path: Path | None) -> list[tuple[int, str, str, str,
         title = str(record.get("title") or f"Pull request #{number}").strip()
         author = str(record.get("author") or "unknown").strip().lstrip("@")
         url = str(record.get("url") or "").strip()
-        changelogs.append((number, title, author, url, changelog))
-    return sorted(changelogs, key=lambda entry: entry[0])
+        raw_commits = record.get("commits")
+        commits = (
+            frozenset(sha for sha in raw_commits if isinstance(sha, str))
+            if isinstance(raw_commits, list) else frozenset()
+        )
+        changelogs.append(PullRequestChangelog(number, title, author, url, changelog, commits))
+    return sorted(changelogs, key=lambda entry: entry.number)
 
 
 def main() -> int:
@@ -185,7 +199,7 @@ def main() -> int:
         "log",
         "--reverse",
         "--date=short",
-        "--format=%h%x09%ad%x09%an%x09%s",
+        "--format=%H%x09%ad%x09%an%x09%s",
         range_spec,
     )
     added_manifests = added_pack_manifests(args.root, base, args.head)
@@ -198,72 +212,57 @@ def main() -> int:
         for path in updated_pack_manifests(args.root, base, args.head, added_manifests)
     ]
     authored_changelogs = pull_request_changelogs(args.pull_requests)
+    covered_commits = {sha for entry in authored_changelogs for sha in entry.commits}
+    seen_notes = {note_key(line) for entry in authored_changelogs for line in entry.text.splitlines() if line.strip()}
     player_changes: list[str] = []
     pack_author_changes: list[str] = []
     for raw in raw_commits:
-        sha, date, author, subject = parse_commit(raw)
+        sha, _date, _author, subject = parse_commit(raw)
+        if sha in covered_commits:
+            continue
         files = changed_files(args.root, sha)
         match = PREFIX.match(subject)
         kind = match["kind"].casefold() if match else "change"
         clean_subject = PREFIX.sub("", subject, count=1).strip()
-        area = player_area(files)
         changes_packaged_content = any(
             path.startswith(("Config/", "DataForge/")) or path == "KPatchwork.uplugin"
             for path in files
         )
-        if changes_packaged_content:
-            sentence = player_sentence(kind, clean_subject, area)
-            player_changes.append(sentence)
-            if any(path.startswith("DataForge/") for path in files):
-                pack_author_changes.append(sentence)
+        changes_tooling = any(
+            path.startswith(("ci/", ".github/")) or path in {"CONTRIBUTING.md", "pyproject.toml", "uv.lock"}
+            for path in files
+        )
+        if kind == "test" and not changes_packaged_content:
+            continue
+        if changes_packaged_content or changes_tooling:
+            sentence = release_sentence(kind, clean_subject)
+            key = note_key(sentence)
+            if key not in seen_notes:
+                target = player_changes if changes_packaged_content else pack_author_changes
+                target.append(sentence)
+                seen_notes.add(key)
 
-    lines = [
-        "Automated release changelog generated from the included commits.",
-        "",
-        f"# Patchwork: Cross-Mod Compatibility Packs {version(args.root)}",
-        "",
-        "## New packs",
-        "",
-    ]
+    lines = [f"# Patchwork: Cross-Mod Compatibility Packs {version(args.root)}"]
     if new_packs:
+        lines.extend(["", "## New packs", ""])
         for pack_name, pack_ref, contributors in new_packs:
-            lines.append(f"- Added **{pack_name}** (`{pack_ref}`) by {format_contributors(contributors)}.")
-    else:
-        lines.append("- No new packs in this build.")
-    lines.extend(["", "## Updated packs", ""])
+            lines.append(f"- {pack_name} (`{pack_ref}`), by {format_contributors(contributors)}.")
     if updated_packs:
+        lines.extend(["", "## Updated packs", ""])
         for pack_name, pack_ref, contributors in updated_packs:
-            lines.append(f"- Updated **{pack_name}** (`{pack_ref}`), maintained by {format_contributors(contributors)}.")
-    else:
-        lines.append("- No existing packs were updated in this build.")
-    lines.extend(["", "## Pack author changelogs", ""])
+            lines.append(f"- {pack_name} (`{pack_ref}`), maintained by {format_contributors(contributors)}.")
     if authored_changelogs:
-        for number, title, author, url, changelog in authored_changelogs:
-            pull_request = f"[#{number}]({url})" if url else f"#{number}"
-            lines.extend([f"### {title} ({pull_request}) by @{author}", "", changelog, ""])
-        if lines[-1] == "":
-            lines.pop()
-    else:
-        lines.append("- No pack author changelogs were provided in this build.")
-    lines.extend([
-        "",
-        "## Changes for players",
-        "",
-    ])
+        lines.extend(["", "## Release notes"])
+        for entry in authored_changelogs:
+            pull_request = f"[#{entry.number}]({entry.url})" if entry.url else f"#{entry.number}"
+            lines.extend(["", f"### {entry.title} ({pull_request}) by @{entry.author}", "", entry.text])
     if player_changes:
+        lines.extend(["", "## Changes", ""])
         lines.extend(f"- {change}" for change in player_changes)
-    elif new_packs:
-        lines.append("- New pack additions are listed above.")
-    else:
-        lines.append("- No player-facing changes in this build.")
-    lines.extend(["", "## Changes for pack authors", ""])
     if pack_author_changes:
+        lines.extend(["", "## For pack authors", ""])
         lines.extend(f"- {change}" for change in pack_author_changes)
-    elif new_packs:
-        lines.append("- New pack additions and their contributors are listed above.")
-    else:
-        lines.append("- No pack-facing changes in this build.")
-    lines.extend(["", f"Generated from `{range_spec}`.", ""])
+    lines.append("")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text("\n".join(lines), encoding="utf-8")

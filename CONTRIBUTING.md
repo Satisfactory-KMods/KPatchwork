@@ -21,4 +21,14 @@ ZIP, generates a commit changelog, and checks ownership. A pull request changing
 release checks release only when packaged content changed since latest Git tag.
 Changes outside author-owned packs stay open until a maintainer approves them.
 
+Ownership results requiring review appear in the reporting job summary and a bot comment. If GitHub
+denies the comment with HTTP 403, the job emits a warning and keeps the summary available; this does
+not make the pull request eligible for auto-merge.
+
+Workflow regression tests require Node.js 24 and the locked Python dependencies:
+
+```text
+uv run --locked python -m unittest discover -s ci/tests -v
+```
+
 `main` is protected for everyone, including repository administrators. Do not push directly.

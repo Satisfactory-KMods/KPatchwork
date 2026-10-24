@@ -60,7 +60,7 @@ class PolicyReportingTests(unittest.TestCase):
         result = subprocess.run(
             ["node", "-e", HARNESS],
             input=json.dumps({"script": script, **options}),
-            capture_output=True, text=True, check=True,
+            capture_output=True, text=True, check=True, timeout=10,
         )
         return json.loads(result.stdout)
 

@@ -76,6 +76,16 @@ jobs:
         run: uv sync --locked --project ci-repo
         shell: bash
 
+      - name: Set up Node.js for workflow regression tests
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Test trusted CI tooling
+        run: uv run --project ci-repo --locked python -m unittest discover -s ci-repo/ci/tests -v
+        shell: bash
+
       - name: Lint all DataForge packs with KDataForge Linter
         run: >-
           uv run --project ci-repo --locked kdataforge-linter lint "$SOURCE/DataForge"
@@ -347,7 +357,7 @@ jobs:
       needs.validate-package.outputs.eligible == 'false'
     runs-on: ubuntu-latest
     permissions:
-      issues: write
+      pull-requests: write
     steps:
       - name: Comment on auto-merge ineligibility
         uses: actions/github-script@v7
@@ -367,29 +377,35 @@ jobs:
             \`\`\`text
             ${reason}
             \`\`\``;
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              per_page: 100,
-            });
-            const existing = comments.find((comment) =>
-              comment.user.login === 'github-actions[bot]' && comment.body.includes(marker),
-            );
-            if (existing) {
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: existing.id,
-                body,
-              });
-            } else {
-              await github.rest.issues.createComment({
+            await core.summary.addRaw(body).write();
+            try {
+              const { data: comments } = await github.rest.issues.listComments({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                body,
+                per_page: 100,
               });
+              const existing = comments.find((comment) =>
+                comment.user.login === 'github-actions[bot]' && comment.body.includes(marker),
+              );
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body,
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body,
+                });
+              }
+            } catch (error) {
+              if (error.status !== 403) throw error;
+              core.warning('GitHub denied the policy comment (403). See the job summary for the ownership result. Maintainer review is still required.');
             }
 
   auto-merge-owned-packs:

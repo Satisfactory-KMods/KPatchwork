@@ -36,21 +36,25 @@
 
 ---
 
-**Patchwork: Cross-Mod Compatibility Packs** (`KPatchwork`) keeps independently developed Satisfactory mods working together. It ships small, conditional KDataForge packs that activate only when their exact mod combination is installed.
+Patchwork: Cross-Mod Compatibility Packs (`KPatchwork`) keeps independently developed Satisfactory
+mods working together. Its small KDataForge packs activate only when their required combination of
+mods is installed.
 
-No settings, load-order guessing, or manual recipe edits: install KPatchwork and supported combinations receive their compatibility changes automatically.
+Install KPatchwork and supported combinations receive their compatibility changes automatically.
+You do not need to change settings, guess a load order, or edit recipes by hand.
 
 ---
 
-<table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background:#e8a202;padding:6px 14px;border-radius:6px 6px 0 0;border:none"><strong style="color:#1a1a2e;font-size:18px">Current Compatibility Packs</strong></td></tr></table>
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background:#e8a202;padding:6px 14px;border-radius:6px 6px 0 0;border:none"><strong style="color:#1a1a2e;font-size:18px">Current compatibility packs</strong></td></tr></table>
 
-This release contains **{{PACK_COUNT}}**. Pack list, supported mods, versions, maintainers, and included patch groups come directly from current `pack.yml` files and pack contents.
+This release contains {{PACK_COUNT}}. The catalog lists each pack's supported mods, version,
+maintainers, and patch groups from its current `pack.yml` and contents.
 
 {{PACK_CATALOG}}
 
 ---
 
-<table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background:#e8a202;padding:6px 14px;border-radius:6px 6px 0 0;border:none"><strong style="color:#1a1a2e;font-size:18px">How It Works</strong></td></tr></table>
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background:#e8a202;padding:6px 14px;border-radius:6px 6px 0 0;border:none"><strong style="color:#1a1a2e;font-size:18px">How it works</strong></td></tr></table>
 
 - Each compatibility case lives in its own versioned pack.
 - Pack conditions detect required mods before any patch loads.
@@ -60,9 +64,11 @@ This release contains **{{PACK_COUNT}}**. Pack list, supported mods, versions, m
 
 Restart session after changing installed mods so KDataForge can evaluate packs again.
 
-<table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background:#e8a202;padding:6px 14px;border-radius:6px 6px 0 0;border:none"><strong style="color:#1a1a2e;font-size:18px">Contribute a Compatibility Pack</strong></td></tr></table>
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background:#e8a202;padding:6px 14px;border-radius:6px 6px 0 0;border:none"><strong style="color:#1a1a2e;font-size:18px">Contribute a compatibility pack</strong></td></tr></table>
 
-Patchwork: Cross-Mod Compatibility Packs is community-driven. Add or update a focused pack under `DataForge/`, document what it changes in `pack.yml`, then open a pull request. CI validates ownership, YAML structure, package output, and generated page content.
+Community members can add or update a focused pack under `DataForge/`. Describe its changes in
+`pack.yml`, then open a pull request. CI checks ownership, YAML structure, package output, and the
+generated page.
 
 [Repository and contribution guide](https://github.com/Satisfactory-KMods/KPatchwork)
 

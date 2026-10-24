@@ -1,26 +1,25 @@
 # Patchwork: Cross-Mod Compatibility Packs
 
-**Mod reference:** `KPatchwork`
+Patchwork makes Satisfactory mods work together through small, conditional data patches. Its mod
+reference is `KPatchwork`.
 
-Patchwork: Cross-Mod Compatibility Packs makes mods work together through small, conditional data patches.
+## What Patchwork changes
 
-## What it does
+A pack changes recipes or adds assets only when its required combination of mods is loaded. For
+example, a SatisfactoryPlus + RSS pack can update RSS recipes to use SatisfactoryPlus items. Each
+pack handles one compatibility case in readable YAML files.
 
-Packs can change recipes or add assets only when a specific combination of mods is loaded. For
-example, a SatisfactoryPlus + RSS pack can change recipes so they use SatisfactoryPlus items.
+Current packs, required mods, versions, maintainers, and affected content appear on the
+[ficsit.app mod page](https://ficsit.app/mod/KPatchwork). Satisfactory Mod Manager installs
+KDataForge with Patchwork.
 
-Each pack should focus on one compatibility case and keep its changes in readable YAML files.
+## Contribute a compatibility pack
 
-## Working on Patchwork: Cross-Mod Compatibility Packs
-
-Patchwork: Cross-Mod Compatibility Packs is developed in the public KPatchwork repository:
-
-https://github.com/Satisfactory-KMods/KPatchwork
-
-Anyone can contribute a compatibility pack through a pull request. Changes that stay inside the
-author's own pack are linted, packaged, and may be merged automatically by CI. Push and manual
-release checks create a release only when packaged content changed since latest Git tag.
-This repository's own CI renders and updates its ficsit.app page from current pack manifests.
+Development happens in the public [KPatchwork repository](https://github.com/Satisfactory-KMods/KPatchwork).
+Anyone can contribute a pack through a pull request. CI lints and packages changes made inside the
+author's own pack and may merge them automatically. Push and manual release checks publish only when
+packaged content has changed since the latest Git tag. Repository CI also rebuilds the ficsit.app
+page from current pack manifests.
 
 The main contribution area is `DataForge/`:
 
@@ -35,7 +34,7 @@ DataForge/
 To add or update a pack:
 
 1. Create or edit the pack directory under `DataForge/`.
-2. Keep `pack.yml` complete, write its player-facing `description`, and list every maintainer in its
+2. Keep `pack.yml` complete. Write its player-facing `description` and list every maintainer in the
    `contributer` field.
 3. Put the actual data changes in focused YAML files next to `pack.yml`.
 4. Explain which mod combination the pack supports.
@@ -46,9 +45,9 @@ To add or update a pack:
 uv run --locked kdataforge-linter lint DataForge --schema-dir ci/schemas --allow-schema-override
 ```
 
-CI uses the official KDataForge Linter pinned in `uv.lock`. The repository-local
-`ci/schemas/pack.schema.yml` extends its strict pack schema only with the required player-facing
-`description` field used to generate the mod page.
+CI uses the official KDataForge Linter version pinned in `uv.lock`. The repository-local
+`ci/schemas/pack.schema.yml` extends its strict pack schema with the required player-facing
+`description` used to generate the mod page.
 
 Changes to shared tooling, CI, or `KPatchwork.uplugin` metadata should be kept separate from pack
 content where possible and require maintainer review.
@@ -88,14 +87,14 @@ trees under `Windows/`, `LinuxServer/`, and `WindowsServer/` (excluding `Config/
 generates `CHANGELOG.md` from latest Git tag through current `main`.
 Text below `## Changelog` in included pull requests is copied into the GitHub and ficsit.app
 changelogs. The section ends at the next level-one or level-two heading; an empty section is ignored.
-Push and manual release checks compare those packaged paths against latest tag. A detected change receives
+Push and manual release checks compare those packaged paths against the latest tag. A detected change receives
 `<year>.<quarter>.<CI-build-number>`, creates a GitHub Release with ZIP and changelog, and uploads
 through ficsit-CLI. Feature-branch pushes never release directly.
 
 CI renders `.github/ficsit-description.template.md` with every enabled pack's name, description,
 required mods, version, maintainers, and current YAML content groups. On `main` pushes and manual
-runs, Patchwork: Cross-Mod Compatibility Packs updates its own ficsit.app metadata and full description through
-the API. The main modding repository no longer owns this page. Render locally without publishing:
+runs, Patchwork updates its own ficsit.app metadata and full description through the API. The main
+modding repository no longer owns this page. Render it locally without publishing:
 
 ```text
 uv run --locked ci/ficsit_page.py --root . --output dist/FICSIT_DESCRIPTION.md

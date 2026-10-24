@@ -31,10 +31,10 @@ patches:
   - target: /TrueGrid/Schematics/Shematic_T2_TrueGrid.Shematic_T2_TrueGrid_C
     properties:
       - path: mTechTier
-        value: 3
+        value: 2
       - path: mCost
         value:
-          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BronzePlates.Desc_BronzePlates_C
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_CopperBusbar.Desc_CopperBusbar_C
             Amount: 100
           - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
             Amount: 200

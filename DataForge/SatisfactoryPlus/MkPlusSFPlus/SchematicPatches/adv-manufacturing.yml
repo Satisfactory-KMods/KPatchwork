@@ -1,0 +1,22 @@
+# Advanced Manufacturing
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_3_3.Research_MkPlus_3_3_C
+    properties:
+      - path: mCost
+        op: append
+        value:
+          - ItemClass: "/KLib/Assets/Parts/Production/SpaceElevator/PowerRelay/Desc_PowerRelay.Desc_PowerRelay_C"
+            amount: 400
+---
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_3_3.Research_MkPlus_3_3_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value:
+              - /MkPlusSFPlus/Buildings/FlexibleBlastFurnace/Recipe_FlexibleBlastFurnaceSmelterMk2.Recipe_FlexibleBlastFurnaceSmelterMk2_C
+              - /MkPlusSFPlus/Buildings/Reformer/Recipe_SoldifierAndCoolerMk2.Recipe_SoldifierAndCoolerMk2_C

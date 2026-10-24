@@ -1,0 +1,33 @@
+# Advanced Resource Extraction
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_2_6.Research_MkPlus_2_6_C
+    properties:
+      - path: mCost
+        value:
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_8.Desc_SpaceElevatorPart_8_C"
+            amount: 100
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_6.Desc_SpaceElevatorPart_6_C"
+            amount: 150
+          - ItemClass: "/Game/FactoryGame/Resource/Parts/SpaceElevatorParts/Desc_SpaceElevatorPart_7.Desc_SpaceElevatorPart_7_C"
+            amount: 300
+          - ItemClass: "/KLib/Assets/Parts/Production/Metal/Frames/TitaniumModularFrame/Desc_TitanModularFrame.Desc_TitanModularFrame_C"
+            amount: 200
+      - path: mUnlocks
+        op: remove_at
+        index: 0
+---
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_2_6.Research_MkPlus_2_6_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value:
+              - /MkPlus/Buildables/WaterPump/Recipe_WaterPump_Mk2.Recipe_WaterPump_Mk2_C
+              - /MkPlus/Buildables/OilPump/Recipe_OilPump_Mk2.Recipe_OilPump_Mk2_C
+              - /MkPlus/Buildables/FrackingSmasher/Recipe_FrackingSmasher_Mk2.Recipe_FrackingSmasher_Mk2_C
+              - /MkPlus/Buildables/FrackingExtractor/Recipe_FrackingExtractor_Mk2.Recipe_FrackingExtractor_Mk2_C
+              - /MkPlusSFPlus/Buildings/BioWaterExtractor/Recipe_BioWaterExtractor_SF+Mk2.Recipe_BioWaterExtractor_SF+Mk2_C

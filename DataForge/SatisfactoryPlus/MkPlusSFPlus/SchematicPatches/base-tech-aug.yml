@@ -1,0 +1,22 @@
+# Base Tech Augmentation
+type: cdo
+patches:
+  - target: /MkPlus/Schematics/Research_MkPlus_0.Research_MkPlus_0_C
+    properties:
+      - path: mCost
+        op: append
+        value:
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Rods/Desc_SteelRod.Desc_SteelRod_C
+            Amount: 50
+          - ItemClass: /KLib/Assets/Buildings/SlugHatching/Desc/Slugs/SlugDesc_BlueSlug.SlugDesc_BlueSlug_C
+            Amount: 50
+---
+type: schematic
+schematics:
+  - class: /MkPlus/Schematics/Research_MkPlus_0.Research_MkPlus_0_C
+    register: false
+    unlocks:
+      - class: /Game/FactoryGame/Unlocks/BP_UnlockRecipe.BP_UnlockRecipe_C
+        properties:
+          - path: mRecipes
+            value: [/MkPlusSFPlus/Buildings/Crusher/Recipe_CrusherMk2.Recipe_CrusherMk2_C]

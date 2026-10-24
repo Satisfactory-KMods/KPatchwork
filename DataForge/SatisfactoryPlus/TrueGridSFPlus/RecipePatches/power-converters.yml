@@ -34,7 +34,7 @@ patches:
             Amount: 5
           - ItemClass: /KLib/Assets/Parts/Production/Metal/Wires/Desc_IronWire.Desc_IronWire_C
             Amount: 10
-          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_BronzePlates.Desc_BronzePlates_C
+          - ItemClass: /KLib/Assets/Parts/Production/Metal/Plates/Desc_CopperBusbar.Desc_CopperBusbar_C
             Amount: 3
 
   - target: /TrueGrid/Buildables/PowerConverters/DCAC/Recipe_Converter_DCAC_HV.Recipe_Converter_DCAC_HV_C

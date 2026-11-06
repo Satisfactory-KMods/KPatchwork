@@ -42,12 +42,22 @@ To add or update a pack:
 6. Run the repository lint before opening the pull request:
 
 ```text
-uv run --locked kdataforge-linter lint DataForge --schema-dir ci/schemas --allow-schema-override
+uv run --locked python -m kdataforge_linter lint DataForge --schema-dir ci/schemas --allow-schema-override
 ```
 
 CI uses the official KDataForge Linter version pinned in `uv.lock`. The repository-local
 `ci/schemas/pack.schema.yml` extends its strict pack schema with the required player-facing
 `description` used to generate the mod page.
+
+Keep the existing property-operation list syntax in KPatchwork packs:
+
+```yaml
+properties:
+  - path: mDisplayNameOverride
+    value: false
+```
+
+Do not migrate KPatchwork packs to property mappings.
 
 Changes to shared tooling, CI, or `KPatchwork.uplugin` metadata should be kept separate from pack
 content where possible and require maintainer review.

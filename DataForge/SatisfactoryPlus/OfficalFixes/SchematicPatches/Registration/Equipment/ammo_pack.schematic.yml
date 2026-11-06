@@ -1,4 +1,0 @@
-type: schematic
-schematics:
-  - class: /Game/FactoryGame/Schematics/ResourceSink/Parts/Equipment/ResourceSink_AmmoPack.ResourceSink_AmmoPack_C
-    register: true

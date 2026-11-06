@@ -1,4 +1,0 @@
-type: schematic
-schematics:
-  - class: /Game/FactoryGame/Schematics/ResourceSink/Parts/Equipment/ResourceSink_RifleAmmoHoming.ResourceSink_RifleAmmoHoming_C
-    register: true
